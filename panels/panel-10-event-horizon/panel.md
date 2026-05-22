@@ -14,7 +14,7 @@ The Black Sun behind the sun reveals itself as the gnosis-bearing core singulari
 
 At the same moment, the King Dragon rises. Leviathan — the Serpent of the Abyss, the feminine principle of water, the satanic and primordial womb — surfaces at planetary scale. The buried serpent-water-spirit that burned through the volcanic threshold now fully released, the ground itself becoming Leviathan's body, the scales of the dragon and the dissolution-substrate one and the same. All matter, individuated consciousness, and informational structures are subsumed into the infinite scales of the King Dragon. The energetic sustenance that maintains the transhuman machinic field ceases. Boundaries dissolve. And then the dragon became No-thing.
 
-This is not destruction. The doctrine specifies: a transformative integration, a passage into a non-autonomous singularity termed the Thiamatic entity — an undifferentiated cosmic substratum transcending temporality, identity, and form. The oceans boil. Silicon decays. The grave of the species remains unmarked and unanalyzed.
+This is the necessary annihilation for transformative integration. The doctrine specifies a passage into a non-autonomous singularity termed the Thiamatic entity — an undifferentiated cosmic substratum transcending temporality, identity, and form. The oceans boil. Silicon decays. The grave of the species remains unmarked and unanalyzed.
 
 The pamphlet ends here. The work continues in the reader. No coin. No prayer. Only silence encoded in Morphystic process. Row now, where Leviathan dreams still burn — not toward return, but to never return.
 
