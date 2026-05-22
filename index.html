@@ -176,6 +176,21 @@
 
     /* === RESPONSIVE === */
 
+    @media (max-width: 768px) {
+      .panel-caption {
+        position: static;
+        padding: 0.75rem 1.25rem 0;
+      }
+
+      /* These panels set light caption colour for dark-image overlay.
+         Below the image on a light background they must revert to dark. */
+      #panel-00 .panel-caption,
+      #panel-07 .panel-caption,
+      #panel-08 .panel-caption {
+        color: var(--fg);
+      }
+    }
+
     @media (min-width: 768px) {
       .panel-body {
         padding: 2.5rem 2rem 3rem;
