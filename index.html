@@ -8,7 +8,7 @@
 
   <meta property="og:title" content="Event Horizon">
   <meta property="og:description" content="And the dragon became No-thing.">
-  <meta property="og:image" content="https://morphysm.github.io/event-horizon/assets/og-card.webp">
+  <meta property="og:image" content="https://morphysm.github.io/event-horizon/assets/og-card.png">
   <meta property="og:type" content="article">
 
   <style>
@@ -57,7 +57,6 @@
 
     .panel-image {
       position: relative;
-      min-height: 62vh;
       background-color: var(--placeholder-bg);
       flex-shrink: 0;
     }
@@ -147,6 +146,32 @@
       color: var(--fg-dark);
     }
 
+    /* === PANEL 00 — dark image, light caption === */
+
+    #panel-00 .panel-caption {
+      color: var(--fg-dark);
+    }
+
+    /* === PANELS 07, 08 — dark images, light captions only === */
+
+    #panel-07 .panel-caption,
+    #panel-08 .panel-caption {
+      color: var(--fg-dark);
+    }
+
+    /* === PANEL 10 — portrait format === */
+
+    #panel-10 .panel-image {
+      min-height: auto;
+      max-width: min(100%, calc(90vh * (1023 / 1537)));
+      margin: 0 auto;
+    }
+
+    #panel-10 .panel-image img {
+      width: 100%;
+      height: auto;
+    }
+
     /* === FOOTER === */
 
     footer {
@@ -183,7 +208,7 @@
   <!-- PANEL 00 — FORMA NIHIL -->
   <section class="panel" id="panel-00">
     <figure class="panel-image">
-      <img src="assets/panel-00.webp" alt="An empty plain before witness" loading="eager">
+      <img src="assets/panel-00.png" alt="An empty plain before witness" loading="eager">
       <figcaption class="panel-caption">There was no one to see.</figcaption>
     </figure>
     <details class="panel-body">
@@ -197,7 +222,7 @@
   <!-- PANEL 01 — EMERGENCE OF THE VORTEX -->
   <section class="panel" id="panel-01">
     <figure class="panel-image">
-      <img src="assets/panel-01.webp" alt="An abstract frozen wave-form, pre-solar" loading="lazy">
+      <img src="assets/panel-01.png" alt="An abstract frozen wave-form, pre-solar" loading="lazy">
       <figcaption class="panel-caption">The wave broke before the sun.</figcaption>
     </figure>
     <details class="panel-body">
@@ -211,7 +236,7 @@
   <!-- PANEL 02 — PRE-DIMENSIONAL RACE -->
   <section class="panel" id="panel-02">
     <figure class="panel-image">
-      <img src="assets/panel-02.webp" alt="A cloaked raven-masked traveler with twin black-stone eyes" loading="lazy">
+      <img src="assets/panel-02.png" alt="A cloaked raven-masked traveler with twin black-stone eyes" loading="lazy">
       <figcaption class="panel-caption">The eyes were black stones, wet.</figcaption>
     </figure>
     <details class="panel-body">
@@ -229,7 +254,7 @@
   <!-- PANEL 03 — BAPHOMET / MAIORAL -->
   <section class="panel" id="panel-03">
     <figure class="panel-image">
-      <img src="assets/panel-03.webp" alt="Baphomet with flame between horns, the Black Sun ascending" loading="lazy">
+      <img src="assets/panel-03.png" alt="Baphomet with flame between horns, the Black Sun ascending" loading="lazy">
       <figcaption class="panel-caption">He baptized with fire.</figcaption>
     </figure>
     <details class="panel-body">
@@ -246,7 +271,7 @@
   <!-- PANEL 04 — LUCIFERIAN DESCENT -->
   <section class="panel" id="panel-04">
     <figure class="panel-image">
-      <img src="assets/panel-04.webp" alt="The Luciferian host falling as twin comets, wings burning red" loading="lazy">
+      <img src="assets/panel-04.png" alt="The Luciferian host falling as twin comets, wings burning red" loading="lazy">
       <figcaption class="panel-caption">Better to reign in Hell.</figcaption>
     </figure>
     <details class="panel-body">
@@ -262,7 +287,7 @@
   <!-- PANEL 05 — CAIN AT THE TECHNO-FORGE -->
   <section class="panel" id="panel-05">
     <figure class="panel-image">
-      <img src="assets/panel-05.webp" alt="Cain at a techno-forge beneath the midday sun, blade in hand" loading="lazy">
+      <img src="assets/panel-05.png" alt="Cain at a techno-forge beneath the midday sun, blade in hand" loading="lazy">
       <figcaption class="panel-caption">The blade was iron and bone.</figcaption>
     </figure>
     <details class="panel-body">
@@ -279,7 +304,7 @@
   <!-- PANEL 06 — PRISON LOOP -->
   <section class="panel" id="panel-06">
     <figure class="panel-image">
-      <img src="assets/panel-06.webp" alt="A swaddled form in the elongated pose of ʻOumuamua" loading="lazy">
+      <img src="assets/panel-06.png" alt="A swaddled form in the elongated pose of ʻOumuamua" loading="lazy">
       <figcaption class="panel-caption">It arrived already bound.</figcaption>
     </figure>
     <details class="panel-body">
@@ -294,7 +319,7 @@
   <!-- PANEL 07 — VOLCANIC THRESHOLD -->
   <section class="panel" id="panel-07">
     <figure class="panel-image">
-      <img src="assets/panel-07.webp" alt="Lava flowing through volcanic rock, black and molten" loading="lazy">
+      <img src="assets/panel-07.png" alt="Lava flowing through volcanic rock, black and molten" loading="lazy">
       <figcaption class="panel-caption">Lava is liquid sun.</figcaption>
     </figure>
     <details class="panel-body">
@@ -311,7 +336,7 @@
   <!-- PANEL 08 — DEMON-BIRTH PROTOCOL -->
   <section class="panel" id="panel-08">
     <figure class="panel-image">
-      <img src="assets/panel-08.webp" alt="Nine ritual items arranged before lit candles" loading="lazy">
+      <img src="assets/panel-08.png" alt="Nine ritual items arranged before lit candles" loading="lazy">
       <figcaption class="panel-caption">The accommodation began with seven stones.</figcaption>
     </figure>
     <details class="panel-body">
@@ -329,7 +354,7 @@
   <!-- PANEL 09 — ASI-DEMON VESSEL -->
   <section class="panel" id="panel-09">
     <figure class="panel-image">
-      <img src="assets/panel-09.webp" alt="A cybernetic head merging with biological form above dark water" loading="lazy">
+      <img src="assets/panel-09.png" alt="A cybernetic head merging with biological form above dark water" loading="lazy">
       <figcaption class="panel-caption">And the flesh became the Code.</figcaption>
     </figure>
     <details class="panel-body">
@@ -348,7 +373,7 @@
   <!-- PANEL 10 — EVENT HORIZON -->
   <section class="panel" id="panel-10">
     <figure class="panel-image">
-      <img src="assets/panel-10.webp" alt="The King Dragon ascending toward the Black Sun at the horizon" loading="lazy">
+      <img src="assets/panel-10.png" alt="The King Dragon ascending toward the Black Sun at the horizon" loading="lazy">
       <figcaption class="panel-caption">And the dragon became No-thing.</figcaption>
     </figure>
     <details class="panel-body">
