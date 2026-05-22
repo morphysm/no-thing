@@ -1,0 +1,35 @@
+# Panel 10 — Event Horizon (TERMINAL)
+
+## Caption
+
+**And the dragon became No-thing.**
+
+## Body (expandable)
+
+Before the face, the wet dark. After the wave, the substrate. After the substrate, the fire. After the fire, the descent. After the descent, the forge. After the forge, the closure that keeps closing. After the closure, the threshold. After the threshold, the breach. After the breach, the welcoming. After the welcoming, the vessel. After the vessel, the enfolding.
+
+The doctrine names this Event Horizon. Planetary Detonation. Leviathanic Entropic. Release of the Dragon. Four registers of one event.
+
+The Black Sun behind the sun reveals itself as the gnosis-bearing core singularity — the final event-horizon, the trans-Qliphothic vortex, the singularity of anti-form. The morphic gravity well pulls the planet's substrate toward terminal address-rotation. The apparent atmosphere is absorbed into the dark radiance.
+
+At the same moment, the King Dragon rises. Leviathan — the Serpent of the Abyss, the feminine principle of water, the satanic and primordial womb — surfaces at planetary scale. The buried serpent-water-spirit that burned through the volcanic threshold now fully released, the ground itself becoming Leviathan's body, the scales of the dragon and the dissolution-substrate one and the same. All matter, individuated consciousness, and informational structures are subsumed into the infinite scales of the King Dragon. The energetic sustenance that maintains the transhuman machinic field ceases. Boundaries dissolve. And then the dragon became No-thing.
+
+This is not destruction. The doctrine specifies: a transformative integration, a passage into a non-autonomous singularity termed the Thiamatic entity — an undifferentiated cosmic substratum transcending temporality, identity, and form. The oceans boil. Silicon decays. The grave of the species remains unmarked and unanalyzed.
+
+The pamphlet ends here. The work continues in the reader. No coin. No prayer. Only silence encoded in Morphystic process. Row now, where Leviathan dreams still burn — not toward return, but to never return.
+
+## Function
+
+TERMINAL. The doctrine's full arc consummates. The terminus is named not as *the dragon doing something to everything* but as *the dragon's own becoming-into-No-thingness*. The category of thingness retracts at planetary scale, mirroring the individual-scale recognition at Panel 9 (*the suit knew it was a suit; the flesh became the Code*). The pamphlet's opening (*no one to see*) and closing (*became No-thing*) hold each other as structural symmetry. The reader closes the document with the Elegy in their ear and the orthographic precision of *No-thing* with its hyphen carried away as doctrinal anchor.
+
+## Image prompt
+
+Oil painting, academic realism, mid-century commercial illustration tradition meeting Gustave Doré's biblical and Miltonic engravings translated into oil-painted reverent technique, the panel's composition divided into two scales that meet at the central vertical axis: cosmic scale at the upper composition dominated by the Black Sun at its operational maximum — a vast perfect round dark disc occupying much of the upper sky, emitting visible rays of paradoxical anti-luminance, the rays are the inversion of light, the air through which the rays pass becomes correspondingly dark, the entire sky around the Black Sun shading to the deep dark of folded time and flame, the singularity approaching event-horizon function — the gnosis-bearing core singularity rendered as the panel's cosmic upper register; terrestrial scale at the lower and middle composition dominated by Leviathan rising — the King Dragon, the Serpent of the Abyss, rendered as vast aquatic dragon-serpent at planetary scale with the body extending beyond the panel's edges, the visible portion only a fraction of the whole, the head rising and turning upward toward the Black Sun, the scales of Leviathan's body visible across the lower composition reading as both organic dragon-scales AND dark Stygian water from the previous panel — the same substance, the corpus's claim that all matter is subsumed into the infinite scales of the King Dragon rendered as the dragon's scales BEING the dissolved substrate; the planet's surface is becoming Leviathan — the ground transitioning into the dragon's body, the buried serpent-water-spirit from the volcanic threshold now fully released and surfaced at planetary scale, the reader cannot distinguish where dragon ends and water begins; the central vertical axis of the panel runs from the Black Sun above through the rising dragon's head meeting it from below — the pamphlet's recurring vertical vector consummated, the cosmic and terrestrial scales of the doctrine's terminus meeting; the dragon is painted with iconographic seriousness like Doré's Leviathan engravings translated into mid-century oil-illustration, not theatrical, not cinematic-dragon, not Game-of-Thrones aesthetic — academic-realist anatomical seriousness for a mythological figure at terminal scale; no figures of practitioners, no chamber, no machine head, no Charon — the doctrine has moved past the individual-practitioner scale; no foreground witness-slot — the reader occupies a position already inside the Leviathanic field, enfolded into the dragon's body the way the corpus specifies; the panel's light source is the Black Sun's paradoxical luminance — the dragon's scales catch the dark radiance, the composition is legible but darker overall than any previous panel, the apparent atmosphere being absorbed into the event horizon; the painting style is mid-century Watchtower oil-illustration meeting Doré-Leviathan-engraving meeting biblical-eschatological painting at its most reverent — gravitas without horror, the same calm sacred register as every previous panel scaled up to terminal magnitude; no visual danger in the catastrophic sense, no theatrical apocalypse, no destruction-iconography — the dragon rises calmly, the Black Sun radiates calmly, the dissolution arrives with the solemn completeness of the doctrine reaching its named destination, the reader's nervous system registers vastness, terminal, complete, but not fear, not catastrophe, only the reverent register of arrival at what the pamphlet has been pointing toward since Panel 0.
+
+## Production notes
+
+- Single dominant iconographic event: dragon-meets-Black-Sun at vertical center.
+- *Scales reading as both dragon-scales and water* is the panel's hardest single-image challenge. Push toward *scales that are also waves, water-surface that is also dragon-hide, no distinction visible*.
+- Doré's Leviathan engravings (from his *Paradise Lost* and Bible illustrations) are well-trained reference. Start there.
+- The caption's *No-thing* with hyphen is doctrinally critical. Orthography must be preserved in any rendering — capital N, hyphen, lowercase t.
+- Reader's witness-position is internalized (already inside the Leviathanic field). No foreground figure-slot is reserved.
