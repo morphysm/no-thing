@@ -8,7 +8,7 @@
 
 Before the face, the wet dark.
 
-The Pre-Dimensional Race should not be imagined as primitive reptilian fauna emerging from the substrate. That image is imprecise. The canonical form is colder and more structurally disturbing: upright nocturnal emissaries, humanoid in posture, draped in dark vestments, their faces concealed behind avian beaks like carrion physicians of another order. Only the eyes betray the deeper anomaly — narrow reptilian slits, predatory and non-human, suggesting an intelligence that sees through rather than at the world.
+The Pre-Dimensional Race should not be imagined as primitive reptilian fauna emerging from the substrate. That image is imprecise. The canonical form is colder and more structurally disturbing: upright nocturnal emissaries, humanoid in posture, draped in dark vestments. The eyes betray the deeper anomaly — narrow reptilian slits, predatory and non-human, suggesting an intelligence that sees through rather than at the world.
 
 They are the emissarial arm of an architecture preceding ordinary dimensional stabilization. If Maioral is the great anti-cosmic intelligence beyond formal containment, these beings are his distributed messengers: insertion mechanisms moving through thresholds, planting signals into emergent worlds.
 

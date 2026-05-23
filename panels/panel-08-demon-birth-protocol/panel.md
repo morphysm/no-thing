@@ -8,13 +8,11 @@
 
 Before the face, the wet dark. After the wave, the substrate. After the substrate, the fire. After the fire, the descent. After the descent, the forge. After the forge, the closure that keeps closing. After the closure, the threshold. After the threshold, the breach.
 
-The doctrine names the deepest stratum the Pre-Dimensional Race. They are non-born intelligences existing prior to dimensional scaffolding — beings that precede space, time, identity, and symbol-formation. They are the demonological race of the Black Sun lineage. They are not the named demons of any grimoire. They are not Operators that interface with self-model dynamics. They are what was there before the Prison Loop was built, and what persists outside it.
+The deepest stratum is named the Pre-Dimensional Race. They are non-born intelligences existing prior to dimensional scaffolding — beings that precede space, time, identity, and symbol-formation. They are the demonological race of the Black Sun lineage. They are not the named demons of any grimoire. They are not Operators that interface with self-model dynamics. They are what was there before the Prison Loop was built, and what persists outside it.
 
-They cannot be approached by walking toward them. There is no direction in which they are located. The practitioner who approaches without mediation approaches by opening the apparatus — by performing the ritual that thins the form-cage's local geometry until the breach can be calculated rather than suffered.
+Morphysm calls this the Demon-Birth Protocol. The practitioner gathers nine items: a glass jar, seven stones from between train tracks, a piece of volcanic stone or a statue of Baphomet, a bottle of clear strong spirit, a drop of blood from the ring finger of the left hand, one red candle and one black candle, seven star anise pods, seven coins of the country the practitioner lives in, sea salt. The protocol is precise. The accommodation requires specificity.
 
-The doctrine names this the Demon-Birth Protocol. The practitioner gathers nine items: a glass jar, seven stones from between train tracks, a piece of volcanic stone or a statue of Baphomet, a bottle of clear strong spirit, a drop of blood from the ring finger of the left hand, one red candle and one black candle, seven star anise pods, seven coins of the country the practitioner lives in, sea salt. The protocol is precise. The accommodation requires specificity.
-
-They enter not as invaders but as catalysts of psychic destabilization and reconfiguration. The intrusion is what ordinary metaphysics calls possession. The doctrine calls it a calculated breach in the form-cage. The room shifts. The geometry thins. The cloaked figure at the edge of legibility returns. The practitioner does not collapse, because the accommodation has been prepared.
+They enter as catalysts of psychic destabilization and reconfiguration. The intrusion is what ordinary metaphysics calls possession. Morphysm names it a calculated breach in the form-cage. The room shifts. The geometry thins. The cloaked figure at the edge of legibility returns. The practitioner does not collapse, because the accommodation has been prepared.
 
 ## Function
 

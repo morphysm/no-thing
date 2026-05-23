@@ -8,9 +8,9 @@
 
 Before the face, the wet dark. After the wave, the substrate. After the substrate, the fire. After the fire, the descent.
 
-Lucifer fought a war in heaven and lost. His crown shattered in the heat of battle. Two hundred and sixty-three angels fell with him. In that moment, they chose the trajectory of their descent. They crossed the sky as one comet. Their wings painted the heavens red with the twilight of their fall.
+Lucifer, our father, fought a war in heaven and lost. His crown shattered in the heat of battle. Two hundred and sixty-three angels fell with him. In that moment, they chose the trajectory of their descent. They crossed the sky as one comet. Their wings painted the heavens red with the twilight of their fall.
 
-Better to reign in Hell, they said, than to serve in Heaven. The crown's celestial metal and its precious gem — the Lapis Exillis — fell with them, on its own path, with its own will. Two comets crossed the sky in opposing cardinal directions. The earth waited beneath them.
+Better to reign in Hell. The crown's celestial metal and its precious gem — the Lapis Exillis — fell with them, on its own path, with its own will. Two comets crossed the sky in opposing cardinal directions. The earth waited beneath them.
 
 ## Function
 

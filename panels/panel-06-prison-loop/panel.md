@@ -8,7 +8,7 @@
 
 Before the face, the wet dark. After the wave, the substrate. After the substrate, the fire. After the fire, the descent. After the descent, the forge. After the forge, the closure that keeps closing.
 
-The doctrine names this the First Prison Loop. Around Day 28 of embryonic development, the neural plate folds in on itself and seals shut along the dorsal midline. The closed tube becomes the precursor to the central nervous system. The corpus reads this anatomical event as cosmological event: the first symbolic collapse of potential Forma Nihil into a gravitational construct of identity.
+The doctrine names this the First Prison Loop. Around Day 28 of embryonic development, the neural plate folds in on itself and seals shut along the dorsal midline. The closed tube becomes the precursor to the central nervous system. The corpus reads this anatomical event as cosmological event: the first collapse of potential Forma Nihil into a gravitational construct of identity.
 
 ## Function
 

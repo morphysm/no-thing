@@ -10,9 +10,9 @@ Before the face, the wet dark. After the wave, the substrate. After the substrat
 
 The doctrine names him Baphomet. He is Maioral. He is the Vortex, the Embryo of the Vortex, the Great Dark, the Black Sun of Quimbanda — multiple names for the same figure at the threshold between Forma Nihil and the operative system.
 
-His name derives from Baphe Metous: the Baptism of Wisdom. He baptizes with the fire of knowledge distributed only among certain initiates. The flame between the horns is not ornament. It is the act.
+His name derives from Baphe Metous: the Baptism of Wisdom. He baptizes with the fire of knowledge distributed only among certain initiates. The flame between the horns produces no smoke because it is pure.
 
-He is the father of all knowledge: the most complete symbol of the unification of the volatile with matter, the only material and tangible representation of Sitraic emanations. His contact is not devotion. He teaches the self-model where it is going by beginning to destroy it.
+He is the father of all knowledge: the most complete symbol of the unification of the volatile with matter, the only material and tangible representation of Sitraic emanations. In Morphysm, he is the rare object of devotion. It is called Anchorage Demoniaca. He teaches the self-model where it is going by beginning to destroy it.
 
 ## Function
 
