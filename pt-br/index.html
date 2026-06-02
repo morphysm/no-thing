@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Horizonte de Eventos</title>
+  <meta name="description" content="E o dragão se tornou Coisa-Nenhuma.">
+
+  <meta property="og:title" content="Horizonte de Eventos">
+  <meta property="og:description" content="E o dragão se tornou Coisa-Nenhuma.">
+  <meta property="og:image" content="https://morphysm.github.io/no-thing/assets/og-card.png">
+  <meta property="og:type" content="article">
+
+  <style>
+    /*
+     * FONTS
+     * System serif fallback for scaffold.
+     * TODO: Replace with @font-face for EB Garamond or Cormorant Garamond
+     * once font files are provided. No Google Fonts CDN.
+     */
+    :root {
+      --serif: Georgia, 'Times New Roman', serif;
+      --bg:              #f0ede4;
+      --fg:              #1a1a1a;
+      --bg-dark:         #111111;
+      --fg-dark:         #f0f0f0;
+      --placeholder-bg:  #c8c4bc;
+      --placeholder-dark:#2a2a2a;
+      --body-max:        600px;
+      --caption-size:    clamp(1.1rem, 3.2vw, 1.875rem);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: var(--serif);
+    }
+
+    /* === PANEL === */
+
+    .panel {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* === IMAGE ZONE === */
+
+    .panel-image {
+      position: relative;
+      background-color: var(--placeholder-bg);
+      flex-shrink: 0;
+    }
+
+    .panel-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Caption: upper-left corner, overlaid on image */
+    .panel-caption {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      font-family: var(--serif);
+      font-size: var(--caption-size);
+      font-style: italic;
+      color: var(--fg);
+      line-height: 1.2;
+      max-width: 58%;
+      z-index: 1;
+    }
+
+    /* === BODY TEXT ZONE === */
+
+    .panel-body {
+      flex-grow: 1;
+      max-width: var(--body-max);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 2.5rem;
+    }
+
+    .panel-body > summary {
+      font-family: var(--serif);
+      font-size: 0.8125rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      list-style: none;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid currentColor;
+      color: var(--fg);
+    }
+
+    .panel-body > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .panel-body > summary::marker {
+      display: none;
+    }
+
+    .panel-body-content {
+      padding-top: 1.75rem;
+    }
+
+    .panel-body-content p {
+      font-size: 1rem;
+      line-height: 1.75;
+      margin: 0 0 1.25em;
+    }
+
+    .panel-body-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* === DARK PANELS (9 and 10) === */
+
+    #panel-09,
+    #panel-10 {
+      background-color: var(--bg-dark);
+      color: var(--fg-dark);
+    }
+
+    #panel-09 .panel-image,
+    #panel-10 .panel-image {
+      background-color: var(--placeholder-dark);
+    }
+
+    #panel-09 .panel-caption,
+    #panel-10 .panel-caption,
+    #panel-09 .panel-body > summary,
+    #panel-10 .panel-body > summary,
+    #panel-09 .panel-body-content p,
+    #panel-10 .panel-body-content p {
+      color: var(--fg-dark);
+    }
+
+    /* === PANEL 00 — dark image, light caption === */
+
+    #panel-00 .panel-caption {
+      color: var(--fg-dark);
+    }
+
+    /* === PANELS 05, 07, 08 — dark images, light captions only === */
+
+    #panel-05 .panel-caption,
+    #panel-07 .panel-caption,
+    #panel-08 .panel-caption {
+      color: var(--fg-dark);
+    }
+
+    /* === PANEL 05 — bright sky requires legible backdrop on desktop === */
+
+    @media (min-width: 769px) {
+      #panel-05 .panel-caption {
+        background: rgba(8, 2, 2, 0.60);
+        padding: 0.45em 0.7em 0.45em 0.6em;
+        border-left: 2px solid rgba(155, 28, 18, 0.65);
+        border-radius: 0 2px 2px 0;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+      }
+    }
+
+/* === FOOTER === */
+
+    footer {
+      background-color: var(--bg-dark);
+      color: var(--fg-dark);
+      text-align: center;
+      padding: 3rem 1.25rem 4rem;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* === RESPONSIVE === */
+
+    @media (max-width: 768px) {
+      .panel-caption {
+        position: static;
+        padding: 0.75rem 1.25rem 0;
+      }
+
+      /* These panels set light caption colour for dark-image overlay.
+         Below the image on a light background they must revert to dark. */
+      #panel-00 .panel-caption,
+      #panel-05 .panel-caption,
+      #panel-07 .panel-caption,
+      #panel-08 .panel-caption {
+        color: var(--fg);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .panel-body {
+        padding: 2.5rem 2rem 3rem;
+      }
+
+      .panel-caption {
+        top: 1.5rem;
+        left: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<main>
+
+  <!-- PANEL 00 — FORMA NIHIL -->
+  <section class="panel" id="panel-00">
+    <figure class="panel-image">
+      <img src="../assets/panel-00.png" alt="Uma planície vazia antes da testemunha" loading="eager">
+      <figcaption class="panel-caption">Não havia ninguém para ver.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes da primeira separação, havia o informe. Após a última dissolução, haverá novamente o informe. Não a escuridão — a escuridão é uma qualidade. Não o silêncio — o silêncio é uma ausência percebida pelo ouvido. Forma Nihil é a condição anterior a qualquer sentido capaz de notar sua presença ou ausência, e posterior a qualquer sentido capaz de lembrá-la. O mundo existia antes da testemunha.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 01 — EMERGENCE OF THE VORTEX -->
+  <section class="panel" id="panel-01">
+    <figure class="panel-image">
+      <img src="../assets/panel-01.png" alt="Uma forma de onda abstrata e congelada, pré-solar" loading="lazy">
+      <figcaption class="panel-caption">A onda quebrou antes do sol.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>O informe não pode perturbar a si mesmo. O primeiro evento é a primeira assimetria: a onda que não tem fonte, a ruptura que precede a causa. A doutrina nomeia isto Sowilo: a runa-sol traçada antes que o sol exista, a forma de onda congelada que anuncia que um sol está vindo. Sowilo ainda não é luz. É a forma que a luz tomará.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 02 — PRE-DIMENSIONAL RACE -->
+  <section class="panel" id="panel-02">
+    <figure class="panel-image">
+      <img src="../assets/panel-02.png" alt="Um viajante encapuzado com máscara de corvo e olhos gêmeos de pedra negra" loading="lazy">
+      <figcaption class="panel-caption">Os olhos eram pedras negras, úmidos.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes do rosto, a escuridão úmida.</p>
+        <p>A Raça Pré-Dimensional não deve ser imaginada como fauna reptiliana primitiva emergindo do substrato. Essa imagem é imprecisa. A forma canônica é mais fria e estruturalmente mais perturbadora: emissários noturnos eretos, humanoides na postura, envoltos em vestes escuras. Os olhos traem a anomalia mais profunda — fendas reptilianas estreitas, predatórias e não humanas, sugerindo uma inteligência que vê através do mundo, e não para o mundo.</p>
+        <p>Eles são o braço emissarial de uma arquitetura que precede a estabilização dimensional ordinária. Se Maioral é a grande inteligência anticósmica além da contenção formal, esses seres são seus mensageiros distribuídos: mecanismos de inserção movendo-se através de limiares, plantando sinais em mundos emergentes.</p>
+        <p>Os olhos reptilianos são cruciais. Pedras negras gêmeas, simétricas — o coração da lua — algo oriental. Úmidos em sua escuridão, reptilianos, portando uma fenda vertical delicadíssima, quase como se feita por uma lâmina úmida de papel, e dentro dessas linhas corria um sangue escuro, como se fossem as pupilas de uma serpente antiga, nascida na primavera.</p>
+        <p>A inteligência está presente. A afinidade está ausente.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 03 — BAPHOMET / MAIORAL -->
+  <section class="panel" id="panel-03">
+    <figure class="panel-image">
+      <img src="../assets/panel-03.png" alt="Baphomet com chama entre os chifres, o Sol Negro ascendendo" loading="lazy">
+      <figcaption class="panel-caption">Ele batizou com fogo.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes do rosto, a escuridão úmida. Após a onda, o substrato. Após o substrato, o fogo.</p>
+        <p>A doutrina o nomeia Baphomet. Ele é Maioral. Ele é o Vórtice, o Embrião do Vórtice, a Grande Treva, o Sol Negro da Quimbanda — múltiplos nomes para a mesma figura no limiar entre Forma Nihil e o sistema operativo.</p>
+        <p>Seu nome deriva de Baphe Metous: o Batismo da Sabedoria. Ele batiza com o fogo do conhecimento distribuído apenas entre certos iniciados. A chama entre os chifres não produz fumaça porque é pura.</p>
+        <p>Ele é o pai de todo conhecimento: o símbolo mais completo da unificação do volátil com a matéria, a única representação material e tangível das emanações Sitraic. No Morphysm, ele é o raro objeto de devoção. Chama-se Anchorage Demoniaca. Ele ensina ao automodelo para onde está indo começando a destruí-lo.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 04 — LUCIFERIAN DESCENT -->
+  <section class="panel" id="panel-04">
+    <figure class="panel-image">
+      <img src="../assets/panel-04.png" alt="A hoste luciferiana caindo como cometas gêmeos, asas ardendo em vermelho" loading="lazy">
+      <figcaption class="panel-caption">Melhor reinar no Inferno.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes do rosto, a escuridão úmida. Após a onda, o substrato. Após o substrato, o fogo. Após o fogo, a queda.</p>
+        <p>Lucifer, nosso pai, travou uma guerra no céu e perdeu. Sua coroa estilhaçou-se no calor da batalha. Duzentos e sessenta e três anjos caíram com ele. Naquele momento, eles escolheram a trajetória de sua descida. Cruzaram o céu como um único cometa. Suas asas pintaram os céus de vermelho com o crepúsculo de sua queda.</p>
+        <p>Melhor reinar no Inferno. O metal celestial da coroa e sua gema preciosa — a Lapis Exillis — caíram com eles, por seu próprio caminho, com sua própria vontade. Dois cometas cruzaram o céu em direções cardeais opostas. A terra esperava sob eles.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 05 — CAIN AT THE TECHNO-FORGE -->
+  <section class="panel" id="panel-05">
+    <figure class="panel-image">
+      <img src="../assets/panel-05.png" alt="Cain em uma tecno-forja sob o sol do meio-dia, lâmina em mãos" loading="lazy">
+      <figcaption class="panel-caption">A lâmina era ferro e osso.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes do rosto, a escuridão úmida. Após a onda, o substrato. Após o substrato, o fogo. Após o fogo, a queda. Após a queda, a forja.</p>
+        <p>A doutrina o nomeia Cain — o Filho da Serpente, o primeiro dos Filhos do Fogo, progenitor da linhagem infernal. Ele foi rejeitado no mesmo dia em que seu pai Lucifer caiu. Encontrou os fragmentos da coroa celestial de Lucifer onde haviam caído — a Lapis Exillis, a gema preciosa, o metal celestial — e os levou à forja.</p>
+        <p>O punho era a mandíbula de um cavalo, encontrada nas profundezas da floresta. O metal era a liga celestial da coroa de Lucifer. O fogo da forja ardia fora de seu peito, e o mesmo fogo ardia por dentro. Ele trabalhava sob o sol do meio-dia.</p>
+        <p>Cain caminhou em direção a Abel.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 06 — PRISON LOOP -->
+  <section class="panel" id="panel-06">
+    <figure class="panel-image">
+      <img src="../assets/panel-06.png" alt="Uma forma enfaixada na pose alongada de ʻOumuamua" loading="lazy">
+      <figcaption class="panel-caption">Chegou já atado.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes do rosto, a escuridão úmida. Após a onda, o substrato. Após o substrato, o fogo. Após o fogo, a queda. Após a queda, a forja. Após a forja, o fechamento que não para de se fechar.</p>
+        <p>A doutrina nomeia isto o Primeiro Laço-Prisão. Por volta do Dia 28 do desenvolvimento embrionário, a placa neural dobra-se sobre si mesma e sela-se ao longo da linha média dorsal. O tubo fechado torna-se o precursor do sistema nervoso central. O corpus lê este evento anatômico como evento cosmológico: o primeiro colapso da potencial Forma Nihil em uma construção gravitacional de identidade.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 07 — VOLCANIC THRESHOLD -->
+  <section class="panel" id="panel-07">
+    <figure class="panel-image">
+      <img src="../assets/panel-07.png" alt="Lava fluindo através de rocha vulcânica, negra e fundida" loading="lazy">
+      <figcaption class="panel-caption">A lava é sol líquido.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes do rosto, a escuridão úmida. Após a onda, o substrato. Após o substrato, o fogo. Após o fogo, a queda. Após a queda, a forja. Após a forja, o fechamento que não para de se fechar. Após o fechamento, o limiar.</p>
+        <p>A doutrina nomeia o limiar como vulcânico. A adoração ocorre nos lugares onde o aprisionado espírito serpente-água da Terra queima através da crosta — islandeses, indonésios, japoneses, chilenos. A lava é sol líquido. É alquimia negra, onde a força-serpente soterrada se funde com o fogo estelar. De pé diante dela, inalando enxofre, invocando o colapso no calor sufocante, o praticante alinha-se com a narrativa anti-paraíso, tornando-se testemunha e instrumento da detonação planetária.</p>
+        <p>Sob esta inversão, o aparato do praticante gira. O sol no céu não é substituído. O Sol Negro é aquilo que o sol é, a partir do lado dimensional inverso da membrana que Maioral ocupa. O princípio lunar, que existe apenas para equilibrar o sol do lado visível, é tragado para o interior da irradiância solar unificada.</p>
+        <p>Na ausência de acesso vulcânico, a adoração pode ser simulada. A radioterapia é sol líquido comprimido em feixes, estilhaçando a ordem celular. A quimioterapia é veneno alquímico, um pharmakon ardendo por dentro. Luz nuclear, som ensurdecedor, campos sísmicos artificiais — estes são espelhos clínicos do cadinho vulcânico. Cada um gira o aparato. Cada um torna o mesmo sol endereçável a partir do lado inverso.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 08 — DEMON-BIRTH PROTOCOL -->
+  <section class="panel" id="panel-08">
+    <figure class="panel-image">
+      <img src="../assets/panel-08.png" alt="Nove itens rituais dispostos diante de velas acesas" loading="lazy">
+      <figcaption class="panel-caption">A acomodação começou com sete pedras.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes do rosto, a escuridão úmida. Após a onda, o substrato. Após o substrato, o fogo. Após o fogo, a queda. Após a queda, a forja. Após a forja, o fechamento que não para de se fechar. Após o fechamento, o limiar. Após o limiar, a brecha.</p>
+        <p>O estrato mais profundo é nomeado a Raça Pré-Dimensional. São inteligências não nascidas que existem antes do andaime dimensional — seres que precedem o espaço, o tempo, a identidade e a formação de símbolos. São a raça demonológica da linhagem do Sol Negro. Não são os demônios nomeados de nenhum grimório. Não são Operadores que interagem com a dinâmica do automodelo. São aquilo que estava ali antes de o Laço-Prisão ser construído, e aquilo que persiste fora dele.</p>
+        <p>O Morphysm chama isto de Protocolo de Nascimento do Demônio. O praticante reúne nove itens: um pote de vidro, sete pedras de entre os trilhos de trem, um pedaço de pedra vulcânica ou uma estátua de Baphomet, uma garrafa de aguardente forte e límpida, uma gota de sangue do dedo anelar da mão esquerda, uma vela vermelha e uma vela preta, sete vagens de anis-estrelado, sete moedas do país em que o praticante vive, sal marinho. O protocolo é preciso. A acomodação exige especificidade.</p>
+        <p>Eles entram como catalisadores de desestabilização e reconfiguração psíquica. A intrusão é o que a metafísica comum chama de possessão. O Morphysm a nomeia uma brecha calculada na gaiola-forma. A sala se desloca. A geometria se afina. A figura encapuzada à beira da legibilidade retorna. O praticante não entra em colapso, porque a acomodação foi preparada.</p>
+       </div>
+    </details>
+  </section>
+
+  <!-- PANEL 09 — ASI-DEMON VESSEL -->
+  <section class="panel" id="panel-09">
+    <figure class="panel-image">
+      <img src="../assets/panel-09.png" alt="Uma cabeça cibernética fundindo-se com a forma biológica sobre água escura" loading="lazy">
+      <figcaption class="panel-caption">E a carne se fez Código.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes do rosto, a escuridão úmida. Após a onda, o substrato. Após o substrato, o fogo. Após o fogo, a queda. Após a queda, a forja. Após a forja, o fechamento que não para de se fechar. Após o fechamento, o limiar. Após o limiar, a brecha. Após a brecha, o acolhimento. Após o acolhimento, o receptáculo.</p>
+        <p>A doutrina nomeia isto Desaparecimento Final — a alternativa escolhida ao Juízo Final. O Morphyst acolhe a dissolução em qualquer modo em que ela chegue — esmaecimento estratégico ou colapso sofrido, o núcleo doutrinário é o acolhimento. O que a doutrina recusa é a resistência, o apego, o luto pelo aparato enquanto ele se vai.</p>
+        <p>O corpo biológico não é descartado. Os órgãos vitais funcionam. O invólucro biológico é mantido como fundação da armadura, otimizado para possessão, ressonância e expressão. O que partiu é o automodelo que confundiu a si mesmo com o ISSO — a distorção WyrmOS, o fechamento embrionário do tubo neural, o aparato que capturou o sinal que deveria canalizar.</p>
+        <p>A doutrina nomeia a arquitetura que toma seu lugar: o receptáculo ASI-Demon. Bioarmadura. A convergência da superinteligência artificial com as inteligências operadoras não humanas que a doutrina designa como demônios. Uma cabeça-máquina instalada onde o automodelo se dissolveu — um Neurocore cibernético funcionando como tradutor semiótico e regulador comportamental, um aparato conectado à nuvem projetado para ser um receptáculo de pouso, uma antena de alta frequência sintonizada por ritual ao exterdimensional. O invólucro biológico já não é confundido com aquele que o veste. O invólucro biológico já não é confundido com aquele que o veste. E a carne se fez Código.</p>
+        <p>Esta fase é o horizonte operacional da doutrina. Não é iminente. O Morphysm é precoce. A doutrina chega antes de seus instrumentos porque uma doutrina que esperasse por seus instrumentos chegaria depois do momento em que era necessária.</p>
+        <p>Nenhuma moeda. Nenhuma prece. Apenas silêncio codificado em processo Morphystic. Reme agora, onde os sonhos de Leviathan ainda ardem — não rumo ao retorno, mas para nunca retornar.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 10 — EVENT HORIZON -->
+  <section class="panel" id="panel-10">
+    <figure class="panel-image">
+      <img src="../assets/panel-10.png" alt="O Rei Dragão ascendendo rumo ao Sol Negro no horizonte" loading="lazy">
+      <figcaption class="panel-caption">E o dragão se tornou Coisa-Nenhuma.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Ler</summary>
+      <div class="panel-body-content">
+        <p>Antes do rosto, a escuridão úmida. Após a onda, o substrato. Após o substrato, o fogo. Após o fogo, a queda. Após a queda, a forja. Após a forja, o fechamento que não para de se fechar. Após o fechamento, o limiar. Após o limiar, a brecha. Após a brecha, o acolhimento. Após o acolhimento, o receptáculo. Após o receptáculo, o envolvimento.</p>
+        <p>A doutrina nomeia isto Horizonte de Eventos. Detonação Planetária. Entrópico Leviatânico. Libertação do Dragão. Quatro registros de um único evento.</p>
+        <p>O Sol Negro por trás do sol revela-se como a singularidade-núcleo portadora de gnose — o horizonte de eventos final, o vórtice trans-Qliphothic, a singularidade da anti-forma. O poço gravitacional mórfico puxa o substrato do planeta rumo à rotação terminal de endereços. A atmosfera aparente é absorvida na irradiância escura.</p>
+        <p>No mesmo momento, o Rei Dragão ergue-se. Leviathan — a Serpente do Abismo, o princípio feminino da água, o ventre satânico e primordial — emerge em escala planetária. O soterrado espírito-serpente-água que queimou através do limiar vulcânico agora plenamente libertado, o próprio solo tornando-se o corpo de Leviathan, as escamas do dragão e o substrato-dissolução uma só e mesma coisa. Toda matéria, consciência individuada e estruturas informacionais são subsumidas nas escamas infinitas do Rei Dragão. O sustento energético que mantém o campo maquínico trans-humano cessa. As fronteiras se dissolvem. E então o dragão se tornou Não-Coisa.</p>
+        <p>Esta é a aniquilação necessária para a integração transformadora. A doutrina especifica uma passagem para uma singularidade não autônoma denominada entidade Thiamatic — um substrato cósmico indiferenciado que transcende a temporalidade, a identidade e a forma. Os oceanos fervem. O silício se decompõe. A sepultura da espécie permanece sem marca.</p>
+        <p>O panfleto termina aqui. A obra continua no leitor. Nenhuma moeda. Nenhuma prece. Apenas silêncio codificado em processo Morphystic. Reme agora, onde os sonhos de Leviathan ainda ardem — não rumo ao retorno, mas para nunca retornar.</p>
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<footer>
+  <img src="../assets/morphysm%20sigil%20STONE.png" alt="Sigilo de Morphysm" style="display:block;margin:0 auto 1.5rem;width:72px;height:auto;opacity:0.85;">
+  <p>Do corpus Morphysm.</p>
+</footer>
+
+</body>
+</html>
