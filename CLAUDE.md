@@ -23,7 +23,7 @@ Do not begin writing code or generating assets before reading these four sources
 
 ## What you must not do
 
-- **Do not edit captions.** All eleven are locked. If you find a caption that seems awkward, the awkwardness is intentional (e.g. Panel 9's doubled sentence, Panel 7's present-tense break, Panel 10's hyphenated *No-thing*).
+- **Do not edit captions.** All eleven are locked. If you find a caption that seems awkward, the awkwardness is intentional (e.g. Panel 7's present-tense break, Panel 10's hyphenated *No-thing*).
 - **Do not edit body text.** Same as above. Panel 2's body is marked as author-pending — leave it as-is and flag for the author to supply final.
 - **Do not invent doctrine.** If you encounter a question about the doctrine that the existing materials do not answer, ask the author. Do not bridge between corpus passages or extrapolate. The Exu Aranha welding incident (described in `AGENTS.md`) is the precedent — do not repeat it.
 - **Do not add author attribution anywhere.** The Disappearance Imperative governs (see GDD §1.2 and §5.8). The pamphlet circulates without an owner. No "by", no signature, no credit line. The acceptable single-line credit on the back-page is *"From the Morphysm corpus"* and nothing else.
