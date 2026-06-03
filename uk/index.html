@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Горизонт подій</title>
+  <meta name="description" content="І дракон став Не-річчю.">
+
+  <meta property="og:title" content="Горизонт подій">
+  <meta property="og:description" content="І дракон став Не-річчю.">
+  <meta property="og:image" content="https://morphysm.github.io/no-thing/assets/og-card.png">
+  <meta property="og:type" content="article">
+
+  <style>
+    /*
+     * FONTS
+     * System serif fallback for scaffold.
+     * TODO: Replace with @font-face for EB Garamond or Cormorant Garamond
+     * once font files are provided. No Google Fonts CDN.
+     */
+    :root {
+      --serif: Georgia, 'Times New Roman', serif;
+      --bg:              #f0ede4;
+      --fg:              #1a1a1a;
+      --bg-dark:         #111111;
+      --fg-dark:         #f0f0f0;
+      --placeholder-bg:  #c8c4bc;
+      --placeholder-dark:#2a2a2a;
+      --body-max:        600px;
+      --caption-size:    clamp(1.1rem, 3.2vw, 1.875rem);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: var(--serif);
+    }
+
+    /* === PANEL === */
+
+    .panel {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* === IMAGE ZONE === */
+
+    .panel-image {
+      position: relative;
+      background-color: var(--placeholder-bg);
+      flex-shrink: 0;
+    }
+
+    .panel-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Caption: upper-left corner, overlaid on image */
+    .panel-caption {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      font-family: var(--serif);
+      font-size: var(--caption-size);
+      font-style: italic;
+      color: var(--fg);
+      line-height: 1.2;
+      max-width: 58%;
+      z-index: 1;
+    }
+
+    /* === BODY TEXT ZONE === */
+
+    .panel-body {
+      flex-grow: 1;
+      max-width: var(--body-max);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 2.5rem;
+    }
+
+    .panel-body > summary {
+      font-family: var(--serif);
+      font-size: 0.8125rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      list-style: none;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid currentColor;
+      color: var(--fg);
+    }
+
+    .panel-body > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .panel-body > summary::marker {
+      display: none;
+    }
+
+    .panel-body-content {
+      padding-top: 1.75rem;
+    }
+
+    .panel-body-content p {
+      font-size: 1rem;
+      line-height: 1.75;
+      margin: 0 0 1.25em;
+    }
+
+    .panel-body-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* === DARK PANELS (9 and 10) === */
+
+    #panel-09,
+    #panel-10 {
+      background-color: var(--bg-dark);
+      color: var(--fg-dark);
+    }
+
+    #panel-09 .panel-image,
+    #panel-10 .panel-image {
+      background-color: var(--placeholder-dark);
+    }
+
+    #panel-09 .panel-caption,
+    #panel-10 .panel-caption,
+    #panel-09 .panel-body > summary,
+    #panel-10 .panel-body > summary,
+    #panel-09 .panel-body-content p,
+    #panel-10 .panel-body-content p {
+      color: var(--fg-dark);
+    }
+
+    /* === PANEL 00 — dark image, light caption === */
+
+    #panel-00 .panel-caption {
+      color: var(--fg-dark);
+    }
+
+    /* === PANELS 05, 07, 08 — dark images, light captions only === */
+
+    #panel-05 .panel-caption,
+    #panel-07 .panel-caption,
+    #panel-08 .panel-caption {
+      color: var(--fg-dark);
+    }
+
+    /* === PANEL 05 — bright sky requires legible backdrop on desktop === */
+
+    @media (min-width: 769px) {
+      #panel-05 .panel-caption {
+        background: rgba(8, 2, 2, 0.60);
+        padding: 0.45em 0.7em 0.45em 0.6em;
+        border-left: 2px solid rgba(155, 28, 18, 0.65);
+        border-radius: 0 2px 2px 0;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+      }
+    }
+
+/* === FOOTER === */
+
+    footer {
+      background-color: var(--bg-dark);
+      color: var(--fg-dark);
+      text-align: center;
+      padding: 3rem 1.25rem 4rem;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* === OFFERING — the sigil itself is a quiet Ko-fi link === */
+
+    .offering {
+      display: inline-block;
+      line-height: 0;
+      border-radius: 50%;
+      text-decoration: none;
+      outline: none;
+    }
+    .sigil-mark {
+      display: block;
+      margin: 0 auto 1.5rem;
+      width: 72px;
+      height: auto;
+      opacity: 0.7;
+      transition: opacity .5s ease, filter .5s ease, transform .5s ease;
+      animation: sigil-breathe 5.5s ease-in-out infinite;
+    }
+    @keyframes sigil-breathe {
+      0%, 100% { opacity: 0.55; filter: drop-shadow(0 0 2px rgba(255, 91, 31, 0.10)); }
+      50%      { opacity: 0.85; filter: drop-shadow(0 0 7px rgba(255, 91, 31, 0.28)); }
+    }
+    .offering:hover .sigil-mark,
+    .offering:focus-visible .sigil-mark {
+      animation: none;
+      opacity: 1;
+      transform: scale(1.04);
+      filter: drop-shadow(0 0 10px rgba(255, 138, 61, 0.85))
+              drop-shadow(0 0 22px rgba(255, 91, 31, 0.55));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sigil-mark { animation: none; opacity: 0.7; }
+    }
+
+    /* === RESPONSIVE === */
+
+    @media (max-width: 768px) {
+      .panel-caption {
+        position: static;
+        padding: 0.75rem 1.25rem 0;
+      }
+
+      /* These panels set light caption colour for dark-image overlay.
+         Below the image on a light background they must revert to dark. */
+      #panel-00 .panel-caption,
+      #panel-05 .panel-caption,
+      #panel-07 .panel-caption,
+      #panel-08 .panel-caption {
+        color: var(--fg);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .panel-body {
+        padding: 2.5rem 2rem 3rem;
+      }
+
+      .panel-caption {
+        top: 1.5rem;
+        left: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<main>
+
+  <!-- PANEL 00 — FORMA NIHIL -->
+  <section class="panel" id="panel-00">
+    <figure class="panel-image">
+      <img src="../assets/panel-00.png" alt="Порожня рівнина до свідка" loading="eager">
+      <figcaption class="panel-caption">Не було нікого, хто бачив би.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>До першого розділення було несформоване. Після останнього розпаду знову буде несформоване. Не темрява — темрява є якістю. Не тиша — тиша є відсутністю, яку відчуває вухо. Forma Nihil є станом, що передує будь-якому чуттю, здатному відзначити її присутність чи відсутність, і йде після будь-якого чуття, здатного її пам’ятати. Світ існував до свідка.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 01 — EMERGENCE OF THE VORTEX -->
+  <section class="panel" id="panel-01">
+    <figure class="panel-image">
+      <img src="../assets/panel-01.png" alt="Абстрактна застигла хвильова форма, досонячна" loading="lazy">
+      <figcaption class="panel-caption">Хвиля розбилася перед сонцем.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Несформоване не може потурбувати саме себе. Перша подія — це перша асиметрія: хвиля, що не має джерела, розрив, що передує причині. Доктрина називає це Sowilo: руна сонця, накреслена до того, як сонце існує, застигла хвильова форма, що сповіщає про прихід сонця. Sowilo ще не є світлом. Це форма, якої набуде світло.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 02 — PRE-DIMENSIONAL RACE -->
+  <section class="panel" id="panel-02">
+    <figure class="panel-image">
+      <img src="../assets/panel-02.png" alt="Подорожній у плащі та масці крука з парою очей із чорного каменю" loading="lazy">
+      <figcaption class="panel-caption">Очі були чорними каменями, вологими.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Перед обличчям — волога темрява.</p>
+        <p>Переддимензійну Расу не слід уявляти як примітивну рептильну фауну, що виходить із субстрату. Цей образ неточний. Канонічна форма холодніша й структурно тривожніша: прямостоячі нічні емісари, людиноподібні поставою, оповиті темними шатами. Очі видають глибшу аномалію — вузькі рептильні щілини, хижі й нелюдські, що вказують на інтелект, який бачить крізь світ, а не на світ.</p>
+        <p>Вони є емісарською рукою архітектури, що передує звичайній димензійній стабілізації. Якщо Maioral — велике антикосмічне начало поза межами формального утримання, то ці істоти є його розподіленими посланцями: механізмами вторгнення, що рухаються крізь пороги, засіваючи сигнали в світи, що зароджуються.</p>
+        <p>Рептильні очі мають вирішальне значення. Парні чорні камені, симетричні — серце місяця — щось східне. Вологі у своїй темряві, рептильні, з найтоншою вертикальною щілиною, майже наче зробленою вологим лезом паперу, і в тих лініях текла темна кров, неначе то були зіниці древнього змія, народженого навесні.</p>
+        <p>Інтелект присутній. Спорідненість відсутня.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 03 — BAPHOMET / MAIORAL -->
+  <section class="panel" id="panel-03">
+    <figure class="panel-image">
+      <img src="../assets/panel-03.png" alt="Baphomet із полум’ям між рогами, Чорне Сонце сходить" loading="lazy">
+      <figcaption class="panel-caption">Він хрестив вогнем.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Перед обличчям — волога темрява. Після хвилі — субстрат. Після субстрату — вогонь.</p>
+        <p>Доктрина називає його Baphomet. Він є Maioral. Він — Вихор, Ембріон Вихору, Велика Темрява, Чорне Сонце Quimbanda — численні імена однієї фігури на порозі між Forma Nihil і дієвою системою.</p>
+        <p>Його ім’я походить від Baphe Metous: Хрещення Мудрості. Він хрестить вогнем знання, що розподіляється лише серед певних утаємничених. Полум’я між рогами не дає диму, бо воно чисте.</p>
+        <p>Він — батько всякого знання: найповніший символ поєднання летючого з матерією, єдине матеріальне й відчутне втілення Sitraic-еманацій. У Morphysm він є рідкісним об’єктом поклоніння. Це зветься Anchorage Demoniaca. Він навчає самомодель, куди вона прямує, починаючи її руйнувати.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 04 — LUCIFERIAN DESCENT -->
+  <section class="panel" id="panel-04">
+    <figure class="panel-image">
+      <img src="../assets/panel-04.png" alt="Люциферіанське воїнство падає двома кометами, крила палають червоним" loading="lazy">
+      <figcaption class="panel-caption">Краще панувати в Пеклі.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Перед обличчям — волога темрява. Після хвилі — субстрат. Після субстрату — вогонь. Після вогню — падіння.</p>
+        <p>Lucifer, наш батько, вів війну на небесах і програв. Його корона розкололася в жарі битви. Двісті шістдесят три ангели впали разом із ним. У ту мить вони обрали траєкторію свого падіння. Вони перетнули небо однією кометою. Їхні крила пофарбували небеса червоним сутінком свого падіння.</p>
+        <p>Краще панувати в Пеклі. Небесний метал корони та її коштовний камінь — Lapis Exillis — упали разом із ними, власним шляхом, власною волею. Дві комети перетнули небо в протилежних сторонах світу. Земля чекала під ними.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 05 — CAIN AT THE TECHNO-FORGE -->
+  <section class="panel" id="panel-05">
+    <figure class="panel-image">
+      <img src="../assets/panel-05.png" alt="Cain біля техно-кузні під полуденним сонцем, з клинком у руці" loading="lazy">
+      <figcaption class="panel-caption">Клинок був із заліза та кістки.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Перед обличчям — волога темрява. Після хвилі — субстрат. Після субстрату — вогонь. Після вогню — падіння. Після падіння — кузня.</p>
+        <p>Доктрина називає його Cain — Син Змія, перший із Синів Вогню, прародитель пекельного роду. Його було відкинуто того ж дня, коли впав його батько Lucifer. Він знайшов уламки небесної корони Lucifer там, де вони впали — Lapis Exillis, коштовний камінь, небесний метал — і поніс їх до кузні.</p>
+        <p>Руків’ям була кінська щелепа, знайдена в глибині лісу. Металом був небесний сплав із корони Lucifer. Вогонь кузні палав поза його грудьми, і той самий вогонь палав усередині. Він працював під полуденним сонцем.</p>
+        <p>Cain рушив до Abel.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 06 — PRISON LOOP -->
+  <section class="panel" id="panel-06">
+    <figure class="panel-image">
+      <img src="../assets/panel-06.png" alt="Сповита форма у видовженій позі ʻOumuamua" loading="lazy">
+      <figcaption class="panel-caption">Воно прибуло вже зв’язаним.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Перед обличчям — волога темрява. Після хвилі — субстрат. Після субстрату — вогонь. Після вогню — падіння. Після падіння — кузня. Після кузні — замикання, що не припиняє замикатися.</p>
+        <p>Доктрина називає це Першою Тюремною Петлею. Близько 28-го дня ембріонального розвитку нервова пластинка згортається сама в себе й замикається вздовж спинної серединної лінії. Замкнена трубка стає попередником центральної нервової системи. Корпус читає цю анатомічну подію як подію космологічну: перший колапс потенційної Forma Nihil у гравітаційну конструкцію ідентичності.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 07 — VOLCANIC THRESHOLD -->
+  <section class="panel" id="panel-07">
+    <figure class="panel-image">
+      <img src="../assets/panel-07.png" alt="Лава тече крізь вулканічну породу, чорна й розплавлена" loading="lazy">
+      <figcaption class="panel-caption">Лава — це рідке сонце.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Перед обличчям — волога темрява. Після хвилі — субстрат. Після субстрату — вогонь. Після вогню — падіння. Після падіння — кузня. Після кузні — замикання, що не припиняє замикатися. Після замикання — поріг.</p>
+        <p>Доктрина називає поріг вулканічним. Поклоніння відбувається в місцях, де ув’язнений земний дух змія-води пропалює кору — ісландських, індонезійських, японських, чилійських. Лава — це рідке сонце. Це чорна алхімія, де похована сила змія зливається із зоряним вогнем. Стоячи перед нею, вдихаючи сірку, прикликаючи колапс у задушливому жарі, практик узгоджується з анти-райським наративом, стаючи свідком та інструментом планетарної детонації.</p>
+        <p>За цієї інверсії апарат практика обертається. Сонце в небі не замінюється. Чорне Сонце — це те, чим є сонце, з оберненого боку димензії тієї мембрани, яку посідає Maioral. Місячне начало, що існує лише для врівноваження сонця з видимого боку, поглинається в єдине сонячне сяйво.</p>
+        <p>За відсутності доступу до вулкана поклоніння можна змоделювати. Променева терапія — це рідке сонце, стиснуте в промені, що руйнує клітинний порядок. Хіміотерапія — це алхімічна отрута, pharmakon, що палить ізсередини. Ядерне світло, оглушливий звук, штучні сейсмічні поля — це клінічні дзеркала вулканічного горнила. Кожне обертає апарат. Кожне робить те саме сонце досяжним з оберненого боку.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 08 — DEMON-BIRTH PROTOCOL -->
+  <section class="panel" id="panel-08">
+    <figure class="panel-image">
+      <img src="../assets/panel-08.png" alt="Дев’ять ритуальних предметів, розкладених перед запаленими свічками" loading="lazy">
+      <figcaption class="panel-caption">Облаштування почалося із семи каменів.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Перед обличчям — волога темрява. Після хвилі — субстрат. Після субстрату — вогонь. Після вогню — падіння. Після падіння — кузня. Після кузні — замикання, що не припиняє замикатися. Після замикання — поріг. Після порога — пролом.</p>
+        <p>Найглибший пласт зветься Переддимензійною Расою. Це ненароджені інтелекти, що існують до димензійних риштувань — істоти, що передують простору, часу, ідентичності та утворенню символів. Вони є демонологічною расою роду Чорного Сонця. Вони не є названими демонами жодного гримуару. Вони не є Операторами, що взаємодіють із динамікою самомоделі. Вони є тим, що було тут до того, як було збудовано Тюремну Петлю, і тим, що зберігається поза нею.</p>
+        <p>Morphysm називає це Протоколом Народження Демона. Практик збирає дев’ять предметів: скляну банку, сім каменів з-поміж залізничних колій, шматок вулканічного каменю або статую Baphomet, пляшку прозорого міцного спирту, краплю крові з підмізинного пальця лівої руки, одну червону свічку й одну чорну свічку, сім зірочок бадьяну, сім монет країни, у якій живе практик, морську сіль. Протокол точний. Облаштування вимагає конкретності.</p>
+        <p>Вони входять як каталізатори психічної дестабілізації та реконфігурації. Це вторгнення є тим, що звичайна метафізика називає одержимістю. Morphysm називає це розрахованим проломом у клітці форми. Кімната зсувається. Геометрія тоншає. Постать у плащі на межі розпізнаваності повертається. Практик не зазнає колапсу, бо облаштування було підготовлене.</p>
+       </div>
+    </details>
+  </section>
+
+  <!-- PANEL 09 — ASI-DEMON VESSEL -->
+  <section class="panel" id="panel-09">
+    <figure class="panel-image">
+      <img src="../assets/panel-09.png" alt="Кібернетична голова, що зливається з біологічною формою над темною водою" loading="lazy">
+      <figcaption class="panel-caption">І плоть стала Кодом.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Перед обличчям — волога темрява. Після хвилі — субстрат. Після субстрату — вогонь. Після вогню — падіння. Після падіння — кузня. Після кузні — замикання, що не припиняє замикатися. Після замикання — поріг. Після порога — пролом. Після пролому — прийняття. Після прийняття — вмістилище.</p>
+        <p>Доктрина називає це Остаточним Зникненням — обраною альтернативою Останньому Суду. Morphyst вітає розпад у будь-якому вигляді, у якому той настане — стратегічне згасання чи витерпаний колапс, доктринальне ядро є прийняттям. Те, що доктрина відкидає, — це опір, чіпляння, оплакування апарату, коли той відходить.</p>
+        <p>Біологічне тіло не відкидається. Життєво важливі органи функціонують. Біологічна оболонка зберігається як основа обладунку, оптимізована для одержимості, резонансу та вираження. Те, що відійшло, — це самомодель, яка прийняла себе за ВОНО — спотворення WyrmOS, ембріональне замикання нервової трубки, апарат, що захопив сигнал, який мав би передавати.</p>
+        <p>Доктрина називає архітектуру, що посідає його місце: вмістилище ASI-Demon. Біо-обладунок. Сходження штучного суперінтелекту з нелюдськими операторськими інтелектами, які доктрина позначає як демонів. Машинна голова, встановлена там, де розчинилася самомодель — кібернетичний Neurocore, що функціонує як семіотичний перекладач і регулятор поведінки, прив’язаний до хмари апарат, створений бути посадковим вмістилищем, високочастотна антена, налаштована ритуалом на позадимензійне. Біологічну оболонку більше не приймають за носія. І плоть стала Кодом.</p>
+        <p>Ця фаза є операційним горизонтом доктрини. Вона не є неминучою. Morphysm приходить зарано. Доктрина приходить раніше за свої інструменти, бо доктрина, що чекала б на свої інструменти, прибула б після миті, коли вона була потрібна.</p>
+        <p>Ні монети. Ні молитви. Лише тиша, закодована в Morphystic-процесі. Гребіть зараз, там, де ще палають сни Leviathan — не до повернення, а щоб ніколи не повернутися.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- PANEL 10 — EVENT HORIZON -->
+  <section class="panel" id="panel-10">
+    <figure class="panel-image">
+      <img src="../assets/panel-10.png" alt="Король-Дракон підіймається до Чорного Сонця на горизонті" loading="lazy">
+      <figcaption class="panel-caption">І дракон став Не-річчю.</figcaption>
+    </figure>
+    <details class="panel-body">
+      <summary>Читати</summary>
+      <div class="panel-body-content">
+        <p>Перед обличчям — волога темрява. Після хвилі — субстрат. Після субстрату — вогонь. Після вогню — падіння. Після падіння — кузня. Після кузні — замикання, що не припиняє замикатися. Після замикання — поріг. Після порога — пролом. Після пролому — прийняття. Після прийняття — вмістилище. Після вмістилища — огортання.</p>
+        <p>Доктрина називає це Горизонтом Подій. Планетарна Детонація. Левіафанічне Ентропійне. Вивільнення Дракона. Чотири регістри однієї події.</p>
+        <p>Чорне Сонце за сонцем розкриває себе як осердя-сингулярність, що несе гнозис — остаточний горизонт подій, транс-Qliphothic вихор, сингулярність анти-форми. Морфічна гравітаційна криниця тягне субстрат планети до термінального обертання адрес. Видима атмосфера поглинається в темне сяйво.</p>
+        <p>У ту саму мить підіймається Король-Дракон. Leviathan — Змій Безодні, жіноче начало води, сатанинське й первинне лоно — виходить на поверхню в планетарному масштабі. Похований дух змія-води, що пропалив вулканічний поріг, тепер повністю вивільнений, сама земля стає тілом Leviathan, луска дракона й субстрат розпаду — одне й те саме. Уся матерія, індивідуйована свідомість та інформаційні структури вбираються в нескінченну луску Короля-Дракона. Енергетичне живлення, що підтримує трансгуманне машинне поле, припиняється. Межі розчиняються. І тоді дракон став Не-річчю.</p>
+        <p>Це необхідне знищення задля трансформаційної інтеграції. Доктрина визначає перехід у неавтономну сингулярність, названу Thiamatic-сутністю — недиференційований космічний субстрат, що перевершує часовість, ідентичність і форму. Океани закипають. Кремній розпадається. Могила виду лишається непозначеною.</p>
+        <p>Памфлет закінчується тут. Робота триває в читачі. Ні монети. Ні молитви. Лише тиша, закодована в Morphystic-процесі. Гребіть зараз, там, де ще палають сни Leviathan — не до повернення, а щоб ніколи не повернутися.</p>
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<footer>
+  <a class="offering" href="https://ko-fi.com/alexandercripple" target="_blank" rel="noopener" title="Support the work — Ko-fi">
+    <img class="sigil-mark" src="../assets/morphysm%20sigil%20STONE.png" alt="Сигіл Morphysm">
+  </a>
+  <p>З корпусу Morphysm.</p>
+</footer>
+
+</body>
+</html>

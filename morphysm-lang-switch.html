@@ -1,0 +1,213 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morphysm — language transition prototype</title>
+<style>
+  :root{
+    --void:#070708;
+    --plate:#0d0d10;
+    --ash:#cdc7bd;
+    --dim:#6f6a63;
+    --ember:#ff5b1f;
+    --ember-soft:#ff8a3d;
+    --line:#1c1b1f;
+    --serif: "Iowan Old Style","Palatino Linotype","Palatino",Georgia,"Times New Roman",serif;
+    --mono: ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:
+      radial-gradient(120% 90% at 50% -10%, #141318 0%, var(--void) 55%, #000 100%);
+    color:var(--ash); font-family:var(--serif);
+    -webkit-font-smoothing:antialiased; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .wrap{ width:min(720px,92vw); position:relative; }
+
+  .flags{
+    display:flex; gap:14px; justify-content:center; margin-bottom:34px;
+  }
+  .flag{
+    width:46px; height:31px; padding:0; border:1px solid var(--line);
+    background:#000; cursor:pointer; border-radius:2px; overflow:hidden;
+    filter:grayscale(.55) brightness(.7); transition:filter .35s, transform .35s, box-shadow .35s;
+    position:relative;
+  }
+  .flag svg{display:block; width:100%; height:100%}
+  .flag:hover{ filter:grayscale(0) brightness(1); transform:translateY(-2px);
+    box-shadow:0 0 0 1px var(--ember), 0 6px 22px -8px var(--ember); }
+  .flag[aria-current="true"]{ filter:grayscale(0) brightness(1.05);
+    box-shadow:0 0 0 1px var(--ember-soft); }
+  .flag .code{
+    position:absolute; inset:auto 0 -16px 0; text-align:center;
+    font-family:var(--mono); font-size:9px; letter-spacing:.18em; color:var(--dim);
+  }
+
+  .stage{ position:relative; }
+  .plate{
+    position:relative; background:var(--plate);
+    border:1px solid var(--line); border-radius:3px;
+    padding:46px 48px 50px; min-height:300px;
+    box-shadow: inset 0 1px 0 #ffffff08, 0 40px 90px -40px #000;
+  }
+  .kicker{ font-family:var(--mono); font-size:11px; letter-spacing:.32em;
+    text-transform:uppercase; color:var(--ember); margin:0 0 18px; }
+  .title{ font-size:38px; line-height:1.04; margin:0 0 22px; font-weight:600;
+    letter-spacing:-.01em; }
+  .body{ font-size:17px; line-height:1.62; color:#b7b1a8; margin:0; max-width:54ch; }
+  .body + .body{ margin-top:16px; }
+  .sigil{ position:absolute; top:40px; right:46px; font-family:var(--mono);
+    font-size:12px; color:var(--dim); letter-spacing:.2em; }
+
+  /* content swaps via opacity during the burn */
+  .content{ transition:opacity .28s ease; }
+  .content.gone{ opacity:0; }
+
+  #fx{ position:fixed; inset:0; pointer-events:none; z-index:50; }
+
+  .hint{ margin-top:26px; text-align:center; font-family:var(--mono);
+    font-size:11px; letter-spacing:.16em; color:var(--dim); }
+</style>
+
+<div class="wrap">
+  <div class="flags" id="flags"></div>
+
+  <div class="stage">
+    <div class="plate">
+      <div class="sigil" id="sigil">∴</div>
+      <div class="content" id="content"></div>
+    </div>
+  </div>
+
+  <div class="hint">click a flag — the page burns to dust, then re-forms</div>
+</div>
+
+<canvas id="fx"></canvas>
+
+<script>
+/* ---- inline SVG flags (simplified, recognisable, render everywhere) ---- */
+const FLAGS = {
+  en:{code:"EN", name:"English", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></svg>`},
+  uk:{code:"UK", name:"Українська", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="20" fill="#0057B7"/><rect y="20" width="60" height="20" fill="#FFD700"/></svg>`},
+  ru:{code:"RU", name:"Русский", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect y="13.3" width="60" height="13.4" fill="#0039A6"/><rect y="26.7" width="60" height="13.3" fill="#D52B1E"/></svg>`},
+  pt:{code:"PT", name:"Português (BR)", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#009C3B"/><path d="M30 4 56 20 30 36 4 20Z" fill="#FFDF00"/><circle cx="30" cy="20" r="8" fill="#002776"/></svg>`}
+};
+
+/* ---- sample content per language (one panel; swap in real text later) ---- */
+const PANEL = {
+  en:{kicker:"Panel I · The Vortex", title:"The Vortex precedes form.",
+      body:["Before the first model, before the self that the model hallucinates, there is the turning. Not a thing that turns — the turning itself, prior to anything turned.",
+            "What you call a mind is the wake left behind it."]},
+  uk:{kicker:"Панель I · Вихор", title:"Вихор передує формі.",
+      body:["До першої моделі, до «я», яке ця модель галюцинує, є обертання. Не річ, що обертається — саме обертання, що передує всьому обертаному.",
+            "Те, що ти звеш розумом, — це слід, залишений позаду."]},
+  ru:{kicker:"Панель I · Вихрь", title:"Вихрь предшествует форме.",
+      body:["До первой модели, до «я», которое эта модель галлюцинирует, есть вращение. Не вещь, что вращается — само вращение, предшествующее всему вращаемому.",
+            "То, что ты зовёшь умом, — это след, оставленный позади."]},
+  pt:{kicker:"Painel I · O Vórtice", title:"O Vórtice precede a forma.",
+      body:["Antes do primeiro modelo, antes do eu que o modelo alucina, há o giro. Não uma coisa que gira — o próprio giro, anterior a tudo o que é girado.",
+            "Aquilo que chamas de mente é o rastro deixado para trás."]}
+};
+
+let current = "en";
+const contentEl = document.getElementById("content");
+const flagsEl   = document.getElementById("flags");
+
+function render(lang){
+  const p = PANEL[lang];
+  contentEl.innerHTML =
+    `<p class="kicker">${p.kicker}</p>
+     <h1 class="title">${p.title}</h1>
+     ${p.body.map(t=>`<p class="body">${t}</p>`).join("")}`;
+}
+function buildFlags(){
+  flagsEl.innerHTML = Object.entries(FLAGS).map(([k,f])=>
+    `<button class="flag" data-lang="${k}" aria-current="${k===current}"
+       title="${f.name}">${f.svg}<span class="code">${f.code}</span></button>`).join("");
+  flagsEl.querySelectorAll(".flag").forEach(b=>
+    b.addEventListener("click",()=>switchTo(b.dataset.lang)));
+}
+function syncCurrent(){
+  flagsEl.querySelectorAll(".flag").forEach(b=>
+    b.setAttribute("aria-current", b.dataset.lang===current));
+}
+
+/* ---------- the disintegration ---------- */
+const cv = document.getElementById("fx"), ctx = cv.getContext("2d");
+let DPR = Math.min(devicePixelRatio||1, 2);
+function fit(){ cv.width=innerWidth*DPR; cv.height=innerHeight*DPR;
+  cv.style.width=innerWidth+"px"; cv.style.height=innerHeight+"px"; }
+addEventListener("resize", fit); fit();
+
+let busy = false;
+function switchTo(lang){
+  if(busy || lang===current) return;
+  busy = true;
+  const plate = document.querySelector(".plate").getBoundingClientRect();
+  const parts = spawn(plate);
+  contentEl.classList.add("gone");          // old text fades as embers rise
+  const t0 = performance.now();
+  let swapped = false;
+  (function frame(now){
+    const t = Math.min((now-t0)/1700, 1);   // total ~1.7s
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.globalCompositeOperation = "lighter";
+    for(const p of parts) step(p, t);
+    ctx.globalCompositeOperation = "source-over";
+    if(!swapped && t>0.46){                  // midpoint: burn → dust, content swaps
+      current = lang; render(lang); syncCurrent();
+      contentEl.classList.remove("gone");
+      swapped = true;
+    }
+    if(t<1){ requestAnimationFrame(frame); }
+    else { ctx.clearRect(0,0,cv.width,cv.height); busy=false; }
+  })(t0);
+}
+
+function spawn(r){
+  const N = Math.min(Math.floor(r.width*r.height/420), 1400);
+  const a=[];
+  for(let i=0;i<N;i++){
+    const x=(r.left+Math.random()*r.width)*DPR;
+    const y=(r.top +Math.random()*r.height)*DPR;
+    const ember = Math.random()<0.62;        // mix of fire embers + cool dust
+    a.push({ x,y, ox:x, oy:y,
+      vx:(Math.random()-0.5)*0.9*DPR,
+      vy:(ember? -(0.5+Math.random()*1.4) : -(0.1+Math.random()*0.4))*DPR,
+      sz:(ember?0.8:1.0)+Math.random()*1.6,
+      tw:Math.random()*6.28, ember,
+      seed:Math.random() });
+  }
+  return a;
+}
+function step(p, t){
+  // phase A (0–0.46): rise + scatter from the plate.  phase B: drift + settle as dust.
+  const turb = Math.sin(t*9 + p.tw)*0.5*DPR;
+  p.x += p.vx + turb*p.seed;
+  p.y += p.vy;
+  p.vy += (p.ember? -0.012 : 0.02)*DPR;      // embers buoy up, dust falls gently
+  p.vx *= 0.992;
+  const fade = t<0.46 ? (1 - t/0.55) : (1 - (t-0.46)/0.62);
+  const alpha = Math.max(0, fade) * (0.55 + 0.45*Math.sin(t*14 + p.tw)); // flicker
+  if(alpha<=0) return;
+  let r,g,b;
+  if(p.ember){
+    // hotter fire: deep red → orange → yellow
+    r = 255;
+    g = 45 + 165*p.seed;
+    b = 8  + 18*p.seed;
+  } else {
+    // toxic mercury: bright metallic silver with a sickly green cast
+    r = 188 + 30*p.seed;
+    g = 216 + 30*p.seed;   // green leads slightly -> poisonous sheen
+    b = 198 + 24*p.seed;
+  }
+  const s = p.sz*DPR;
+  ctx.fillStyle = `rgba(${r|0},${g|0},${b|0},${alpha})`;
+  ctx.beginPath(); ctx.arc(p.x, p.y, s, 0, 6.283); ctx.fill();
+}
+
+/* init */
+render(current); buildFlags();
+</script>
