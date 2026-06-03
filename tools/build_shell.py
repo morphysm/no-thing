@@ -335,6 +335,42 @@ HTML = f'''<!DOCTYPE html>
       margin: 0;
     }}
 
+    /* === OFFERING — the sigil itself is a quiet Ko-fi link ===
+       breathe (resting pulse) + ignite (ember glow on hover/focus).
+       NOTE: authored from description; morphysm-sigil-offering.html was not on disk. */
+
+    .offering {{
+      display: inline-block;
+      line-height: 0;
+      border-radius: 50%;
+      text-decoration: none;
+      outline: none;
+    }}
+    .sigil-mark {{
+      display: block;
+      margin: 0 auto 1.5rem;
+      width: 72px;
+      height: auto;
+      opacity: 0.7;
+      transition: opacity .5s ease, filter .5s ease, transform .5s ease;
+      animation: sigil-breathe 5.5s ease-in-out infinite;
+    }}
+    @keyframes sigil-breathe {{
+      0%, 100% {{ opacity: 0.55; filter: drop-shadow(0 0 2px rgba(255, 91, 31, 0.10)); }}
+      50%      {{ opacity: 0.85; filter: drop-shadow(0 0 7px rgba(255, 91, 31, 0.28)); }}
+    }}
+    .offering:hover .sigil-mark,
+    .offering:focus-visible .sigil-mark {{
+      animation: none;                 /* ignite overrides the resting breathe */
+      opacity: 1;
+      transform: scale(1.04);
+      filter: drop-shadow(0 0 10px rgba(255, 138, 61, 0.85))
+              drop-shadow(0 0 22px rgba(255, 91, 31, 0.55));
+    }}
+    @media (prefers-reduced-motion: reduce) {{
+      .sigil-mark {{ animation: none; opacity: 0.7; }}
+    }}
+
     /* === LANGUAGE FLAG BAR (from morphysm-lang-switch.html) === */
 
     .flags {{
@@ -405,7 +441,9 @@ HTML = f'''<!DOCTYPE html>
 </main>
 
 <footer>
-  <img id="sigil-img" src="assets/morphysm%20sigil%20STONE.png" alt="{en["sigil_alt"]}" style="display:block;margin:0 auto 1.5rem;width:72px;height:auto;opacity:0.85;">
+  <a class="offering" href="https://ko-fi.com/alexandercripple" target="_blank" rel="noopener" title="Support the work — Ko-fi">
+    <img id="sigil-img" class="sigil-mark" src="assets/morphysm%20sigil%20STONE.png" alt="{en["sigil_alt"]}">
+  </a>
   <p id="footer-credit">{en["footer"]}</p>
 </footer>
 
