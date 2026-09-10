@@ -363,7 +363,8 @@ def write_root_site(root, entries):
 
     urls = ["%s/" % ROOT_BASE, "%s/llms.txt" % ROOT_BASE,
             "%s/" % SITE_BASE, "%s/llms.txt" % SITE_BASE, "%s/llms-full.txt" % SITE_BASE,
-            "%s/corpus/manifest.json" % SITE_BASE, "%s/corpus/SHA256SUMS" % SITE_BASE]
+            "%s/corpus/manifest.json" % SITE_BASE, "%s/corpus/SHA256SUMS" % SITE_BASE,
+            "%s/LICENSE" % SITE_BASE]
     urls += ["%s/%s" % (SITE_BASE, p) for p, _, _ in PAMPHLET if p]
     urls += [e["url"] for e in entries]
     today = date.today().isoformat()
