@@ -66,7 +66,7 @@ def build_metadata(defaults, dep):
     lic = dep.get("license", defaults.get("license"))
     if lic:
         md["rights"] = [{"id": lic}]
-    rel = dep.get("related_identifiers", defaults.get("related_identifiers", []))
+    rel = list(defaults.get("related_identifiers", [])) + list(dep.get("related_identifiers", []))
     if rel:
         md["related_identifiers"] = [
             {"identifier": r["identifier"],
@@ -128,8 +128,35 @@ def prepare_pdfs(cfg, dep):
     return out
 
 
+def expand_from_manifest(dep):
+    """Resolve corpus files from the built manifest, so the deposited set cannot drift
+    out of step with the corpus that was actually generated."""
+    spec = dep.get("files_from_manifest")
+    if not spec:
+        return []
+    man = json.loads((REPO / "corpus" / "manifest.json").read_text(encoding="utf-8"))
+    exclude = set(spec.get("exclude_slugs", []))
+    out = []
+    for e in man["texts"]:
+        if e["slug"] in exclude:
+            continue
+        if spec.get("license") and e["license"] != spec["license"]:
+            continue
+        out.append((REPO / "corpus" / (e["slug"] + ".txt"), e["slug"] + ".txt",
+                    e["license"]))
+    licenses = {n for _, _, n in out}
+    dep_license = dep.get("license")
+    if dep_license and licenses - {dep_license}:
+        raise SystemExit(
+            "deposition %r is %s but would carry text licensed %s.\n"
+            "A record must not misstate the terms of the text inside it."
+            % (dep["slug"], dep_license, ", ".join(sorted(licenses - {dep_license}))))
+    return [(p, k, "") for p, k, _ in out]
+
+
 def deposit(session, base, cfg, defaults, dep, dry_run):
     files = [(REPO / f, pathlib.Path(f).name, "") for f in dep["files"]]
+    files += expand_from_manifest(dep)
     for f, _, _ in files:
         if not f.exists():
             raise SystemExit("missing file for %s: %s" % (dep["slug"], f))
