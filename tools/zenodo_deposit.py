@@ -20,6 +20,7 @@ Doctrine note: the concept DOI is the source line and each version DOI is one st
 of it. Revisions are deposited as new versions, never as replacements.
 """
 import argparse, hashlib, json, os, pathlib, subprocess, sys
+from datetime import date
 import requests
 import yaml
 
@@ -112,11 +113,66 @@ def clean_token(raw):
 
 
 def api(session, base, method, path, **kw):
-    r = session.request(method, base + path, timeout=120, **kw)
+    r = session.request(method, base + path, timeout=300, **kw)
     if r.status_code >= 400:
-        body = r.text[:800]
-        raise SystemExit("Zenodo %s %s -> HTTP %d\n%s" % (method, path, r.status_code, body))
+        hint = ""
+        if r.status_code == 403:
+            hint = ("\n\nA 403 here almost always means token scope. Zenodo's own quickstart\n"
+                    "grants BOTH deposit:write and deposit:actions; with deposit:write alone,\n"
+                    "record creation and file upload are frequently refused.\n"
+                    "Run  python3 tools/zenodo_deposit.py --check  to see exactly what your\n"
+                    "token can do.")
+        elif r.status_code == 401:
+            hint = "\n\nThe token was rejected. Sandbox and production tokens are not interchangeable."
+        raise SystemExit("Zenodo %s %s -> HTTP %d\n%s%s"
+                         % (method, path, r.status_code, r.text[:600], hint))
     return r
+
+
+def check(session, base):
+    """Preflight: report exactly what this token is allowed to do, then clean up."""
+    print("checking token against %s\n" % base)
+    r = session.get(base + "/api/user/records", timeout=60)
+    print("  read  (GET /api/user/records)      HTTP %d  %s"
+          % (r.status_code, "ok" if r.ok else "FAILED"))
+    if r.status_code == 401:
+        raise SystemExit("\nToken rejected. Check it is a %s token."
+                         % ("sandbox" if base == SANDBOX else "production"))
+
+    probe = {"access": {"record": "public", "files": "public"},
+             "files": {"enabled": True},
+             "metadata": {"title": "scope probe (delete me)",
+                          "publication_date": date.today().isoformat(),
+                          "resource_type": {"id": "publication-book"},
+                          "creators": [{"person_or_org": {"type": "organizational",
+                                                          "name": "probe"}}]}}
+    r = session.post(base + "/api/records", json=probe, timeout=60)
+    print("  create (POST /api/records)         HTTP %d  %s"
+          % (r.status_code, "ok" if r.ok else "FAILED"))
+    if not r.ok:
+        print("\n  %s" % r.text[:300])
+        raise SystemExit(
+            "\nRecord creation is refused. Add the deposit:actions scope to the token\n"
+            "(Zenodo's quickstart grants deposit:write AND deposit:actions), or create a\n"
+            "new token with both. This script still never publishes — see refuse_to_publish().")
+    rid = r.json()["id"]
+
+    r2 = session.post(base + "/api/records/%s/draft/files" % rid,
+                      json=[{"key": "probe.txt"}], timeout=60)
+    print("  upload (POST draft/files)          HTTP %d  %s"
+          % (r2.status_code, "ok" if r2.ok else "FAILED"))
+    if r2.ok:
+        r3 = session.put(base + "/api/records/%s/draft/files/probe.txt/content" % rid,
+                         data=b"probe", headers={"Content-Type": "application/octet-stream"},
+                         timeout=60)
+        print("  content (PUT file content)         HTTP %d  %s"
+              % (r3.status_code, "ok" if r3.ok else "FAILED"))
+
+    d = session.delete(base + "/api/records/%s/draft" % rid, timeout=60)
+    print("  cleanup (DELETE draft)             HTTP %d  %s"
+          % (d.status_code, "probe draft removed" if d.ok else
+             "COULD NOT DELETE — remove record %s by hand" % rid))
+    print("\nToken is usable." if r2.ok else "\nFile upload refused — add deposit:actions.")
 
 
 def sha256(p):
@@ -247,6 +303,8 @@ def main():
     ap.add_argument("--only", metavar="SLUG", help="deposit a single volume")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the payloads and send nothing")
+    ap.add_argument("--check", action="store_true",
+                    help="preflight: report what the token is allowed to do, then clean up")
     ap.add_argument("--allow-unset-license", action="store_true",
                     help="proceed even though licence is null")
     a = ap.parse_args()
@@ -259,7 +317,7 @@ def main():
         if not deps:
             raise SystemExit("no deposition with slug %r" % a.only)
 
-    if not defaults.get("license") and not all(d.get("license") for d in deps):
+    if not a.check and not defaults.get("license") and not all(d.get("license") for d in deps):
         if not a.allow_unset_license:
             raise SystemExit(
                 "licence is null in tools/zenodo_metadata.yaml.\n"
@@ -276,6 +334,10 @@ def main():
                 "Scopes needed: deposit:write. Do NOT grant deposit:actions — this\n"
                 "script never publishes and does not need it.")
         session.headers["Authorization"] = "Bearer %s" % clean_token(token)
+
+    if a.check:
+        check(session, base)
+        return
 
     print("target: %s   mode: DRAFTS ONLY (this script cannot publish)" % base)
     results = [r for r in (deposit(session, base, cfg, defaults, d, a.dry_run) for d in deps) if r]
