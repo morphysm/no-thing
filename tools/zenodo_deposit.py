@@ -136,6 +136,21 @@ def check(session, base):
     print("  read  (GET /api/user/records)      HTTP %d  %s"
           % (r.status_code, "ok" if r.ok else "FAILED"))
     if r.status_code in (401, 403):
+        # Which site does this token actually belong to? Ask the other one.
+        other = PRODUCTION if base == SANDBOX else SANDBOX
+        try:
+            o = requests.get(other + "/api/user/records",
+                             headers=dict(session.headers), timeout=60)
+            print("  read  (GET %s)  HTTP %d  %s"
+                  % (other, o.status_code, "ok" if o.ok else "also refused"))
+            if o.ok:
+                raise SystemExit(
+                    "\nFOUND IT: this token works on %s, not on %s.\n"
+                    "Either create a token on %s, or run with %s."
+                    % (other, base, base,
+                       "--production" if other == PRODUCTION else "no --production flag"))
+        except requests.RequestException:
+            pass
         raise SystemExit(
             "\nThe token is not accepted by %s at all — this fails on the very first\n"
             "read, before any deposit is attempted. In order of likelihood:\n"
