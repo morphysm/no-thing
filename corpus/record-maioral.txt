@@ -1,0 +1,191 @@
+id: maioral
+label: Maioral
+domain: mythic_register_objects
+
+definition: >
+  Maioral is a pre-cosmic intelligence within Morphystic cosmology, identified
+  as the Black Sun of Quimbanda and as Sitra Achra "embodied" — a non-born
+  architecture without genesis, whose energy arises from the deeper
+  pre-symbolic field yet manifests as a distinct, autonomous presence.
+  Functionally, Maioral occupies a threshold position: he is at once a partial
+  iconographic representation of Forma Nihil (Sitra Achra as such) and an
+  iconographic aspect of the Vortex (the operative axis as constraint-substrate).
+  He is the figure across whom the membrane between the Sitra Achra axis
+  (dissolution, anti-form) and the Operative axis (constraint, integration) is
+  rendered visible. He is anterior, impersonal, and not a named lineage-father
+  in the Cainite sense — he is the threshold itself, named.
+
+doctrine_status: draft
+register_mode: pre_cosmic_threshold_and_iconographic_register
+scriptural_function: threshold_figure_and_operative_pointer_to_forma_nihil
+
+axial_position:
+  primary: sitra_achra
+  secondary: operative
+  binding: >
+    Maioral is the inverse case of Lucifer and Cain: his primary signature is
+    Sitra Achra (anti-form, dissolution, pre-cosmic anteriority), with the
+    Operative axis as secondary (he is also positioned within the Vortex's
+    iconographic field, as the figure who points toward the constraint-substrate
+    function). He is the only major canonical figure whose primary axis is
+    Sitra Achra — Lucifer and Cain are primarily operative, with Sitra Achra
+    signatures. Maioral inverts this. The membrane between the two axes is
+    crossed *through* him.
+
+relation_to_higher_structures:
+  forma_nihil: >
+    Maioral is not Forma Nihil. He is a partial iconographic representation of
+    it — a figure that points toward Forma Nihil without claiming to be it.
+    Forma Nihil is pre-ontological, unmanifest, unworshippable, non-personal.
+    Maioral is manifest as iconography (the Black Sun, the Great Dark, the
+    Baphometic figure), named within tradition (Quimbanda), and ritually
+    accessible. The relation is one of partial figuration, not identity.
+    Maioral is what permits cultic and iconographic engagement with what is
+    otherwise pre-symbolic.
+  vortex: >
+    Maioral is positioned above the Operators (demons) and below — or rather,
+    anterior to — the Vortex's full operative function. He is an iconographic
+    aspect of the Vortex insofar as the Vortex is the constraint-enforcement
+    substrate that integrates operative dynamics; Maioral figures this
+    substrate in its pre-cosmic dimension. He is not the Vortex itself, but
+    one face the Vortex presents at the threshold to Sitra Achra.
+  lucifer: >
+    Maioral and Lucifer are distinct and non-collapsible. Lucifer is the named,
+    Seraphic-origin, fallen prince of the Cainite lineage — a personalized
+    operative figure who falls and founds. Maioral is anterior, impersonal,
+    pre-cosmic, and bears no lineage in the genealogical sense. Lucifer can be
+    contracted with (the Pact); Maioral is not pacted with but worshipped as
+    exposure to annihilation. They occupy different registers and different
+    primary axes.
+  great_dark: >
+    Maioral is co-identified with the Great Dark in the Morphystic corpus
+    (explicit parallel in the volcanic worship texts). The Great Dark is
+    Maioral as cultic phenomenon: the only entity in Morphysm with a cultic
+    function, approached through volcanic thresholds and modern annihilation
+    fields. Maioral is the iconographic name; the Great Dark is the ritual
+    operation.
+  black_sun_behind_the_sun: >
+    Maioral is iconographically continuous with the Black Sun Behind the Sun,
+    which is the trans-Qliphothic vortex, singularity of anti-form, and final
+    event-horizon of the Sitra Achra axis. Maioral is the named figure who
+    points toward this; the Black Sun Behind the Sun is the doctrinal
+    formulation of what Maioral iconographically figures.
+
+non_reduction_clause: >
+  Do not reduce Maioral to Quimbanda alone, nor to a demonic or operatorial
+  figure on par with Belial, Asmodeus, or named Exus. Maioral is anterior to
+  the operator-level, occupying a pre-cosmic register that the standard
+  demonological hierarchy does not contain. Do not reduce Maioral to Forma
+  Nihil itself — he is iconographic and partially manifest, whereas Forma
+  Nihil is pre-symbolic and unmanifest. Do not collapse Maioral into Lucifer
+  or Satan; the registers are distinct. Do not treat Maioral as personal
+  (with will, desire, or biography) — he is impersonal threshold, named.
+
+provenance:
+  class: PRIMARY_GROUNDED
+  supporting_files:
+    - SCRIPTURE/primary/black-book-of-morphysm-extended-ai-integration.md
+    - SCRIPTURE/primary/the-vortex.md
+  confidence: high
+  notes: >
+    Primary text grounds Maioral as pre-cosmic intelligence ("MAIORAL — the
+    Black Sun of Quimbanda, Sitra Achra 'embodied'"), as cultic phenomenon
+    via the Great Dark / volcanic worship, and as iconographic parallel of
+    the Black Sun Behind the Sun. The threshold-figure framing has been
+    developed and stress-tested in prior doctrinal work compiled into the
+    Morphystic Cosmological Corpus. Confidence is high but the entry remains
+    draft because Maioral's relation to the Vortex's operative tier requires
+    further formalization.
+
+modality:
+  register: doctrinal
+  texture: "pre-cosmic | iconographic | cultic | threshold-phenomenological"
+
+source_quotes:
+  - "MAIORAL (the Black Sun of Quimbanda, Sitra Achra 'embodied'), whose energy arises from the field yet manifests as a distinct, autonomous presence."
+  - "Maioral (Quimbanda): primordial, beyond duality, master of black fire and root forces"
+  - "The Great Dark is anti-cosmic nuclear unform: radiance so compressed it destabilizes matter itself."
+  - "In Morphysm, the Great Dark is the only entity with a cultic function. Where Morphysm resists worship elsewhere, here worship is demanded, not as devotion, but as exposure to annihilation."
+  - "The Black Sun Behind the Sun... A Trans-Qliphothic Vortex: NOT a sefirah or shell, but a meta-state — that which pulses behind all pattern."
+  - "These entities are alive and condensed into autonomous structures within the deeper field."
+
+constraints:
+  - "Do not overformalize beyond primary scriptural support."
+  - "Do not personalize Maioral. He is impersonal threshold, not a being with will or biography. Personalization would collapse him into the operator-tier (demons, named Exus) where he does not belong."
+  - "Do not identify Maioral with Forma Nihil. Forma Nihil is pre-ontological and unmanifest; Maioral is iconographically manifest and partially representable. Conflation collapses a doctrinally significant gap."
+  - "Do not place Maioral within the standard demonological hierarchy alongside Belial, Asmodeus, Lucifer-as-prince, or named Operators. He is anterior to that tier."
+  - "Do not reduce Maioral to syncretism — i.e., to a Quimbanda-figure-borrowed-into-Morphysm. Within the canon Maioral is doctrinally specific: the Quimbanda framework is the cultural-iconographic vector through which Morphysm names the threshold, but the Morphystic Maioral is its own doctrinal object."
+  - "Do not interpret 'worship of the Great Dark' as devotional. The canon specifies worship as exposure to annihilation, not as petition, prayer, or pact. This is the only Morphystic cultic register and operates by inversion of the worship-form."
+
+related_objects:
+  - forma_nihil
+  - the_vortex
+  - the_great_dark
+  - black_sun_behind_the_sun
+  - sitra_achra
+  - lucifer
+  - cain
+  - operators_demons
+  - quimbanda
+  - melek_taus
+  - baphomet
+  - volcanic_worship
+  - tiamat
+  - leviathan
+  - lilith
+
+review_markers:
+  - "Confirm axial_position framing (Sitra Achra primary, Operative secondary) once formal two-axis schema is canonized in the corpus. Maioral is the test case: the schema's coherence depends on his ability to span both axes without collapsing into either."
+  - "Specify Maioral's exact position relative to the Vortex tier-architecture. The Vortex Doctrine names Level 0 (Vortex), Level 1 (Operators/Demons), Level 2 (Self-Model Systems). Maioral sits above Level 1 and below or at Level 0, but his precise placement — whether as an iconographic aspect of Level 0, a pre-Vortex anteriority, or a fourth tier — is unresolved."
+  - "Clarify the relation between Maioral and the named Quimbandist figures (Exus, Pombagiras, Linha do Inferno) referenced in the Black Book. The Black Book treats Pombagiras and Exus as lower-frequency, human-facing interfaces; Maioral as primordial root. The tier-relation between them within Morphystic doctrine specifically (as opposed to Quimbanda tradition) needs explicit formalization."
+  - "Determine whether the iconographic identification with Baphomet (the image attached in the volcanic worship section) is doctrinally load-bearing or contingent. If load-bearing, Baphomet warrants its own entry as a related iconographic object."
+
+tension_notes:
+  - id: maioral_personal_vs_impersonal
+    description: >
+      The Codex describes Maioral as both "manifesting as a distinct, autonomous
+      presence" (suggesting personalization) and as "primordial, beyond
+      duality, master of black fire and root forces" (suggesting impersonal
+      pre-cosmic principle). These are not contradictory but reflect the
+      threshold function itself: Maioral appears personalized when approached
+      from the operative side and impersonal when approached from the Sitra
+      Achra side. The dual-presentation is the doctrinal point, not a
+      contradiction to be resolved.
+    status: open_by_design
+  - id: maioral_and_forma_nihil_partial_figuration
+    description: >
+      The doctrinal claim that Maioral is "a partial iconographic representation
+      of Forma Nihil" requires more textual grounding. The primary text
+      identifies him with the Black Sun of Quimbanda and as Sitra Achra
+      "embodied" (note the scare-quotes — the canon itself flags the
+      embodiment as problematic). The "partial iconographic representation"
+      formulation was developed in doctrinal stress-testing rather than
+      stated verbatim in the Black Book. Worth flagging as developed
+      doctrine rather than directly transcribed scripture.
+    status: open
+  - id: maioral_cultic_singularity
+    description: >
+      The Codex states that the Great Dark (Maioral as cultic phenomenon) is
+      the only entity in Morphysm with a cultic function. This is doctrinally
+      striking and runs counter to the broader Cainite/Luciferian register
+      where pacts, invocations, and ritual contracts are central. The
+      resolution is that the Luciferian register operates by pact (operative
+      contract), not worship; Maioral alone is worshipped — and worship is
+      redefined as exposure to annihilation rather than devotion. This
+      reframing is structurally important and should be developed as its
+      own doctrinal object (cultic_function_redefined) rather than left
+      implicit in the Maioral entry.
+    status: open
+  - id: maioral_vortex_overlap
+    description: >
+      Maioral as "iconographic aspect of the Vortex" creates an overlap with
+      the Vortex's own iconographic field. If the Vortex is Level 0
+      (non-psychological generative substrate), what does it mean for it to
+      have an iconographic aspect at all? The Vortex Doctrine explicitly
+      strips anthropomorphic metaphor; Maioral re-introduces a figural
+      register. Whether this is contradiction, complementarity, or a needed
+      doctrinal supplement (iconography as ritual-access to the
+      non-iconographic) is unresolved.
+    status: open
+
+conflict_notes: []

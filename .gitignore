@@ -1,0 +1,15 @@
+# Secrets — never commit. Phase 2 reads ZENODO_TOKEN from the environment.
+.env
+.env.*
+*.token
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Local agent/editor settings
+.claude/settings.local.json
+
+# Draft summaries written by zenodo_deposit.py (record ids, not secrets)
+tools/zenodo_drafts_*.json
+tools/.deposit-cache/

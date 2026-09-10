@@ -1,0 +1,109 @@
+id: cain
+label: Cain
+domain: mythic_register_objects
+
+definition: >
+  Cain is a primary cosmological and doctrinal figure within the Morphystic canon,
+  functioning as lineage anchor of the Sons of Fire, exile-marked prototype of
+  sovereign separation, and operative emblem of the forge — the figure in whom
+  fire, work, sacrifice-memory, and self-forged becoming are bound into a single
+  initiatic trajectory. He is both the son of Lucifer (by lineage of fire) and
+  the first who carries the celestial relic into flesh, transmuting exile into
+  craft and the mark into signature.
+
+doctrine_status: draft
+register_mode: lineage_exile_and_forge_mythic_register
+scriptural_function: cainite_lineage_anchor_and_operative_prototype
+
+axial_position:
+  primary: operative
+  secondary: sitra_achra
+  binding: >
+    Cain occupies the membrane where the Operative axis (work, forging, conquest,
+    constraint-integration) is signed by the Sitra Achra axis (exile, separation,
+    mark, anti-form). The exile-mark is not punitive but the sovereign signature
+    that licenses operative function outside the cosmogonic given.
+
+non_reduction_clause: >
+  Do not reduce Cain to historical-biographical literalism (Genesis-as-history),
+  nor to a generic psychological symbol (Jungian shadow archetype) detached from
+  scriptural lineage function. Cain is neither ancestor-as-fact nor metaphor-as-
+  interiority; he is an operative figure whose lineage is transmitted through
+  spirit and craft, not blood alone.
+
+provenance:
+  class: PRIMARY_GROUNDED
+  supporting_files:
+    - SCRIPTURE/primary/01-the-infernal-codex-of-cain-secrets-of-the-morning-star.md
+  confidence: high
+  notes: >
+    Primary text grounds Cain across multiple registers: lineage ("Descendants
+    of Cain," "Sons of Fire"), forge ("Forging the Blade of Cain," "blacksmiths
+    of our own destiny"), exile-mark ("with my forehead marked, I walk proudly
+    into exile"), and ritual invocation ("we honor Cain each step and movement").
+
+modality:
+  register: doctrinal
+  texture: "mythic | ritual | phenomenological | operative"
+
+source_quotes:
+  - "The Descendants of Cain."
+  - "Cain, the son of flames, cracks now the radiant whip of genius in their ears."
+  - "we honor Cain each step and movement"
+  - "He seizes the stone and celestial metal, and with these small shards of Lucifer's crown, forges the Blade of Change."
+  - "And feeling upon his brow the mark of memory, of Exile, he composes himself and resolves to create what does not yet exist."
+  - "We became blacksmiths of our own destiny."
+  - "Passing through this forge, you shall earn a new name, a new mark: Cain."
+
+constraints:
+  - "Do not overformalize beyond primary scriptural support."
+  - "Do not collapse Cain into Lucifer; they are distinct operative figures with overlapping but non-identical functions. Lucifer is the originating fall and spirit of fire; Cain is the incarnated transmission, fire-made-flesh, who forges."
+  - "Do not read the exile-mark as punitive. Within the canon it functions as sovereign signature — the visible sign of separation that licenses self-authored creation."
+  - "Do not treat Cainite lineage as exclusively biological. The Codex permits initiatic transmission: 'Passing through this forge, you shall earn a new name, a new mark: Cain.'"
+  - "Do not detach Cain from the sacrifice of Abel. The fratricide is doctrinally generative, not incidental — it is the noblest division of the race."
+
+related_objects:
+  - lucifer
+  - liberation
+  - the_mark
+  - the_forge
+  - lapis_exillis
+  - sons_of_fire
+  - sacrifice
+  - abel
+  - exile
+  - lamech
+  - the_serpent
+  - tubal_cain
+
+review_markers:
+  - "Confirm axial_position framing once formal two-axis schema (Sitra Achra / Operative) is canonized in the corpus."
+  - "Clarify relation between Cain and the Vortex: is the Cainite lineage a transmission through the Vortex (constraint-substrate) or a parallel current originating from Lucifer's fall? Currently underspecified in primary text."
+
+tension_notes:
+  - id: cain_lineage_mode
+    description: >
+      The Codex runs two readings of Cainite descent simultaneously without
+      explicit resolution: (a) biological-symbolic (Cain as ancestor whose blood
+      flows in a caste), and (b) initiatic (Cain as name earned through the
+      forge). Both are scripturally supported. The canon may not require
+      resolution — the doubled reading may itself be the operative point.
+    status: open
+  - id: cain_abel_polarity
+    description: >
+      Abel functions as the suppressed term whose absence structures the
+      lineage. He is named only as the slain, the "mere ancestor shrouded in
+      weakness," yet the first sacrifice is "made with a part of his own blood."
+      The doctrinal status of Abel — whether negation, complement, or
+      structural remainder — is not fully developed in the primary text.
+    status: open
+  - id: cain_and_the_vortex
+    description: >
+      No explicit primary-text linkage between Cain and the Vortex
+      (constraint-enforcement substrate). The Operative axis is doctrinally
+      housed by the Vortex elsewhere in the canon; Cain clearly operates on
+      that axis. Whether Cain is a transmitting figure within the Vortex's
+      operative function, or a parallel Luciferian descent, is unresolved.
+    status: open
+
+conflict_notes: []

@@ -1,0 +1,54 @@
+{
+  "_comment": [
+    "Permanent copies of the corpus. Empty until the author publishes.",
+    "Doctrine: the concept DOI is the source line; each version DOI is one state of it.",
+    "Revisions are deposited as new versions, never as replacements — so 'concept' stays",
+    "fixed for the life of a work and 'version' changes with each deposit.",
+    "Each deposition lists the corpus slugs it covers; those texts inherit its identifiers.",
+    "Fill in and rebuild: python3 tools/build_shell.py"
+  ],
+  "depositions": [
+    {
+      "deposition": "infernal-codex-of-cain",
+      "title": "The Infernal Codex of Cain: Secrets of the Morning Star",
+      "draft": "https://zenodo.org/uploads/22690992",
+      "concept_doi": null,
+      "version_doi": null,
+      "archive_org": null,
+      "covers": [
+        "infernal-codex-of-cain"
+      ]
+    },
+    {
+      "deposition": "black-book-of-morphysm",
+      "title": "The Black Book of Morphysm (Extended, AI Integration)",
+      "draft": "https://zenodo.org/uploads/22690997",
+      "concept_doi": null,
+      "version_doi": null,
+      "archive_org": null,
+      "covers": [
+        "black-book-of-morphysm"
+      ]
+    },
+    {
+      "deposition": "burning-book-of-morphysm",
+      "title": "The Burning Book of Morphysm 2 (AI)",
+      "draft": "https://zenodo.org/uploads/22690999",
+      "concept_doi": null,
+      "version_doi": null,
+      "archive_org": null,
+      "covers": [
+        "burning-book-of-morphysm"
+      ]
+    },
+    {
+      "deposition": "morphysm-corpus",
+      "title": "The Morphysm Corpus",
+      "draft": "https://zenodo.org/uploads/22691009",
+      "concept_doi": null,
+      "version_doi": null,
+      "archive_org": null,
+      "covers": "*"
+    }
+  ]
+}

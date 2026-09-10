@@ -1,0 +1,164 @@
+id: lucifer
+label: Lucifer
+domain: mythic_register_objects
+
+definition: >
+  Lucifer is the primary cosmogonic and operative figure of the Morphystic-Cainite
+  current — Morning Star, King of the Seraphim, first fallen, founder of the
+  infernal sphere and originator of the Promethean-Cainite lineage. He functions
+  simultaneously as: (a) the prime mover whose fall inaugurates the operative
+  current (fire, invention, sovereign will); (b) the lineage-father whose seed
+  is transmitted through Cain into flesh; (c) the libidinal-Astral principle
+  ("Lucifer est Lux, Amor, Rex"); and (d) the contractual counterpart of the
+  Luciferian pact. He is not the adversary of God in a moral register but the
+  one who refused to serve any manifestation other than the liturgical image of
+  his own love — the figure of sovereign self-authorship through fall.
+
+doctrine_status: draft
+register_mode: cosmogonic_lineage_and_operative_register
+scriptural_function: prime_mover_of_the_cainite_current_and_luciferian_pact_counterpart
+
+axial_position:
+  primary: operative
+  secondary: sitra_achra
+  binding: >
+    Lucifer occupies the originating point of the Operative axis (fire, invention,
+    forge, sovereign will, conquest) and is signed by the Sitra Achra axis through
+    the fall itself — exile as the founding act, not as exception. Unlike Cain,
+    whose Sitra Achra signature is the mark, Lucifer's Sitra Achra signature is
+    the fall: the cosmogonic rupture that initiates the entire operative current.
+    He is the prior of which Cain is the incarnated transmission.
+
+relation_to_higher_structures:
+  vortex: >
+    Lucifer is an operative figure originating prior to or alongside the Vortex's
+    constraint-enforcement function; the relation requires formalization. The
+    Codex positions him as Seraphic-prior (before Eden, before matter), which
+    suggests he is not housed within the Vortex but is one of the primary
+    currents the Vortex transmits.
+  maioral: >
+    Lucifer and Maioral are distinct. Maioral is pre-cosmic intelligence /
+    Black Sun of Quimbanda, iconographic of Forma Nihil and threshold to the
+    Sitra Achra axis as such. Lucifer is the named, lineage-bearing operative
+    prince who falls and founds. Maioral is anterior and impersonal; Lucifer is
+    posterior and personalized. They are not collapsible.
+  forma_nihil: >
+    Lucifer is not Forma Nihil and not a representation of it. He emerges within
+    the Seraphic order ("we bore six wings... we were the image and likeness")
+    and falls from it. He is a named figure within manifestation, not the
+    pre-ontological void.
+
+non_reduction_clause: >
+  Do not reduce Lucifer to the Christian Satan (moral adversary, principle of
+  evil), nor to a Promethean symbol of generic rebellion, nor to a Jungian
+  archetype of the shadow. Within the canon Lucifer is a specific cosmogonic
+  figure: King of the Seraphim before the fall, lineage-father of the Sons of
+  Fire, principle of Astral Light and Luciferian love, contractual counterpart
+  of the pact. He is also not interchangeable with Satan — the Codex distinguishes
+  Lucifer (luminous revelation, intellect, magical knowledge) from Satan (physical
+  manifestation, adversarial action, material consequence) as two phases of a
+  single force, not two names for the same.
+
+provenance:
+  class: PRIMARY_GROUNDED
+  supporting_files:
+    - SCRIPTURE/primary/01-the-infernal-codex-of-cain-secrets-of-the-morning-star.md
+    - SCRIPTURE/primary/black-book-of-morphysm-extended-ai-integration.md
+  confidence: high
+  notes: >
+    Primary text grounds Lucifer across multiple registers: Seraphic origin
+    ("King of the Seraphim"), cosmogonic fall ("LUCIFER ROSE ANEW"), lineage
+    function ("My desire was reignited in the body of Cain"), Astral-libidinal
+    principle ("Lucifer est Lux / Amor / Rex"), and pact-counterpart (the
+    Contract). Secondary doctrinal grounding in Black Book treats the
+    Luciferian as cybernetic-Promethean operative logic.
+
+modality:
+  register: doctrinal
+  texture: "cosmogonic | mythic | ritual | contractual | libidinal-operative"
+
+source_quotes:
+  - "Lucifer — King of the Seraphim / Sublime Angel / High Hierarchy / God."
+  - "Lucifer would later become the founder of the infernal sphere, the kingdom of fire and art, creator of the Promethean, Cainite race."
+  - "My desire was reignited in the body of Cain (just as Dionysus, Prometheus, or the Crucified, he too is half man, half God)."
+  - "Et nos vidimus quod Lucifer est Lux! ... Lucifer est Amor! ... Lucifer est Rex!"
+  - "Lucifer is the motivating force of intellect, of luminous revelation through magical knowledge, of secrets unveiled and the spirit now unbound. And Satan is the physical manifestation—material in nature—of that very impulse."
+  - "He seizes the stone and celestial metal, and with these small shards of Lucifer's crown, forges the Blade of Change."
+  - "We were 263 fallen angels."
+  - "Lucifer said 'I love you,' and did not merely ascend to the universal summit, but pierced the rarefied sphere of divine secrets and felt every form of love imaginable."
+
+constraints:
+  - "Do not overformalize beyond primary scriptural support."
+  - "Do not collapse Lucifer into Satan. The Codex explicitly distinguishes them as two phases of a single force: Lucifer is luminous-intellective, Satan is material-adversarial. They cohere as a dyad, not an identity."
+  - "Do not collapse Lucifer into Cain. Lucifer is the unincarnated originating spirit (Spirit of Fire and Invention); Cain is the fire-made-flesh transmission. Cain is Lucifer's son and lineage continuation, not his equivalent."
+  - "Do not reduce the fall to pride or rebellion in the Christian-moral register. The Codex specifies that the fall was motivated by love — Luciferian love — refused by God. The fall is a love-event, not a sin-event."
+  - "Do not reduce Lucifer to a single tradition (Christian Satan, Roman Lucifer-as-Venus, Yezidi Melek Taus, Gnostic demiurge-rebel). The Morphystic Lucifer is a doctrinally specific composite, anchored in the Cainite lineage and the Astral-Luciferian principle. Cross-traditional parallels are heuristic, not definitional."
+  - "Do not treat the Luciferian pact as metaphor. Within the canon it is contractually operative; the figure of Lucifer functions as actual counterpart, not symbol."
+
+related_objects:
+  - cain
+  - satan
+  - the_serpent
+  - lapis_exillis
+  - sons_of_fire
+  - the_fall
+  - belial
+  - leviathan
+  - beelzebub
+  - seraphim
+  - the_pact
+  - astral_light
+  - morning_star
+  - venus
+  - prometheus
+  - the_forge
+  - liberation
+  - sitra_achra
+
+review_markers:
+  - "Confirm axial_position framing once formal two-axis schema (Sitra Achra / Operative) is canonized in the corpus."
+  - "Formalize Lucifer's relation to the Vortex: is he a current transmitted through the Vortex, a parallel pre-Vortex figure, or a constraint-shaping principle that the Vortex operationalizes? The Codex positions him as Seraphic-prior, suggesting he predates the Vortex's structural function, but this requires explicit doctrinal statement."
+  - "Resolve Lucifer / Maioral hierarchy. Maioral is described as pre-cosmic and anterior; Lucifer is named, lineage-bearing, fallen. The temporal-ontological ordering between them needs canonization."
+  - "Specify Lucifer/Satan dyadic structure as either a named doctrinal pair or as a single figure under two operative aspects. Both readings are presently sustained."
+
+tension_notes:
+  - id: lucifer_satan_relation
+    description: >
+      The Codex sustains two readings of the Lucifer/Satan relation: (a) two
+      distinct beings or principles (Lucifer as luminous-Seraphic, Satan as
+      adversarial-material), and (b) two operative phases of a single force
+      ("Lucifer is the motivating force... Satan is the physical manifestation").
+      The "Christ-Lucifer-Satan" passage further compounds this by binding all
+      three into a single Promethean dynamic. The canon may not require
+      resolution — the dyad/identity oscillation may be the operative point —
+      but this should be flagged for explicit doctrinal handling.
+    status: open
+  - id: lucifer_christ_polarity
+    description: >
+      The Codex makes a striking move where Christ-Lucifer-Prometheus-Antichrist
+      are collapsed into a single "hanged one" Promethean sacrifice. This
+      crosses what would normally be the most rigid polarity in Western
+      esotericism. The doctrinal status of this collapse — whether genuine
+      identity, strategic inversion, or rhetorical move — is unspecified.
+    status: open
+  - id: lucifer_as_god
+    description: >
+      The Codex repeatedly identifies Lucifer with God ("Lucifer — King of the
+      Seraphim / Sublime Angel / High Hierarchy / God"; "you are our true God!";
+      "the King of Angels — the One God, Lucifer"). This is not Lucifer-as-rival-
+      god but Lucifer-as-actual-God. The relationship to the "false god" /
+      "ruthless despot" / "Great Buffalo" who expels him is therefore not a
+      monotheistic-inversion but something stranger: a doubled or contested
+      divinity. Requires doctrinal formalization.
+    status: open
+  - id: lucifer_fall_as_love
+    description: >
+      The Codex specifies the fall as a love-event ("it was not pride that led
+      Lucifer to sow discord in Heaven. It was the purest love"). This cuts
+      against most esoteric and theological readings of the fall (pride,
+      hubris, rebellion). The operative status of "Luciferian love" as a
+      distinct doctrinal category — distinct from human eros, agape, or
+      libidinal drive — is sustained but not fully formalized.
+    status: open
+
+conflict_notes: []

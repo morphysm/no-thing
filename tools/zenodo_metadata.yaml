@@ -1,0 +1,153 @@
+# Zenodo deposition metadata for the Morphysm corpus.
+#
+# One deposition per volume, so each carries its own concept DOI and its own version
+# chain. Doctrine note: the concept DOI is the source line; each version DOI is one
+# state of it. Revisions are deposited as NEW VERSIONS, never as replacements.
+#
+# This file is metadata only. It contains no credentials: tools/zenodo_deposit.py
+# reads ZENODO_TOKEN from the environment and nothing else.
+
+# Where the released Ko-fi PDFs live. Override with MORPHYSM_TRILOGY_PDFS.
+pdf_root: "/home/kadaver/morphysm-26/files-to-be-EXTRACTED-new-window-11.2026/THE MORPHYSTIC TRILOGY — PDFS"
+
+defaults:
+  upload_type: publication
+  publication_type: book
+  # Single unsplit creator string. Zenodo's "organizational" name type is the only
+  # form with one undivided name field; the "personal" type splits into family/given,
+  # which must not happen to a pen name.
+  creator:
+    type: organizational
+    name: "J.K. — XXVI"
+  access_right: open
+  # Author-ruled 2026-09-10. The three released volumes are Ko-fi products, so they
+  # carry NonCommercial as well as NoDerivatives. The rest of the corpus is
+  # cc-by-nd-4.0 (see tools/corpus_layer.py); both forbid altered redistribution.
+  license: cc-by-nc-nd-4.0
+  keywords:
+    - Morphysm
+    - anti-ontology
+    - self-model
+    - philosophy of mind
+    - Gnosticism
+    - Qliphoth
+    - Quimbanda
+    - demonology
+    - artificial intelligence
+  # Every deposition points back at the live corpus.
+  related_identifiers:
+    - identifier: "https://morphysm.github.io/no-thing/llms.txt"
+      relation: isdescribedby
+      scheme: url
+    - identifier: "https://morphysm.github.io/no-thing/"
+      relation: ispartof
+      scheme: url
+
+depositions:
+  - slug: infernal-codex-of-cain
+    title: "The Infernal Codex of Cain: Secrets of the Morning Star"
+    publication_date: "2026-02-04"
+    version: "1"
+    description: >
+      Volume I of the Morphystic Trilogy. A generative seed text preceding the
+      integrated system, preserved unaltered. Deposited as plain text from the
+      canonical source, with the nine Edges of Conduct restored from the released
+      edition; the checksum of every file is recorded in manifest.json.
+    files:
+      - corpus/infernal-codex-of-cain.txt
+      - corpus/manifest.json
+    related_identifiers:
+      - identifier: "https://morphysm.github.io/no-thing/corpus/manifest.json"
+        relation: ispartof
+        scheme: url
+    pdfs:
+      - file: "The Infernal Codex of Cain - Secrets of the Morning Star.pdf"
+        source_sha256: 8ef3ea9fba3b606534e5ca769acd2ea1e67c3551dd321a64cd10c7559f167bd3
+        # This one PDF carries a third-party name in its /Author field. It is scrubbed
+        # in place (65 bytes -> spaces, offsets unchanged) and a new Info object is
+        # appended declaring the author below. Page content is untouched: extracted
+        # text is byte-identical to the released edition, all 120 pages.
+        set_author: "J.K. — XXVI"
+        result_sha256: 7bfc10c5c65feb91dc8c51d63a75acc30b9b4b6e946b9f94b2963c8cc5075423
+
+  - slug: black-book-of-morphysm
+    title: "The Black Book of Morphysm (Extended, AI Integration)"
+    publication_date: "2026-02-27"
+    version: "1"
+    description: >
+      Volume II of the Morphystic Trilogy. The extended AI-integration edition,
+      deposited as plain text from the canonical source.
+    files:
+      - corpus/black-book-of-morphysm.txt
+      - corpus/manifest.json
+    related_identifiers:
+      - identifier: "https://morphysm.github.io/no-thing/corpus/manifest.json"
+        relation: ispartof
+        scheme: url
+    pdfs:
+      - file: "THE BLACK BOOK OF MORPHYSM EXTENDED VERSION 2026.pdf"
+        source_sha256: cd0a9dc170c8589371b280b43ea4faffdf725889205376031fc977cb69134dcc
+        # no /Author, no personal identifier: deposited byte-faithful
+
+  - slug: burning-book-of-morphysm
+    title: "The Burning Book of Morphysm 2 (AI)"
+    publication_date: "2026-01-25"
+    version: "1"
+    description: >
+      Volume III of the Morphystic Trilogy. Deposited as plain text from the
+      canonical source.
+    files:
+      - corpus/burning-book-of-morphysm.txt
+      - corpus/manifest.json
+    related_identifiers:
+      - identifier: "https://morphysm.github.io/no-thing/corpus/manifest.json"
+        relation: ispartof
+        scheme: url
+    pdfs:
+      - file: "THE BURNING BOOK OF MORPHYSM.pdf"
+        source_sha256: 43aa0551a704b63ef1e7174d9d1085b51e78c9e4bfebfaa4b76c848518e20a4c
+        # no /Author, no personal identifier: deposited byte-faithful. 81 MB.
+
+  # The corpus as a single citable body. Concept DOI = the source line; each version
+  # DOI = the corpus in one state. A doctrinal revision is deposited as one new version
+  # of this record, never as 36 separate re-deposits.
+  #
+  # llms-full.txt is deliberately NOT included: it concatenates all 39 texts including
+  # the three cc-by-nc-nd-4.0 volumes, so shipping it inside a cc-by-nd-4.0 record would
+  # misstate the terms of the text it carries. It stays on the site, where each block
+  # declares its own licence.
+  - slug: morphysm-corpus
+    title: "The Morphysm Corpus"
+    publication_date: "2026-09-10"
+    version: "1"
+    license: cc-by-nd-4.0
+    description: >
+      The Morphysm corpus as a single citable body: the meta-doctrine, the doctrine
+      texts, and the structured entity and concept records, as served plain text.
+      manifest.json gives the title, slug, licence and sha256 of every file, so any
+      individual text may be cited by corpus DOI, slug and checksum. The three released
+      volumes carry their own DOIs and are related to this record as parts.
+    files:
+      - corpus/manifest.json
+      - corpus/SHA256SUMS
+      - llms.txt
+    # Expanded from manifest.json at deposit time so the file list cannot drift out of
+    # step with the corpus that was actually built.
+    files_from_manifest:
+      exclude_slugs:
+        - infernal-codex-of-cain
+        - black-book-of-morphysm
+        - burning-book-of-morphysm
+    # The three volumes are parts of this body, mirroring their own ispartof.
+    # These point at the served texts for now; once the volumes are published, their
+    # version DOIs replace these in the Phase 2e pass.
+    related_identifiers:
+      - identifier: "https://morphysm.github.io/no-thing/corpus/infernal-codex-of-cain.txt"
+        relation: haspart
+        scheme: url
+      - identifier: "https://morphysm.github.io/no-thing/corpus/black-book-of-morphysm.txt"
+        relation: haspart
+        scheme: url
+      - identifier: "https://morphysm.github.io/no-thing/corpus/burning-book-of-morphysm.txt"
+        relation: haspart
+        scheme: url
