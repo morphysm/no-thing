@@ -19,7 +19,7 @@ Usage:
 Doctrine note: the concept DOI is the source line and each version DOI is one state
 of it. Revisions are deposited as new versions, never as replacements.
 """
-import argparse, hashlib, json, os, pathlib, subprocess, sys
+import argparse, hashlib, json, os, pathlib, subprocess, sys, time
 from datetime import date
 import requests
 import yaml
@@ -61,6 +61,7 @@ def build_metadata(defaults, dep):
         "resource_type": {"id": resource_type_id(defaults)},
         "creators": [{"person_or_org": {"type": "organizational",
                                         "name": creator["name"]}}],
+        "publisher": dep.get("publisher", defaults.get("publisher", "Morphysm")),
         "description": " ".join(dep["description"].split()),
         "subjects": [{"subject": k} for k in defaults.get("keywords", [])],
     }
@@ -112,8 +113,28 @@ def clean_token(raw):
     return tok
 
 
-def api(session, base, method, path, **kw):
-    r = session.request(method, base + path, timeout=300, **kw)
+RETRY_STATUS = {500, 502, 503, 504}
+
+
+def api(session, base, method, path, _tries=5, **kw):
+    """Zenodo returns transient 5xx and gateway timeouts under load, especially on
+    large uploads. Retry those with backoff rather than losing a run part-way."""
+    delay = 3
+    for attempt in range(1, _tries + 1):
+        try:
+            r = session.request(method, base + path, timeout=300, **kw)
+        except requests.RequestException as e:
+            if attempt == _tries:
+                raise SystemExit("Zenodo %s %s failed after %d attempts: %s"
+                                 % (method, path, _tries, e))
+            print("    %s %s — %s; retrying in %ds (%d/%d)"
+                  % (method, path, type(e).__name__, delay, attempt, _tries))
+            time.sleep(delay); delay = min(delay * 2, 60); continue
+        if r.status_code in RETRY_STATUS and attempt < _tries:
+            print("    %s %s — HTTP %d; retrying in %ds (%d/%d)"
+                  % (method, path, r.status_code, delay, attempt, _tries))
+            time.sleep(delay); delay = min(delay * 2, 60); continue
+        break
     if r.status_code >= 400:
         hint = ""
         if r.status_code == 403:
@@ -322,43 +343,107 @@ def verify(session, base, production):
         raise SystemExit("no draft summary at %s — run a deposit first" % f)
     problems = []
     for row in json.loads(f.read_text(encoding="utf-8")):
-        r = session.get(base + "/api/records/%s/draft" % row["record_id"], timeout=120)
+        try:
+            r = api(session, base, "GET", "/api/records/%s/draft" % row["record_id"])
+        except SystemExit as e:
+            problems.append((row["slug"], str(e))); continue
         if not r.ok:
             problems.append((row["slug"], "cannot read draft: HTTP %d" % r.status_code)); continue
-        d = r.json(); md = d.get("metadata", {})
+        d = r.json()
+        md = d.get("metadata", {}) or {}
         print("\n=== %s  (%s) ===" % (row["slug"], row["draft_url"]))
         print("  title    : %s" % md.get("title"))
-        for c in md.get("creators", []):
-            po = c.get("person_or_org", {})
-            print("  creator  : %r  type=%s" % (po.get("name"), po.get("type")))
-            if po.get("type") != "organizational":
-                problems.append((row["slug"], "creator type is %r, not organizational" % po.get("type")))
-            if po.get("family_name") or po.get("given_name"):
-                problems.append((row["slug"], "creator was SPLIT into family/given"))
-            if po.get("name") != "J.K. \u2014 XXVI":
-                problems.append((row["slug"], "creator name is %r" % po.get("name")))
-        print("  licence  : %s" % [x.get("id") for x in md.get("rights", [])])
+        pub = md.get("publisher") or md.get("imprint_publisher")
+        print("  publisher: %r%s" % (pub, "  (imprint_publisher)"
+                                     if not md.get("publisher") and pub else ""))
+        print("  state    : %s" % (d.get("state") or
+                                   ("published" if d.get("is_published") else "draft")))
+        errs = d.get("errors") or []
+        if errs:
+            print("  VALIDATION ERRORS Zenodo reports on this draft:")
+            for e in errs:
+                if isinstance(e, dict):
+                    print("    %-28s %s" % (e.get("field"), e.get("message") or e.get("messages")))
+                else:
+                    print("    %s" % e)
+            problems.append((row["slug"], "%d validation error(s) block publishing" % len(errs)))
+        if not pub:
+            problems.append((row["slug"], "publisher missing — Zenodo blocks DOI registration"))
+
+        # Zenodo accepts the InvenioRDM shape on write but may hand back either that or
+        # the legacy deposit shape on read. Handle both rather than guess.
+        for c in md.get("creators", []) or []:
+            po = c.get("person_or_org") or c
+            name = po.get("name")
+            ctype = po.get("type", "(legacy: no type field)")
+            split = po.get("family_name") or po.get("given_name")
+            print("  creator  : %r  type=%s%s"
+                  % (name, ctype, "  SPLIT into family/given!" if split else ""))
+            if split:
+                problems.append((row["slug"], "creator SPLIT: family=%r given=%r"
+                                 % (po.get("family_name"), po.get("given_name"))))
+            if name and name != "J.K. \u2014 XXVI":
+                problems.append((row["slug"], "creator name is %r" % name))
+            if not name:
+                print("    raw creator object: %s" % json.dumps(c, ensure_ascii=False)[:200])
+                problems.append((row["slug"], "creator name not readable from response"))
+
+        rights = md.get("rights") or md.get("license")
+        print("  licence  : %s" % rights)
+        if not rights:
+            problems.append((row["slug"], "no licence on the draft"))
         print("  version  : %s   date: %s" % (md.get("version"), md.get("publication_date")))
-        for ri in md.get("related_identifiers", []):
-            print("  related  : %-14s %s" % (ri.get("relation_type", {}).get("id"), ri.get("identifier")))
-        ents = (d.get("files", {}) or {}).get("entries", {}) or {}
+        for ri in md.get("related_identifiers", []) or []:
+            rel = ri.get("relation_type")
+            rel = rel.get("id") if isinstance(rel, dict) else (rel or ri.get("relation"))
+            print("  related  : %-14s %s" % (rel, ri.get("identifier")))
+
+        ents = draft_files(d)
         print("  files    : %d" % len(ents))
         for key, ent in sorted(ents.items()):
             local = None
-            for cand in (REPO / "corpus" / key, REPO / key, CACHE / key):
+            pdf_root = pathlib.Path(os.environ.get(
+                "MORPHYSM_TRILOGY_PDFS",
+                "/home/kadaver/morphysm-26/files-to-be-EXTRACTED-new-window-11.2026/"
+                "THE MORPHYSTIC TRILOGY — PDFS"))
+            for cand in (REPO / "corpus" / key, REPO / key, CACHE / key, pdf_root / key):
                 if cand.exists():
                     local = cand; break
-            chk = (ent.get("checksum") or "")
+            chk = ent.get("checksum") or ""
             mark = "?"
-            if local and chk.startswith("md5:"):
+            if local is None:
+                problems.append((row["slug"], "no local copy of %s to verify against" % key))
+            if local and chk:
                 import hashlib as _h
-                mark = "ok" if _h.md5(local.read_bytes()).hexdigest() == chk[4:] else "MISMATCH"
+                mark = "ok" if _h.md5(local.read_bytes()).hexdigest() == chk else "MISMATCH"
                 if mark == "MISMATCH":
                     problems.append((row["slug"], "file %s differs from local" % key))
             print("    %-58s %10s B  %s" % (key[:58], ent.get("size"), mark))
     print("\n" + ("PROBLEMS:" if problems else "All four drafts check out. Nothing is published."))
     for s, m in problems:
         print("  %-28s %s" % (s, m))
+
+
+def draft_files(payload):
+    """Normalise a draft's file list. Zenodo returns the InvenioRDM shape
+    {"entries": {key: {...}}} or the legacy list [{"filename":..., "checksum":...}]
+    depending on the record; accept either and return {key: {size, checksum}}."""
+    raw = payload.get("files")
+    out = {}
+    if isinstance(raw, dict):
+        for key, ent in (raw.get("entries") or {}).items():
+            chk = ent.get("checksum") or ""
+            out[key] = {"size": ent.get("size"),
+                        "checksum": chk[4:] if chk.startswith("md5:") else chk}
+    elif isinstance(raw, list):
+        for f in raw:
+            key = f.get("key") or f.get("filename")
+            if not key:
+                continue
+            chk = f.get("checksum") or ""
+            out[key] = {"size": f.get("size") or f.get("filesize"),
+                        "checksum": chk[4:] if chk.startswith("md5:") else chk}
+    return out
 
 
 def refresh(session, base, cfg, defaults, production):
@@ -383,14 +468,14 @@ def refresh(session, base, cfg, defaults, production):
                  [(REPO / x, pathlib.Path(x).name, "") for x in dep["files"]]
                  + expand_from_manifest(dep) + prepare_pdfs(cfg, dep)}
         r = api(session, base, "GET", "/api/records/%s/draft" % rid)
-        entries = (r.json().get("files", {}) or {}).get("entries", {}) or {}
+        entries = draft_files(r.json())
         stale = []
         for key, path in local.items():
             ent = entries.get(key)
             if ent is None:
                 stale.append((key, path, "missing from draft")); continue
             chk = ent.get("checksum") or ""
-            if chk.startswith("md5:") and _h.md5(path.read_bytes()).hexdigest() != chk[4:]:
+            if chk and _h.md5(path.read_bytes()).hexdigest() != chk:
                 stale.append((key, path, "bytes differ"))
         print("\n=== %s (%s) ===" % (dep["slug"], row["draft_url"]))
         if not stale:
@@ -407,6 +492,90 @@ def refresh(session, base, cfg, defaults, production):
     print("\n%d file(s) replaced. Nothing was published." % total)
 
 
+def fix_publisher(session, base, cfg, production):
+    """Set the publisher on legacy depositions, read-modify-write.
+
+    These records live in Zenodo's legacy deposit system: state is 'unsubmitted', files
+    come back as a list, creators carry no type wrapper. Writing metadata.publisher via
+    the RDM draft endpoint reports success but does not persist there. Legacy books
+    carry the publisher as imprint_publisher, so set that, and metadata.publisher
+    alongside it, without touching any other field."""
+    f = REPO / "tools" / ("zenodo_drafts_%s.json" % ("production" if production else "sandbox"))
+    rows = json.loads(f.read_text(encoding="utf-8"))
+    for row in rows:
+        rid = row["record_id"]
+        cur = api(session, base, "GET", "/api/deposit/depositions/%s" % rid).json()
+        md = dict(cur.get("metadata") or {})
+        before = (md.get("imprint_publisher"), md.get("publisher"))
+        pub = cfg.get("defaults", {}).get("publisher", "Morphysm")
+        md["imprint_publisher"] = pub
+        md["publisher"] = pub
+        api(session, base, "PUT", "/api/deposit/depositions/%s" % rid,
+            json={"metadata": md})
+        back = api(session, base, "GET", "/api/deposit/depositions/%s" % rid).json()
+        bmd = back.get("metadata") or {}
+        got = bmd.get("imprint_publisher") or bmd.get("publisher")
+        print("  %-28s was=%s  now=%r  %s"
+              % (row["slug"], before, got, "OK" if got else "STILL NOT SET"))
+    print("\nNothing was published.")
+
+
+def update_metadata(session, base, cfg, defaults, production):
+    """Re-send metadata to existing drafts. Zenodo refuses to publish without a
+    publisher field, which the original payload omitted; this repairs all four drafts
+    identically rather than hand-editing each in the web form."""
+    f = REPO / "tools" / ("zenodo_drafts_%s.json" % ("production" if production else "sandbox"))
+    if not f.exists():
+        raise SystemExit("no draft summary at %s" % f)
+    rows = {r["slug"]: r for r in json.loads(f.read_text(encoding="utf-8"))}
+    for dep in cfg["depositions"]:
+        row = rows.get(dep["slug"])
+        if not row:
+            continue
+        rid = row["record_id"]
+        cur = api(session, base, "GET", "/api/records/%s/draft" % rid).json()
+        md = build_metadata(defaults, dep)
+        body = {"access": cur.get("access", {"record": "public", "files": "public"}),
+                "files": {"enabled": True},
+                "metadata": md}
+        api(session, base, "PUT", "/api/records/%s/draft" % rid, json=body)
+        print("  %-28s publisher=%r  updated  %s"
+              % (dep["slug"], md["publisher"], row["draft_url"]))
+    print("\nMetadata updated on all drafts. Nothing was published.")
+
+
+def list_mine(session, base):
+    """Ask Zenodo what this account actually owns, with DOIs and publish state.
+
+    Searching the public index is unreliable right after publishing, and a legacy
+    deposit's id is not the published record's id, so guessing URLs from outside does
+    not work. This asks authoritatively."""
+    for path in ("/api/deposit/depositions?size=50&sort=mostrecent",
+                 "/api/user/records?size=50&sort=newest"):
+        try:
+            r = api(session, base, "GET", path)
+        except SystemExit as e:
+            print("  %s -> %s" % (path, str(e).splitlines()[0])); continue
+        data = r.json()
+        items = data if isinstance(data, list) else data.get("hits", {}).get("hits", [])
+        print("\n=== %s — %d item(s) ===" % (path.split("?")[0], len(items)))
+        for d in items:
+            md = d.get("metadata", {}) or {}
+            title = (md.get("title") or d.get("title") or "")[:52]
+            doi = (d.get("doi") or (d.get("pids", {}).get("doi", {}) or {}).get("identifier"))
+            concept = (d.get("conceptdoi")
+                       or ((d.get("parent", {}) or {}).get("pids", {}) or {})
+                       .get("doi", {}).get("identifier"))
+            state = d.get("state") or ("published" if d.get("is_published") else "draft")
+            print("  id=%-10s rec=%-10s %-10s" % (d.get("id"), d.get("record_id") or "-", state))
+            print("     title  : %s" % title)
+            print("     doi    : %s" % doi)
+            print("     concept: %s" % concept)
+            if d.get("links", {}).get("record_html") or d.get("links", {}).get("self_html"):
+                print("     url    : %s" % (d["links"].get("record_html")
+                                            or d["links"].get("self_html")))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -417,6 +586,12 @@ def main():
     ap.add_argument("--only", metavar="SLUG", help="deposit a single volume")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the payloads and send nothing")
+    ap.add_argument("--fix-publisher", action="store_true",
+                    help="set the publisher on legacy depositions so Zenodo will publish")
+    ap.add_argument("--list", action="store_true", dest="list_mine",
+                    help="list the depositions/records this account owns, with DOIs")
+    ap.add_argument("--update-metadata", action="store_true",
+                    help="re-send metadata to existing drafts (e.g. after adding a field)")
     ap.add_argument("--refresh", action="store_true",
                     help="re-upload only the files of an existing draft whose bytes changed")
     ap.add_argument("--verify", action="store_true",
@@ -435,7 +610,8 @@ def main():
         if not deps:
             raise SystemExit("no deposition with slug %r" % a.only)
 
-    if not (a.check or a.verify or a.refresh) and not defaults.get("license") and not all(d.get("license") for d in deps):
+    if not (a.check or a.verify or a.refresh or a.update_metadata or a.list_mine
+            or a.fix_publisher) and not defaults.get("license") and not all(d.get("license") for d in deps):
         if not a.allow_unset_license:
             raise SystemExit(
                 "licence is null in tools/zenodo_metadata.yaml.\n"
@@ -447,10 +623,13 @@ def main():
     if not a.dry_run:
         if not token:
             raise SystemExit(
-                "ZENODO_TOKEN is not set.\n"
-                "  export ZENODO_TOKEN=...   (sandbox and production tokens differ)\n"
-                "Scopes needed: deposit:write. Do NOT grant deposit:actions — this\n"
-                "script never publishes and does not need it.")
+                "ZENODO_TOKEN is not set in this shell. It does not survive a new\n"
+                "terminal, so export it again here:\n"
+                "  export ZENODO_TOKEN=...\n"
+                "Sandbox and production tokens are not interchangeable. Grant BOTH\n"
+                "deposit:write and deposit:actions — Zenodo refuses record creation\n"
+                "with deposit:write alone. This script still never publishes: there is\n"
+                "no call to the publish action anywhere in it.")
         session.headers["Authorization"] = "Bearer %s" % clean_token(token)
 
     if a.check:
@@ -461,6 +640,15 @@ def main():
         return
     if a.refresh:
         refresh(session, base, cfg, defaults, a.production)
+        return
+    if a.fix_publisher:
+        fix_publisher(session, base, cfg, a.production)
+        return
+    if a.list_mine:
+        list_mine(session, base)
+        return
+    if a.update_metadata:
+        update_metadata(session, base, cfg, defaults, a.production)
         return
 
     print("target: %s   mode: DRAFTS ONLY (this script cannot publish)" % base)
