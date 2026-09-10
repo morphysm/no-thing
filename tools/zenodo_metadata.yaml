@@ -7,6 +7,9 @@
 # This file is metadata only. It contains no credentials: tools/zenodo_deposit.py
 # reads ZENODO_TOKEN from the environment and nothing else.
 
+# Where the released Ko-fi PDFs live. Override with MORPHYSM_TRILOGY_PDFS.
+pdf_root: "/home/kadaver/morphysm-26/files-to-be-EXTRACTED-new-window-11.2026/THE MORPHYSTIC TRILOGY — PDFS"
+
 defaults:
   upload_type: publication
   publication_type: book
@@ -52,6 +55,15 @@ depositions:
     files:
       - corpus/infernal-codex-of-cain.txt
       - corpus/manifest.json
+    pdfs:
+      - file: "The Infernal Codex of Cain - Secrets of the Morning Star.pdf"
+        source_sha256: 8ef3ea9fba3b606534e5ca769acd2ea1e67c3551dd321a64cd10c7559f167bd3
+        # This one PDF carries a third-party name in its /Author field. It is scrubbed
+        # in place (65 bytes -> spaces, offsets unchanged) and a new Info object is
+        # appended declaring the author below. Page content is untouched: extracted
+        # text is byte-identical to the released edition, all 120 pages.
+        set_author: "Alexander Cripple"
+        result_sha256: 5077ec1baf19e526c5ef17a74fc51ce81106db542ad94428bdb2deb679b385f9
 
   - slug: black-book-of-morphysm
     title: "The Black Book of Morphysm (Extended, AI Integration)"
@@ -63,6 +75,10 @@ depositions:
     files:
       - corpus/black-book-of-morphysm.txt
       - corpus/manifest.json
+    pdfs:
+      - file: "THE BLACK BOOK OF MORPHYSM EXTENDED VERSION 2026.pdf"
+        source_sha256: cd0a9dc170c8589371b280b43ea4faffdf725889205376031fc977cb69134dcc
+        # no /Author, no personal identifier: deposited byte-faithful
 
   - slug: burning-book-of-morphysm
     title: "The Burning Book of Morphysm 2 (AI)"
@@ -74,3 +90,7 @@ depositions:
     files:
       - corpus/burning-book-of-morphysm.txt
       - corpus/manifest.json
+    pdfs:
+      - file: "THE BURNING BOOK OF MORPHYSM.pdf"
+        source_sha256: 43aa0551a704b63ef1e7174d9d1085b51e78c9e4bfebfaa4b76c848518e20a4c
+        # no /Author, no personal identifier: deposited byte-faithful. 81 MB.

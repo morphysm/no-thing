@@ -19,7 +19,7 @@ Usage:
 Doctrine note: the concept DOI is the source line and each version DOI is one state
 of it. Revisions are deposited as new versions, never as replacements.
 """
-import argparse, hashlib, json, os, pathlib, sys
+import argparse, hashlib, json, os, pathlib, subprocess, sys
 import requests
 import yaml
 
@@ -83,11 +83,57 @@ def api(session, base, method, path, **kw):
     return r
 
 
-def deposit(session, base, defaults, dep, dry_run):
-    files = [REPO / f for f in dep["files"]]
-    for f in files:
+def sha256(p):
+    return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+
+
+CACHE = REPO / "tools" / ".deposit-cache"
+
+
+def prepare_pdfs(cfg, dep):
+    """Resolve the released PDFs, scrubbing embedded identity where the metadata says to.
+
+    Every PDF is checked against its pinned source hash first, so a changed or swapped
+    release fails loudly instead of being deposited unnoticed. Nothing is published
+    from an unverified file."""
+    root = pathlib.Path(os.environ.get("MORPHYSM_TRILOGY_PDFS", cfg["pdf_root"]))
+    out = []
+    for spec in dep.get("pdfs", []):
+        src = root / spec["file"]
+        if not src.exists():
+            raise SystemExit("released PDF not found: %s\n"
+                             "Set MORPHYSM_TRILOGY_PDFS to the folder holding them." % src)
+        got = sha256(src)
+        if got != spec["source_sha256"]:
+            raise SystemExit(
+                "released PDF does not match its pinned hash:\n  %s\n"
+                "  expected %s\n  got      %s\n"
+                "This is not the edition that was verified. Refusing to deposit."
+                % (src, spec["source_sha256"], got))
+        if not spec.get("set_author"):
+            out.append((src, spec["file"], "byte-faithful"))
+            continue
+        CACHE.mkdir(exist_ok=True)
+        dst = CACHE / spec["file"]
+        if not dst.exists() or sha256(dst) != spec["result_sha256"]:
+            subprocess.run([sys.executable, str(REPO / "tools" / "pdf_set_author.py"),
+                            str(src), str(dst), "--author", spec["set_author"]],
+                           check=True, capture_output=True)
+        got = sha256(dst)
+        if got != spec["result_sha256"]:
+            raise SystemExit("scrubbed PDF hash mismatch for %s\n  expected %s\n  got      %s"
+                             % (spec["file"], spec["result_sha256"], got))
+        out.append((dst, spec["file"], "author set to %r, original identity scrubbed"
+                    % spec["set_author"]))
+    return out
+
+
+def deposit(session, base, cfg, defaults, dep, dry_run):
+    files = [(REPO / f, pathlib.Path(f).name, "") for f in dep["files"]]
+    for f, _, _ in files:
         if not f.exists():
             raise SystemExit("missing file for %s: %s" % (dep["slug"], f))
+    files += prepare_pdfs(cfg, dep)
 
     payload = {"access": {"record": "public", "files": "public"},
                "files": {"enabled": True},
@@ -99,10 +145,10 @@ def deposit(session, base, defaults, dep, dry_run):
           % payload["metadata"]["creators"][0]["person_or_org"]["name"])
     print("  type     : %s" % payload["metadata"]["resource_type"]["id"])
     print("  licence  : %s" % (payload["metadata"].get("rights") or "UNSET (null)"))
-    for f in files:
-        print("  file     : %-42s %9d B  sha256 %s"
-              % (f.relative_to(REPO), f.stat().st_size,
-                 hashlib.sha256(f.read_bytes()).hexdigest()[:16]))
+    for f, key, note in files:
+        print("  file     : %-46s %10d B  sha256 %s%s"
+              % (key, f.stat().st_size, sha256(f)[:16],
+                 "  <- " + note if note else ""))
     if dry_run:
         print("  --dry-run: payload below, nothing sent")
         print(json.dumps(payload, ensure_ascii=False, indent=2))
@@ -112,8 +158,7 @@ def deposit(session, base, defaults, dep, dry_run):
     rec = r.json()
     rid = rec["id"]
 
-    for f in files:
-        key = f.name
+    for f, key, _note in files:
         api(session, base, "POST", "/api/records/%s/draft/files" % rid,
             json=[{"key": key}])
         api(session, base, "PUT", "/api/records/%s/draft/files/%s/content" % (rid, key),
@@ -170,7 +215,7 @@ def main():
         session.headers["Authorization"] = "Bearer %s" % token
 
     print("target: %s   mode: DRAFTS ONLY (this script cannot publish)" % base)
-    results = [r for r in (deposit(session, base, defaults, d, a.dry_run) for d in deps) if r]
+    results = [r for r in (deposit(session, base, cfg, defaults, d, a.dry_run) for d in deps) if r]
     if results:
         out = REPO / "tools" / ("zenodo_drafts_%s.json" % ("production" if a.production else "sandbox"))
         out.write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

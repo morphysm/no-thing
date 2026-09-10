@@ -12,3 +12,4 @@ __pycache__/
 
 # Draft summaries written by zenodo_deposit.py (record ids, not secrets)
 tools/zenodo_drafts_*.json
+tools/.deposit-cache/
