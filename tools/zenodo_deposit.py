@@ -361,6 +361,52 @@ def verify(session, base, production):
         print("  %-28s %s" % (s, m))
 
 
+def refresh(session, base, cfg, defaults, production):
+    """Re-upload only the files of an existing draft whose bytes have changed.
+
+    Editing the corpus after depositing leaves the draft stale. Deleting and recreating
+    would re-upload everything, including an 81 MB PDF, to fix a file that may be a few
+    kilobytes. This compares each draft file's checksum against the local copy and
+    replaces only what actually differs."""
+    import hashlib as _h
+    f = REPO / "tools" / ("zenodo_drafts_%s.json" % ("production" if production else "sandbox"))
+    if not f.exists():
+        raise SystemExit("no draft summary at %s — nothing to refresh" % f)
+    rows = {r["slug"]: r for r in json.loads(f.read_text(encoding="utf-8"))}
+    total = 0
+    for dep in cfg["depositions"]:
+        row = rows.get(dep["slug"])
+        if not row:
+            continue
+        rid = row["record_id"]
+        local = {k: p for p, k, _ in
+                 [(REPO / x, pathlib.Path(x).name, "") for x in dep["files"]]
+                 + expand_from_manifest(dep) + prepare_pdfs(cfg, dep)}
+        r = api(session, base, "GET", "/api/records/%s/draft" % rid)
+        entries = (r.json().get("files", {}) or {}).get("entries", {}) or {}
+        stale = []
+        for key, path in local.items():
+            ent = entries.get(key)
+            if ent is None:
+                stale.append((key, path, "missing from draft")); continue
+            chk = ent.get("checksum") or ""
+            if chk.startswith("md5:") and _h.md5(path.read_bytes()).hexdigest() != chk[4:]:
+                stale.append((key, path, "bytes differ"))
+        print("\n=== %s (%s) ===" % (dep["slug"], row["draft_url"]))
+        if not stale:
+            print("  up to date — %d files" % len(local)); continue
+        for key, path, why in stale:
+            print("  replacing %-46s (%s, %d B)" % (key[:46], why, path.stat().st_size))
+            if key in entries:
+                api(session, base, "DELETE", "/api/records/%s/draft/files/%s" % (rid, key))
+            api(session, base, "POST", "/api/records/%s/draft/files" % rid, json=[{"key": key}])
+            api(session, base, "PUT", "/api/records/%s/draft/files/%s/content" % (rid, key),
+                data=path.read_bytes(), headers={"Content-Type": "application/octet-stream"})
+            api(session, base, "POST", "/api/records/%s/draft/files/%s/commit" % (rid, key))
+            total += 1
+    print("\n%d file(s) replaced. Nothing was published." % total)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -371,6 +417,8 @@ def main():
     ap.add_argument("--only", metavar="SLUG", help="deposit a single volume")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the payloads and send nothing")
+    ap.add_argument("--refresh", action="store_true",
+                    help="re-upload only the files of an existing draft whose bytes changed")
     ap.add_argument("--verify", action="store_true",
                     help="read back the drafts already created and check their metadata")
     ap.add_argument("--check", action="store_true",
@@ -387,7 +435,7 @@ def main():
         if not deps:
             raise SystemExit("no deposition with slug %r" % a.only)
 
-    if not (a.check or a.verify) and not defaults.get("license") and not all(d.get("license") for d in deps):
+    if not (a.check or a.verify or a.refresh) and not defaults.get("license") and not all(d.get("license") for d in deps):
         if not a.allow_unset_license:
             raise SystemExit(
                 "licence is null in tools/zenodo_metadata.yaml.\n"
@@ -410,6 +458,9 @@ def main():
         return
     if a.verify:
         verify(session, base, a.production)
+        return
+    if a.refresh:
+        refresh(session, base, cfg, defaults, a.production)
         return
 
     print("target: %s   mode: DRAFTS ONLY (this script cannot publish)" % base)
