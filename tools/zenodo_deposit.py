@@ -348,23 +348,50 @@ def verify(session, base, production):
             problems.append((row["slug"], str(e))); continue
         if not r.ok:
             problems.append((row["slug"], "cannot read draft: HTTP %d" % r.status_code)); continue
-        d = r.json(); md = d.get("metadata", {})
+        d = r.json()
+        md = d.get("metadata", {}) or {}
         print("\n=== %s  (%s) ===" % (row["slug"], row["draft_url"]))
         print("  title    : %s" % md.get("title"))
-        for c in md.get("creators", []):
-            po = c.get("person_or_org", {})
-            print("  creator  : %r  type=%s" % (po.get("name"), po.get("type")))
-            if po.get("type") != "organizational":
-                problems.append((row["slug"], "creator type is %r, not organizational" % po.get("type")))
-            if po.get("family_name") or po.get("given_name"):
-                problems.append((row["slug"], "creator was SPLIT into family/given"))
-            if po.get("name") != "J.K. \u2014 XXVI":
-                problems.append((row["slug"], "creator name is %r" % po.get("name")))
-        print("  licence  : %s" % [x.get("id") for x in md.get("rights", [])])
+
+        # Zenodo accepts the InvenioRDM shape on write but may hand back either that or
+        # the legacy deposit shape on read. Handle both rather than guess.
+        for c in md.get("creators", []) or []:
+            po = c.get("person_or_org") or c
+            name = po.get("name")
+            ctype = po.get("type", "(legacy: no type field)")
+            split = po.get("family_name") or po.get("given_name")
+            print("  creator  : %r  type=%s%s"
+                  % (name, ctype, "  SPLIT into family/given!" if split else ""))
+            if split:
+                problems.append((row["slug"], "creator SPLIT: family=%r given=%r"
+                                 % (po.get("family_name"), po.get("given_name"))))
+            if name and name != "J.K. \u2014 XXVI":
+                problems.append((row["slug"], "creator name is %r" % name))
+            if not name:
+                print("    raw creator object: %s" % json.dumps(c, ensure_ascii=False)[:200])
+                problems.append((row["slug"], "creator name not readable from response"))
+
+        rights = md.get("rights") or md.get("license")
+        print("  licence  : %s" % rights)
+        if not rights:
+            problems.append((row["slug"], "no licence on the draft"))
         print("  version  : %s   date: %s" % (md.get("version"), md.get("publication_date")))
-        for ri in md.get("related_identifiers", []):
-            print("  related  : %-14s %s" % (ri.get("relation_type", {}).get("id"), ri.get("identifier")))
-        ents = (d.get("files", {}) or {}).get("entries", {}) or {}
+        for ri in md.get("related_identifiers", []) or []:
+            rel = ri.get("relation_type")
+            rel = rel.get("id") if isinstance(rel, dict) else (rel or ri.get("relation"))
+            print("  related  : %-14s %s" % (rel, ri.get("identifier")))
+
+        # files: InvenioRDM gives {"entries": {...}}, legacy gives a list
+        raw = d.get("files")
+        ents = {}
+        if isinstance(raw, dict):
+            ents = raw.get("entries") or {}
+        elif isinstance(raw, list):
+            for f in raw:
+                key = f.get("key") or f.get("filename")
+                if key:
+                    ents[key] = {"size": f.get("size") or f.get("filesize"),
+                                 "checksum": f.get("checksum")}
         print("  files    : %d" % len(ents))
         for key, ent in sorted(ents.items()):
             local = None
@@ -372,10 +399,12 @@ def verify(session, base, production):
                 if cand.exists():
                     local = cand; break
             chk = (ent.get("checksum") or "")
+            if chk.startswith("md5:"):
+                chk = chk[4:]
             mark = "?"
-            if local and chk.startswith("md5:"):
+            if local and chk:
                 import hashlib as _h
-                mark = "ok" if _h.md5(local.read_bytes()).hexdigest() == chk[4:] else "MISMATCH"
+                mark = "ok" if _h.md5(local.read_bytes()).hexdigest() == chk else "MISMATCH"
                 if mark == "MISMATCH":
                     problems.append((row["slug"], "file %s differs from local" % key))
             print("    %-58s %10s B  %s" % (key[:58], ent.get("size"), mark))
