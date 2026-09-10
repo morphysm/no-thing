@@ -381,17 +381,7 @@ def verify(session, base, production):
             rel = rel.get("id") if isinstance(rel, dict) else (rel or ri.get("relation"))
             print("  related  : %-14s %s" % (rel, ri.get("identifier")))
 
-        # files: InvenioRDM gives {"entries": {...}}, legacy gives a list
-        raw = d.get("files")
-        ents = {}
-        if isinstance(raw, dict):
-            ents = raw.get("entries") or {}
-        elif isinstance(raw, list):
-            for f in raw:
-                key = f.get("key") or f.get("filename")
-                if key:
-                    ents[key] = {"size": f.get("size") or f.get("filesize"),
-                                 "checksum": f.get("checksum")}
+        ents = draft_files(d)
         print("  files    : %d" % len(ents))
         for key, ent in sorted(ents.items()):
             local = None
@@ -402,9 +392,7 @@ def verify(session, base, production):
             for cand in (REPO / "corpus" / key, REPO / key, CACHE / key, pdf_root / key):
                 if cand.exists():
                     local = cand; break
-            chk = (ent.get("checksum") or "")
-            if chk.startswith("md5:"):
-                chk = chk[4:]
+            chk = ent.get("checksum") or ""
             mark = "?"
             if local is None:
                 problems.append((row["slug"], "no local copy of %s to verify against" % key))
@@ -417,6 +405,28 @@ def verify(session, base, production):
     print("\n" + ("PROBLEMS:" if problems else "All four drafts check out. Nothing is published."))
     for s, m in problems:
         print("  %-28s %s" % (s, m))
+
+
+def draft_files(payload):
+    """Normalise a draft's file list. Zenodo returns the InvenioRDM shape
+    {"entries": {key: {...}}} or the legacy list [{"filename":..., "checksum":...}]
+    depending on the record; accept either and return {key: {size, checksum}}."""
+    raw = payload.get("files")
+    out = {}
+    if isinstance(raw, dict):
+        for key, ent in (raw.get("entries") or {}).items():
+            chk = ent.get("checksum") or ""
+            out[key] = {"size": ent.get("size"),
+                        "checksum": chk[4:] if chk.startswith("md5:") else chk}
+    elif isinstance(raw, list):
+        for f in raw:
+            key = f.get("key") or f.get("filename")
+            if not key:
+                continue
+            chk = f.get("checksum") or ""
+            out[key] = {"size": f.get("size") or f.get("filesize"),
+                        "checksum": chk[4:] if chk.startswith("md5:") else chk}
+    return out
 
 
 def refresh(session, base, cfg, defaults, production):
@@ -441,14 +451,14 @@ def refresh(session, base, cfg, defaults, production):
                  [(REPO / x, pathlib.Path(x).name, "") for x in dep["files"]]
                  + expand_from_manifest(dep) + prepare_pdfs(cfg, dep)}
         r = api(session, base, "GET", "/api/records/%s/draft" % rid)
-        entries = (r.json().get("files", {}) or {}).get("entries", {}) or {}
+        entries = draft_files(r.json())
         stale = []
         for key, path in local.items():
             ent = entries.get(key)
             if ent is None:
                 stale.append((key, path, "missing from draft")); continue
             chk = ent.get("checksum") or ""
-            if chk.startswith("md5:") and _h.md5(path.read_bytes()).hexdigest() != chk[4:]:
+            if chk and _h.md5(path.read_bytes()).hexdigest() != chk:
                 stale.append((key, path, "bytes differ"))
         print("\n=== %s (%s) ===" % (dep["slug"], row["draft_url"]))
         if not stale:
