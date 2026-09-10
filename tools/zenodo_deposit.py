@@ -315,6 +315,52 @@ def deposit(session, base, cfg, defaults, dep, dry_run):
     return {"slug": dep["slug"], "record_id": rid, "draft_url": draft_url, "doi": doi}
 
 
+def verify(session, base, production):
+    """Read back every draft and check it says what we meant it to say."""
+    f = REPO / "tools" / ("zenodo_drafts_%s.json" % ("production" if production else "sandbox"))
+    if not f.exists():
+        raise SystemExit("no draft summary at %s — run a deposit first" % f)
+    problems = []
+    for row in json.loads(f.read_text(encoding="utf-8")):
+        r = session.get(base + "/api/records/%s/draft" % row["record_id"], timeout=120)
+        if not r.ok:
+            problems.append((row["slug"], "cannot read draft: HTTP %d" % r.status_code)); continue
+        d = r.json(); md = d.get("metadata", {})
+        print("\n=== %s  (%s) ===" % (row["slug"], row["draft_url"]))
+        print("  title    : %s" % md.get("title"))
+        for c in md.get("creators", []):
+            po = c.get("person_or_org", {})
+            print("  creator  : %r  type=%s" % (po.get("name"), po.get("type")))
+            if po.get("type") != "organizational":
+                problems.append((row["slug"], "creator type is %r, not organizational" % po.get("type")))
+            if po.get("family_name") or po.get("given_name"):
+                problems.append((row["slug"], "creator was SPLIT into family/given"))
+            if po.get("name") != "J.K. \u2014 XXVI":
+                problems.append((row["slug"], "creator name is %r" % po.get("name")))
+        print("  licence  : %s" % [x.get("id") for x in md.get("rights", [])])
+        print("  version  : %s   date: %s" % (md.get("version"), md.get("publication_date")))
+        for ri in md.get("related_identifiers", []):
+            print("  related  : %-14s %s" % (ri.get("relation_type", {}).get("id"), ri.get("identifier")))
+        ents = (d.get("files", {}) or {}).get("entries", {}) or {}
+        print("  files    : %d" % len(ents))
+        for key, ent in sorted(ents.items()):
+            local = None
+            for cand in (REPO / "corpus" / key, REPO / key, CACHE / key):
+                if cand.exists():
+                    local = cand; break
+            chk = (ent.get("checksum") or "")
+            mark = "?"
+            if local and chk.startswith("md5:"):
+                import hashlib as _h
+                mark = "ok" if _h.md5(local.read_bytes()).hexdigest() == chk[4:] else "MISMATCH"
+                if mark == "MISMATCH":
+                    problems.append((row["slug"], "file %s differs from local" % key))
+            print("    %-58s %10s B  %s" % (key[:58], ent.get("size"), mark))
+    print("\n" + ("PROBLEMS:" if problems else "All four drafts check out. Nothing is published."))
+    for s, m in problems:
+        print("  %-28s %s" % (s, m))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -325,6 +371,8 @@ def main():
     ap.add_argument("--only", metavar="SLUG", help="deposit a single volume")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the payloads and send nothing")
+    ap.add_argument("--verify", action="store_true",
+                    help="read back the drafts already created and check their metadata")
     ap.add_argument("--check", action="store_true",
                     help="preflight: report what the token is allowed to do, then clean up")
     ap.add_argument("--allow-unset-license", action="store_true",
@@ -339,7 +387,7 @@ def main():
         if not deps:
             raise SystemExit("no deposition with slug %r" % a.only)
 
-    if not a.check and not defaults.get("license") and not all(d.get("license") for d in deps):
+    if not (a.check or a.verify) and not defaults.get("license") and not all(d.get("license") for d in deps):
         if not a.allow_unset_license:
             raise SystemExit(
                 "licence is null in tools/zenodo_metadata.yaml.\n"
@@ -359,6 +407,9 @@ def main():
 
     if a.check:
         check(session, base)
+        return
+    if a.verify:
+        verify(session, base, a.production)
         return
 
     print("target: %s   mode: DRAFTS ONLY (this script cannot publish)" % base)
