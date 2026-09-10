@@ -26,7 +26,7 @@ SUBJECTS = ["Morphysm", "anti-ontology", "self-model", "philosophy of mind",
             "artificial intelligence"]
 
 ITEMS = [
-    dict(slug="infernal-codex-of-cain", ident="morphysm-infernal-codex-of-cain-v1",
+    dict(slug="infernal-codex-of-cain", ident="morphysm-infernal-codex-of-cain",
          title="The Infernal Codex of Cain: Secrets of the Morning Star",
          date="2026-02-04",
          pdf="The Infernal Codex of Cain - Secrets of the Morning Star.pdf",
@@ -34,17 +34,17 @@ ITEMS = [
               "integrated system, preserved unaltered. The nine Edges of Conduct are "
               "restored from the released edition; every checksum is recorded in "
               "manifest.json."),
-    dict(slug="black-book-of-morphysm", ident="morphysm-black-book-of-morphysm-v1",
+    dict(slug="black-book-of-morphysm", ident="morphysm-black-book-of-morphysm",
          title="The Black Book of Morphysm (Extended, AI Integration)",
          date="2026-02-27",
          pdf="THE BLACK BOOK OF MORPHYSM EXTENDED VERSION 2026.pdf",
          desc="Volume II of the Morphystic Trilogy, extended AI-integration edition."),
-    dict(slug="burning-book-of-morphysm", ident="morphysm-burning-book-of-morphysm-v1",
+    dict(slug="burning-book-of-morphysm", ident="morphysm-burning-book-of-morphysm",
          title="The Burning Book of Morphysm 2 (AI)",
          date="2026-01-25",
          pdf="THE BURNING BOOK OF MORPHYSM.pdf",
          desc="Volume III of the Morphystic Trilogy."),
-    dict(slug=None, ident="morphysm-corpus-v1",
+    dict(slug=None, ident="morphysm-corpus",
          title="The Morphysm Corpus",
          date="2026-09-10", pdf=None,
          desc="The Morphysm corpus as a single body: the meta-doctrine, the doctrine "
