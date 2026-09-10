@@ -61,6 +61,7 @@ def build_metadata(defaults, dep):
         "resource_type": {"id": resource_type_id(defaults)},
         "creators": [{"person_or_org": {"type": "organizational",
                                         "name": creator["name"]}}],
+        "publisher": dep.get("publisher", defaults.get("publisher", "Zenodo")),
         "description": " ".join(dep["description"].split()),
         "subjects": [{"subject": k} for k in defaults.get("keywords", [])],
     }
@@ -475,6 +476,30 @@ def refresh(session, base, cfg, defaults, production):
     print("\n%d file(s) replaced. Nothing was published." % total)
 
 
+def update_metadata(session, base, cfg, defaults, production):
+    """Re-send metadata to existing drafts. Zenodo refuses to publish without a
+    publisher field, which the original payload omitted; this repairs all four drafts
+    identically rather than hand-editing each in the web form."""
+    f = REPO / "tools" / ("zenodo_drafts_%s.json" % ("production" if production else "sandbox"))
+    if not f.exists():
+        raise SystemExit("no draft summary at %s" % f)
+    rows = {r["slug"]: r for r in json.loads(f.read_text(encoding="utf-8"))}
+    for dep in cfg["depositions"]:
+        row = rows.get(dep["slug"])
+        if not row:
+            continue
+        rid = row["record_id"]
+        cur = api(session, base, "GET", "/api/records/%s/draft" % rid).json()
+        md = build_metadata(defaults, dep)
+        body = {"access": cur.get("access", {"record": "public", "files": "public"}),
+                "files": {"enabled": True},
+                "metadata": md}
+        api(session, base, "PUT", "/api/records/%s/draft" % rid, json=body)
+        print("  %-28s publisher=%r  updated  %s"
+              % (dep["slug"], md["publisher"], row["draft_url"]))
+    print("\nMetadata updated on all drafts. Nothing was published.")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -485,6 +510,8 @@ def main():
     ap.add_argument("--only", metavar="SLUG", help="deposit a single volume")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the payloads and send nothing")
+    ap.add_argument("--update-metadata", action="store_true",
+                    help="re-send metadata to existing drafts (e.g. after adding a field)")
     ap.add_argument("--refresh", action="store_true",
                     help="re-upload only the files of an existing draft whose bytes changed")
     ap.add_argument("--verify", action="store_true",
@@ -503,7 +530,7 @@ def main():
         if not deps:
             raise SystemExit("no deposition with slug %r" % a.only)
 
-    if not (a.check or a.verify or a.refresh) and not defaults.get("license") and not all(d.get("license") for d in deps):
+    if not (a.check or a.verify or a.refresh or a.update_metadata) and not defaults.get("license") and not all(d.get("license") for d in deps):
         if not a.allow_unset_license:
             raise SystemExit(
                 "licence is null in tools/zenodo_metadata.yaml.\n"
@@ -532,6 +559,9 @@ def main():
         return
     if a.refresh:
         refresh(session, base, cfg, defaults, a.production)
+        return
+    if a.update_metadata:
+        update_metadata(session, base, cfg, defaults, a.production)
         return
 
     print("target: %s   mode: DRAFTS ONLY (this script cannot publish)" % base)

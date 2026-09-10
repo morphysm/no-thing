@@ -19,6 +19,9 @@ defaults:
   creator:
     type: organizational
     name: "J.K. — XXVI"
+  # Required by Zenodo for DOI registration. The repository making the deposit public
+  # is the publisher; authorship is carried by the creator field, not this one.
+  publisher: Zenodo
   access_right: open
   # Author-ruled 2026-09-10. The three released volumes are Ko-fi products, so they
   # carry NonCommercial as well as NoDerivatives. The rest of the corpus is
