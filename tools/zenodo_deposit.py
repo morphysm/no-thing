@@ -500,6 +500,38 @@ def update_metadata(session, base, cfg, defaults, production):
     print("\nMetadata updated on all drafts. Nothing was published.")
 
 
+def list_mine(session, base):
+    """Ask Zenodo what this account actually owns, with DOIs and publish state.
+
+    Searching the public index is unreliable right after publishing, and a legacy
+    deposit's id is not the published record's id, so guessing URLs from outside does
+    not work. This asks authoritatively."""
+    for path in ("/api/deposit/depositions?size=50&sort=mostrecent",
+                 "/api/user/records?size=50&sort=newest"):
+        try:
+            r = api(session, base, "GET", path)
+        except SystemExit as e:
+            print("  %s -> %s" % (path, str(e).splitlines()[0])); continue
+        data = r.json()
+        items = data if isinstance(data, list) else data.get("hits", {}).get("hits", [])
+        print("\n=== %s — %d item(s) ===" % (path.split("?")[0], len(items)))
+        for d in items:
+            md = d.get("metadata", {}) or {}
+            title = (md.get("title") or d.get("title") or "")[:52]
+            doi = (d.get("doi") or (d.get("pids", {}).get("doi", {}) or {}).get("identifier"))
+            concept = (d.get("conceptdoi")
+                       or ((d.get("parent", {}) or {}).get("pids", {}) or {})
+                       .get("doi", {}).get("identifier"))
+            state = d.get("state") or ("published" if d.get("is_published") else "draft")
+            print("  id=%-10s rec=%-10s %-10s" % (d.get("id"), d.get("record_id") or "-", state))
+            print("     title  : %s" % title)
+            print("     doi    : %s" % doi)
+            print("     concept: %s" % concept)
+            if d.get("links", {}).get("record_html") or d.get("links", {}).get("self_html"):
+                print("     url    : %s" % (d["links"].get("record_html")
+                                            or d["links"].get("self_html")))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -510,6 +542,8 @@ def main():
     ap.add_argument("--only", metavar="SLUG", help="deposit a single volume")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the payloads and send nothing")
+    ap.add_argument("--list", action="store_true", dest="list_mine",
+                    help="list the depositions/records this account owns, with DOIs")
     ap.add_argument("--update-metadata", action="store_true",
                     help="re-send metadata to existing drafts (e.g. after adding a field)")
     ap.add_argument("--refresh", action="store_true",
@@ -530,7 +564,7 @@ def main():
         if not deps:
             raise SystemExit("no deposition with slug %r" % a.only)
 
-    if not (a.check or a.verify or a.refresh or a.update_metadata) and not defaults.get("license") and not all(d.get("license") for d in deps):
+    if not (a.check or a.verify or a.refresh or a.update_metadata or a.list_mine) and not defaults.get("license") and not all(d.get("license") for d in deps):
         if not a.allow_unset_license:
             raise SystemExit(
                 "licence is null in tools/zenodo_metadata.yaml.\n"
@@ -559,6 +593,9 @@ def main():
         return
     if a.refresh:
         refresh(session, base, cfg, defaults, a.production)
+        return
+    if a.list_mine:
+        list_mine(session, base)
         return
     if a.update_metadata:
         update_metadata(session, base, cfg, defaults, a.production)
