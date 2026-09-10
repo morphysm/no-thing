@@ -395,13 +395,19 @@ def verify(session, base, production):
         print("  files    : %d" % len(ents))
         for key, ent in sorted(ents.items()):
             local = None
-            for cand in (REPO / "corpus" / key, REPO / key, CACHE / key):
+            pdf_root = pathlib.Path(os.environ.get(
+                "MORPHYSM_TRILOGY_PDFS",
+                "/home/kadaver/morphysm-26/files-to-be-EXTRACTED-new-window-11.2026/"
+                "THE MORPHYSTIC TRILOGY — PDFS"))
+            for cand in (REPO / "corpus" / key, REPO / key, CACHE / key, pdf_root / key):
                 if cand.exists():
                     local = cand; break
             chk = (ent.get("checksum") or "")
             if chk.startswith("md5:"):
                 chk = chk[4:]
             mark = "?"
+            if local is None:
+                problems.append((row["slug"], "no local copy of %s to verify against" % key))
             if local and chk:
                 import hashlib as _h
                 mark = "ok" if _h.md5(local.read_bytes()).hexdigest() == chk else "MISMATCH"
