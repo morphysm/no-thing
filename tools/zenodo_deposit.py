@@ -544,6 +544,31 @@ def update_metadata(session, base, cfg, defaults, production):
     print("\nMetadata updated on all drafts. Nothing was published.")
 
 
+def add_to_community(session, base, slug, production):
+    """Submit the published records to a community.
+
+    This is a community-inclusion request, not a republish: it does not touch the
+    publish action. As the community owner the request is normally auto-accepted; where
+    it is not, it lands as a pending review for you to approve on the community page."""
+    c = api(session, base, "GET", "/api/communities/%s" % slug).json()
+    cid = c.get("id")
+    print("community: %s  (%s)\n" % (c.get("metadata", {}).get("title"), cid))
+    f = REPO / "tools" / ("zenodo_drafts_%s.json" % ("production" if production else "sandbox"))
+    for row in json.loads(f.read_text(encoding="utf-8")):
+        rid = row["record_id"]
+        r = session.post("%s/api/records/%s/communities" % (base, rid),
+                         json={"communities": [{"id": cid}]}, timeout=120)
+        if r.ok:
+            body = r.json()
+            done = body.get("accepted") or []
+            pend = body.get("processed") or body.get("errors") or []
+            print("  %-28s submitted%s" % (row["slug"],
+                  "  (accepted)" if done else "  (pending review)" if pend else ""))
+        else:
+            print("  %-28s HTTP %d  %s" % (row["slug"], r.status_code, r.text[:160]))
+    print("\nCheck https://zenodo.org/communities/%s" % slug)
+
+
 def list_mine(session, base):
     """Ask Zenodo what this account actually owns, with DOIs and publish state.
 
@@ -586,6 +611,8 @@ def main():
     ap.add_argument("--only", metavar="SLUG", help="deposit a single volume")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the payloads and send nothing")
+    ap.add_argument("--add-to-community", metavar="SLUG",
+                    help="submit the published records to a Zenodo community")
     ap.add_argument("--fix-publisher", action="store_true",
                     help="set the publisher on legacy depositions so Zenodo will publish")
     ap.add_argument("--list", action="store_true", dest="list_mine",
@@ -611,7 +638,7 @@ def main():
             raise SystemExit("no deposition with slug %r" % a.only)
 
     if not (a.check or a.verify or a.refresh or a.update_metadata or a.list_mine
-            or a.fix_publisher) and not defaults.get("license") and not all(d.get("license") for d in deps):
+            or a.fix_publisher or a.add_to_community) and not defaults.get("license") and not all(d.get("license") for d in deps):
         if not a.allow_unset_license:
             raise SystemExit(
                 "licence is null in tools/zenodo_metadata.yaml.\n"
@@ -640,6 +667,9 @@ def main():
         return
     if a.refresh:
         refresh(session, base, cfg, defaults, a.production)
+        return
+    if a.add_to_community:
+        add_to_community(session, base, a.add_to_community, a.production)
         return
     if a.fix_publisher:
         fix_publisher(session, base, cfg, a.production)
