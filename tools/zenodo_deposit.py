@@ -353,7 +353,9 @@ def verify(session, base, production):
         md = d.get("metadata", {}) or {}
         print("\n=== %s  (%s) ===" % (row["slug"], row["draft_url"]))
         print("  title    : %s" % md.get("title"))
-        print("  publisher: %r" % md.get("publisher"))
+        pub = md.get("publisher") or md.get("imprint_publisher")
+        print("  publisher: %r%s" % (pub, "  (imprint_publisher)"
+                                     if not md.get("publisher") and pub else ""))
         print("  state    : %s" % (d.get("state") or
                                    ("published" if d.get("is_published") else "draft")))
         errs = d.get("errors") or []
@@ -365,7 +367,7 @@ def verify(session, base, production):
                 else:
                     print("    %s" % e)
             problems.append((row["slug"], "%d validation error(s) block publishing" % len(errs)))
-        if not md.get("publisher"):
+        if not pub:
             problems.append((row["slug"], "publisher missing — Zenodo blocks DOI registration"))
 
         # Zenodo accepts the InvenioRDM shape on write but may hand back either that or
