@@ -61,7 +61,7 @@ def build_metadata(defaults, dep):
         "resource_type": {"id": resource_type_id(defaults)},
         "creators": [{"person_or_org": {"type": "organizational",
                                         "name": creator["name"]}}],
-        "publisher": dep.get("publisher", defaults.get("publisher", "Zenodo")),
+        "publisher": dep.get("publisher", defaults.get("publisher", "Morphysm")),
         "description": " ".join(dep["description"].split()),
         "subjects": [{"subject": k} for k in defaults.get("keywords", [])],
     }
@@ -507,8 +507,9 @@ def fix_publisher(session, base, cfg, production):
         cur = api(session, base, "GET", "/api/deposit/depositions/%s" % rid).json()
         md = dict(cur.get("metadata") or {})
         before = (md.get("imprint_publisher"), md.get("publisher"))
-        md["imprint_publisher"] = "Zenodo"
-        md["publisher"] = "Zenodo"
+        pub = cfg.get("defaults", {}).get("publisher", "Morphysm")
+        md["imprint_publisher"] = pub
+        md["publisher"] = pub
         api(session, base, "PUT", "/api/deposit/depositions/%s" % rid,
             json={"metadata": md})
         back = api(session, base, "GET", "/api/deposit/depositions/%s" % rid).json()

@@ -19,9 +19,10 @@ defaults:
   creator:
     type: organizational
     name: "J.K. — XXVI"
-  # Required by Zenodo for DOI registration. The repository making the deposit public
-  # is the publisher; authorship is carried by the creator field, not this one.
-  publisher: Zenodo
+  # Required by Zenodo for DOI registration, and it renders in every citation.
+  # Morphysm published these; Zenodo only hosts them. Authorship stays in the creator
+  # field — this names the source, not a person.
+  publisher: Morphysm
   access_right: open
   # Author-ruled 2026-09-10. The three released volumes are Ko-fi products, so they
   # carry NonCommercial as well as NoDerivatives. The rest of the corpus is
