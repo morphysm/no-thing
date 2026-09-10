@@ -490,6 +490,33 @@ def refresh(session, base, cfg, defaults, production):
     print("\n%d file(s) replaced. Nothing was published." % total)
 
 
+def fix_publisher(session, base, cfg, production):
+    """Set the publisher on legacy depositions, read-modify-write.
+
+    These records live in Zenodo's legacy deposit system: state is 'unsubmitted', files
+    come back as a list, creators carry no type wrapper. Writing metadata.publisher via
+    the RDM draft endpoint reports success but does not persist there. Legacy books
+    carry the publisher as imprint_publisher, so set that, and metadata.publisher
+    alongside it, without touching any other field."""
+    f = REPO / "tools" / ("zenodo_drafts_%s.json" % ("production" if production else "sandbox"))
+    rows = json.loads(f.read_text(encoding="utf-8"))
+    for row in rows:
+        rid = row["record_id"]
+        cur = api(session, base, "GET", "/api/deposit/depositions/%s" % rid).json()
+        md = dict(cur.get("metadata") or {})
+        before = (md.get("imprint_publisher"), md.get("publisher"))
+        md["imprint_publisher"] = "Zenodo"
+        md["publisher"] = "Zenodo"
+        api(session, base, "PUT", "/api/deposit/depositions/%s" % rid,
+            json={"metadata": md})
+        back = api(session, base, "GET", "/api/deposit/depositions/%s" % rid).json()
+        bmd = back.get("metadata") or {}
+        got = bmd.get("imprint_publisher") or bmd.get("publisher")
+        print("  %-28s was=%s  now=%r  %s"
+              % (row["slug"], before, got, "OK" if got else "STILL NOT SET"))
+    print("\nNothing was published.")
+
+
 def update_metadata(session, base, cfg, defaults, production):
     """Re-send metadata to existing drafts. Zenodo refuses to publish without a
     publisher field, which the original payload omitted; this repairs all four drafts
@@ -556,6 +583,8 @@ def main():
     ap.add_argument("--only", metavar="SLUG", help="deposit a single volume")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the payloads and send nothing")
+    ap.add_argument("--fix-publisher", action="store_true",
+                    help="set the publisher on legacy depositions so Zenodo will publish")
     ap.add_argument("--list", action="store_true", dest="list_mine",
                     help="list the depositions/records this account owns, with DOIs")
     ap.add_argument("--update-metadata", action="store_true",
@@ -578,7 +607,8 @@ def main():
         if not deps:
             raise SystemExit("no deposition with slug %r" % a.only)
 
-    if not (a.check or a.verify or a.refresh or a.update_metadata or a.list_mine) and not defaults.get("license") and not all(d.get("license") for d in deps):
+    if not (a.check or a.verify or a.refresh or a.update_metadata or a.list_mine
+            or a.fix_publisher) and not defaults.get("license") and not all(d.get("license") for d in deps):
         if not a.allow_unset_license:
             raise SystemExit(
                 "licence is null in tools/zenodo_metadata.yaml.\n"
@@ -607,6 +637,9 @@ def main():
         return
     if a.refresh:
         refresh(session, base, cfg, defaults, a.production)
+        return
+    if a.fix_publisher:
+        fix_publisher(session, base, cfg, a.production)
         return
     if a.list_mine:
         list_mine(session, base)
