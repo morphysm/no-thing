@@ -135,9 +135,16 @@ def check(session, base):
     r = session.get(base + "/api/user/records", timeout=60)
     print("  read  (GET /api/user/records)      HTTP %d  %s"
           % (r.status_code, "ok" if r.ok else "FAILED"))
-    if r.status_code == 401:
-        raise SystemExit("\nToken rejected. Check it is a %s token."
-                         % ("sandbox" if base == SANDBOX else "production"))
+    if r.status_code in (401, 403):
+        raise SystemExit(
+            "\nThe token is not accepted by %s at all — this fails on the very first\n"
+            "read, before any deposit is attempted. In order of likelihood:\n"
+            "  1. the token was created on the OTHER site. %s tokens do not work here.\n"
+            "  2. the token is missing scopes. Grant deposit:write AND deposit:actions.\n"
+            "  3. the paste is damaged. Create a new token and copy it immediately.\n"
+            "Zenodo answers 403 rather than 401 for an unrecognised token, so a 403 here\n"
+            "does not necessarily mean your scopes are wrong."
+            % (base, "Production" if base == SANDBOX else "Sandbox"))
 
     probe = {"access": {"record": "public", "files": "public"},
              "files": {"enabled": True},
