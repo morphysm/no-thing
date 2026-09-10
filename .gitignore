@@ -9,3 +9,6 @@ __pycache__/
 
 # Local agent/editor settings
 .claude/settings.local.json
+
+# Draft summaries written by zenodo_deposit.py (record ids, not secrets)
+tools/zenodo_drafts_*.json

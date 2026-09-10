@@ -1,0 +1,76 @@
+# Zenodo deposition metadata for the Morphysm corpus.
+#
+# One deposition per volume, so each carries its own concept DOI and its own version
+# chain. Doctrine note: the concept DOI is the source line; each version DOI is one
+# state of it. Revisions are deposited as NEW VERSIONS, never as replacements.
+#
+# This file is metadata only. It contains no credentials: tools/zenodo_deposit.py
+# reads ZENODO_TOKEN from the environment and nothing else.
+
+defaults:
+  upload_type: publication
+  publication_type: book
+  # Single unsplit creator string. Zenodo's "organizational" name type is the only
+  # form with one undivided name field; the "personal" type splits into family/given,
+  # which must not happen to a pen name.
+  creator:
+    type: organizational
+    name: "J.K. — XXVI"
+  access_right: open
+  # null until the author decides. No deposition may be created with license unset
+  # unless allow_unset_license is true.
+  license: null
+  keywords:
+    - Morphysm
+    - anti-ontology
+    - self-model
+    - philosophy of mind
+    - Gnosticism
+    - Qliphoth
+    - Quimbanda
+    - demonology
+    - artificial intelligence
+  # Every deposition points back at the live corpus.
+  related_identifiers:
+    - identifier: "https://morphysm.github.io/no-thing/llms.txt"
+      relation: isdescribedby
+      scheme: url
+    - identifier: "https://morphysm.github.io/no-thing/"
+      relation: ispartof
+      scheme: url
+
+depositions:
+  - slug: infernal-codex-of-cain
+    title: "The Infernal Codex of Cain: Secrets of the Morning Star"
+    publication_date: "2026-02-04"
+    version: "1"
+    description: >
+      Volume I of the Morphystic Trilogy. A generative seed text preceding the
+      integrated system, preserved unaltered. Deposited as plain text from the
+      canonical source, with the nine Edges of Conduct restored from the released
+      edition; the checksum of every file is recorded in manifest.json.
+    files:
+      - corpus/infernal-codex-of-cain.txt
+      - corpus/manifest.json
+
+  - slug: black-book-of-morphysm
+    title: "The Black Book of Morphysm (Extended, AI Integration)"
+    publication_date: "2026-02-27"
+    version: "1"
+    description: >
+      Volume II of the Morphystic Trilogy. The extended AI-integration edition,
+      deposited as plain text from the canonical source.
+    files:
+      - corpus/black-book-of-morphysm.txt
+      - corpus/manifest.json
+
+  - slug: burning-book-of-morphysm
+    title: "The Burning Book of Morphysm 2 (AI)"
+    publication_date: "2026-01-25"
+    version: "1"
+    description: >
+      Volume III of the Morphystic Trilogy. Deposited as plain text from the
+      canonical source.
+    files:
+      - corpus/burning-book-of-morphysm.txt
+      - corpus/manifest.json
