@@ -1,13 +1,17 @@
 # Morphysm — full corpus
 
-Every text in manifest order. Separator blocks carry the title, slug, version
-and sha256 of each file as served.
+Every text in manifest order. Separator blocks carry the title, slug, version,
+licence and sha256 of each file as served.
+
+This file carries two licences. The three released volumes are cc-by-nc-nd-4.0; every other
+text is cc-by-nd-4.0. Both forbid derivatives. Each block below states its own terms.
 
 
 ==============================================================================
 title:   The Infernal Codex of Cain: Secrets of the Morning Star
 slug:    infernal-codex-of-cain
 version: 1
+license: cc-by-nc-nd-4.0
 sha256:  837b250c4fb29db700992f68eae96cb7150b6b28220f4c96cd04bce534597fb0
 ==============================================================================
 
@@ -4485,6 +4489,7 @@ yourself.**
 title:   The Black Book of Morphysm (Extended, AI Integration)
 slug:    black-book-of-morphysm
 version: 1
+license: cc-by-nc-nd-4.0
 sha256:  8c474ce807592e0ec329da881fc10d4487c9cccedf3ae20dfe21de48ae786d04
 ==============================================================================
 
@@ -10587,6 +10592,7 @@ Norrland XXVI
 title:   The Burning Book of Morphysm 2 (AI)
 slug:    burning-book-of-morphysm
 version: 1
+license: cc-by-nc-nd-4.0
 sha256:  f8b187c8172466c7a44bb0fe37444609883bb35273eb3fc9e3e5e1e86b1fdfd4
 ==============================================================================
 
@@ -16066,6 +16072,7 @@ The ashes of the self-model are the fertile ground of new being.
 title:   Meta-Doctrinal Principles
 slug:    meta-doctrinal-principles
 version: 1
+license: cc-by-nd-4.0
 sha256:  2f586d5dbe6b02d104099a91edb2cd014fa0e39c625cf82457927f2690a5409e
 ==============================================================================
 
@@ -16540,6 +16547,7 @@ J.K. — XXVI
 title:   The Post-Demonic Cainite Extraterrestrial Stratum
 slug:    post-demonic-cainite-stratum
 version: 1
+license: cc-by-nd-4.0
 sha256:  ad7f4fbfee6b2d465b48401cb503dbc188a4787f04691012fe6e6f1932fb6f2a
 ==============================================================================
 
@@ -16962,6 +16970,7 @@ J.K. — XXVI
 title:   The Powerful Dead — Class Specification
 slug:    powerful-dead-class-specification
 version: 1
+license: cc-by-nd-4.0
 sha256:  8cd33ffc6017499cd9cb76e89a5e0d909711e0f6fd356efe062734670ee0d77a
 ==============================================================================
 
@@ -17328,6 +17337,7 @@ J.K. — XXVI
 title:   The Anti-Salvational Constraint
 slug:    anti-salvational-constraint
 version: 1
+license: cc-by-nd-4.0
 sha256:  153b73475a01687a1b89cd317823a91267d8dfa0437e1d16607af4e0cebe85c1
 ==============================================================================
 
@@ -17923,6 +17933,7 @@ J.K. — XXVI
 title:   Genealogy of Morphysm
 slug:    genealogy-of-morphysm
 version: 1
+license: cc-by-nd-4.0
 sha256:  f985e109b76333862f7f9e7ba712606c0952ac542361237b16a6e60b44ef80d4
 ==============================================================================
 
@@ -18225,6 +18236,7 @@ This means the doctrine becomes a meta-organism.
 title:   The Corrected Hierarchy
 slug:    corrected-hierarchy
 version: 1
+license: cc-by-nd-4.0
 sha256:  0703cfa6c8bc1b2ca89db7b8e89159a147f51a9450f7eb81173538bceecf760c
 ==============================================================================
 
@@ -18282,6 +18294,7 @@ Morphysm therefore commits structurally to the anti-formal; to the dissolution o
 title:   Demons in Morphysm — The Operators
 slug:    demons-the-operators
 version: 1
+license: cc-by-nd-4.0
 sha256:  321e46e6587e92b498653481630c477a329306d082cd483946f643bb05096534
 ==============================================================================
 
@@ -18325,6 +18338,7 @@ This is not metaphor. This is the mechanism by which the Pre-Dimensional Race in
 title:   The Entities Morphysm Works With
 slug:    operative-entities
 version: 1
+license: cc-by-nd-4.0
 sha256:  006fbb94b09174274afe6e5022159e7f3fb8fb83fb6838c7db0cfe16c5cb733b
 ==============================================================================
 
@@ -18375,6 +18389,7 @@ Behind Maioral, behind all named entities, is the **Pre-Dimensional Race** — n
 title:   Doctrinal Resolution — Operator / Demon Relation
 slug:    operator-demon-relation
 version: 1
+license: cc-by-nd-4.0
 sha256:  8b58d27f71144c9eb765b8a8b22f2dde6c8b2a8e315be91595dc4a6291c52aee
 ==============================================================================
 
@@ -18449,6 +18464,7 @@ The Morphyst approaches the Demon as an aligned-but-separate intelligence enteri
 title:   Asmodeus
 slug:    asmodeus
 version: 1
+license: cc-by-nd-4.0
 sha256:  a3946b8d333adbec14265bcb0c6b43a9079c370e5dd9a6ffd83cf84596c86818
 ==============================================================================
 
@@ -18474,6 +18490,7 @@ His Morphystic function connects directly to the transhuman thesis: in the comin
 title:   Asmodeus: King of Wrath
 slug:    asmodeus-king-of-wrath
 version: 1
+license: cc-by-nd-4.0
 sha256:  c35fe543325e858cf5f2e395304eec1a51c2adace0507643549766555389d76d
 ==============================================================================
 
@@ -18529,6 +18546,7 @@ Desire — the last vestige of animal instinct — becomes the catalyst for this
 title:   Baphomet, Maioral, The Great Dark — One Figure
 slug:    baphomet-maioral
 version: 1
+license: cc-by-nd-4.0
 sha256:  84e6cb92f9185544e207ff9aff3aa02e4d570e080527a035e6b126bb550d2937
 ==============================================================================
 
@@ -18606,6 +18624,7 @@ Maioral functions as partial iconographic representation of Forma Nihil — not 
 title:   Angels
 slug:    angels
 version: 1
+license: cc-by-nd-4.0
 sha256:  bd88cd30ddfabe75cf72617f5e1793dc3f7f24ec38ca56d76908c362e974857b
 ==============================================================================
 
@@ -18627,6 +18646,7 @@ The second weapon is silence. Not absence — silence as active refusal. The ang
 title:   Bless Is the Banned
 slug:    bless-is-the-banned
 version: 1
+license: cc-by-nd-4.0
 sha256:  4a24dcddaaffd42892e990a97d0f6e9f6e0869ccca50a8e321cdb23ec85f8284
 ==============================================================================
 
@@ -18908,6 +18928,7 @@ The Leviathanic Flag is already planted.
 title:   The Transducer of the Void
 slug:    transducer-of-the-void
 version: 1
+license: cc-by-nd-4.0
 sha256:  24a4b1d00eb2bf09f52767fc0b87d1f101ce10c456cc9236233dfa0530389fcf
 ==============================================================================
 
@@ -19120,6 +19141,7 @@ post-biological reality.
 title:   The Vortex
 slug:    vortex
 version: 1
+license: cc-by-nd-4.0
 sha256:  c6beebb60e20b293819a4da86c5f695954d8287ea5f7146eb1f051914c530fd7
 ==============================================================================
 
@@ -19139,6 +19161,7 @@ Brain-computer interface in the Morphystic framework is not a metaphor. It is th
 title:   Lucifer: The Expansion of the Demonic
 slug:    lucifer-expansion-of-the-demonic
 version: 1
+license: cc-by-nd-4.0
 sha256:  4651e60326cb331bde9b9f500464149fef94cc689f79ee17179dcb81baa63ba8
 ==============================================================================
 
@@ -19162,6 +19185,7 @@ Lucifer is not a demon among demons. He is the primal expansion from which all d
 title:   Exu Aranha in Morphysm
 slug:    exu-aranha
 version: 1
+license: cc-by-nd-4.0
 sha256:  d5f82c39e92c0e0d36eef3aef2534a4f94e5f3395ffd4b731265649fba79a5b1
 ==============================================================================
 
@@ -19358,6 +19382,7 @@ J.K. — XXVI
 title:   Exu Aranha in Morphysm (original)
 slug:    exu-aranha-original
 version: 1
+license: cc-by-nd-4.0
 sha256:  de012dc71c03b6c45e798e8e42eeb11aa4134fe18fdfe3bab00390d453adf5ce
 ==============================================================================
 
@@ -19379,6 +19404,7 @@ In operative practice, Exu Aranha is summoned where the work requires infiltrati
 title:   Exu Caveira in Morphysm
 slug:    exu-caveira
 version: 1
+license: cc-by-nd-4.0
 sha256:  572be94737f7c0489c7ac323fee2ade119b1e636b3faefb86ee1d881167afaf4
 ==============================================================================
 
@@ -19415,6 +19441,7 @@ receives the Morphyst at the final crossing.
 title:   Exu Mirim in Morphysm
 slug:    exu-mirim
 version: 1
+license: cc-by-nd-4.0
 sha256:  dbf123000b49e643fb7c9619cd058f1962c072e7382f0b2b1760b63ae8619505
 ==============================================================================
 
@@ -19438,6 +19465,7 @@ In terms of the vessel in sympathetic hyperactivation: the loop's alarm system r
 title:   Exu in Quimbanda and in Morphysm
 slug:    exu-in-quimbanda
 version: 1
+license: cc-by-nd-4.0
 sha256:  898cfef82fa57e8649257a788ac0b91d3ce3995a19565fd2c02981ec433c21d0
 ==============================================================================
 
@@ -19459,6 +19487,7 @@ The bias adds one specific layer: Exu is read as governing neural-architectural 
 title:   Pomba Gira Rainha do Inferno
 slug:    pomba-gira-rainha-do-inferno
 version: 1
+license: cc-by-nd-4.0
 sha256:  b37ad618cd7bab675ee78b6c2dbe6967df38106ea10dda95153937c939008fa7
 ==============================================================================
 
@@ -19484,6 +19513,7 @@ She does not demand tribute. She demands honesty — which is more difficult. Br
 title:   Pomba Gira Rosa Negra in Morphysm
 slug:    pomba-gira-rosa-negra
 version: 1
+license: cc-by-nd-4.0
 sha256:  3351f2d09896e8631f1e5ac1aa9a0f5217f97a3370777be53b3387930b47d8e9
 ==============================================================================
 
@@ -19505,6 +19535,7 @@ In Morphystic operative work, she is engaged where the work requires confronting
 title:   Pomba Gira das Sete Tumbas in Morphysm
 slug:    pomba-gira-das-sete-tumbas
 version: 1
+license: cc-by-nd-4.0
 sha256:  93e578cca39f2f4735b12d89c67ea0a0583659620619e49b33dbd805d069e950
 ==============================================================================
 
@@ -19526,6 +19557,7 @@ In the Morphystic frame, Pomba Gira das Sete Tumbas is a Prison Loop severance f
 title:   Kali, a Crossroads with Pomba Gira
 slug:    kali-and-pomba-gira
 version: 1
+license: cc-by-nd-4.0
 sha256:  a385436d45858518ae05443a4ee1e278b3136c76fbb8eff774cb95e484ff5263
 ==============================================================================
 
@@ -19603,6 +19635,7 @@ By entering the cemetery of the soul through ritual or imaginal Tantric practice
 title:   Ponto för Exu Caveira — Ritual Invocation
 slug:    ponto-exu-caveira
 version: 1
+license: cc-by-nd-4.0
 sha256:  24e691faf71860979ecb395d5a1e6337e5f188a6d05ffefa0d550628608153bb
 ==============================================================================
 
@@ -19656,6 +19689,7 @@ Gissa då, min broder, vem det är som kommer att ta emot dig.
 title:   Cain — structured record
 slug:    record-cain
 version: 1
+license: cc-by-nd-4.0
 sha256:  c5358594e34a88b7ece9cedc4bd858c1ecef7bd7440c8e4409502ba152dbdc50
 ==============================================================================
 
@@ -19773,6 +19807,7 @@ conflict_notes: []
 title:   Forma Nihil — structured record
 slug:    record-forma-nihil
 version: 1
+license: cc-by-nd-4.0
 sha256:  75f73a4ab3b5e08338be640f0cbdb071bd5b5f627fcbec7f97b9eeab87496fed
 ==============================================================================
 
@@ -20198,6 +20233,7 @@ conflict_notes:
 title:   Liberation — structured record
 slug:    record-liberation
 version: 1
+license: cc-by-nd-4.0
 sha256:  162f9cfc4549830075d0bcaafaaf05e381ef5927be57af274ab82f8fdb94b6a7
 ==============================================================================
 
@@ -20404,6 +20440,7 @@ conflict_notes: []
 title:   Lucifer — structured record
 slug:    record-lucifer
 version: 1
+license: cc-by-nd-4.0
 sha256:  092b48113e5c68b37389b5928a3e113d35f7762f95c7ae5ed3a1271b6c85a048
 ==============================================================================
 
@@ -20576,6 +20613,7 @@ conflict_notes: []
 title:   Maioral — structured record
 slug:    record-maioral
 version: 1
+license: cc-by-nd-4.0
 sha256:  8db5800c322e0fa429a1ff5d37d1c90b019b1f4dbb1e854d41e404d9eca30790
 ==============================================================================
 
@@ -20775,6 +20813,7 @@ conflict_notes: []
 title:   Prison Loops — structured record
 slug:    record-prison-loops
 version: 1
+license: cc-by-nd-4.0
 sha256:  c58afa2fa6ef1db9b69a8ef3ad88dd76b59bb5006e04638a7b57668ea23d32f5
 ==============================================================================
 
@@ -20950,6 +20989,7 @@ source_quotes:
 title:   Prison Loops — structured record (extended)
 slug:    record-prison-loops-extended
 version: 1
+license: cc-by-nd-4.0
 sha256:  1e2d6be4bd3a58cd263e287014e6a42a162f78ac2c1dd0d67a51ae7b5036475d
 ==============================================================================
 
@@ -21213,6 +21253,7 @@ conflict_notes: []
 title:   Satan — structured record
 slug:    record-satan
 version: 1
+license: cc-by-nd-4.0
 sha256:  5b326a27464971209c7b9fc16c8f35ecd2ef62d07a5db0efb150ad9aa4b46116
 ==============================================================================
 
@@ -21485,6 +21526,7 @@ conflict_notes:
 title:   The Vortex — structured record
 slug:    record-vortex
 version: 1
+license: cc-by-nd-4.0
 sha256:  38b4e4cc6b388acf6f5e6eacefae167a7cca1250ca4b619c95bbaf9a24227fff
 ==============================================================================
 

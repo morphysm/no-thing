@@ -328,13 +328,18 @@ def render_llms(entries):
 
 def render_llms_full(entries, corpus):
     parts = ["# Morphysm — full corpus", "",
-             "Every text in manifest order. Separator blocks carry the title, slug, version",
-             "and sha256 of each file as served.", ""]
+             "Every text in manifest order. Separator blocks carry the title, slug, version,",
+             "licence and sha256 of each file as served.", "",
+             "This file carries two licences. The three released volumes are %s; every other"
+             % LICENSE_VOLUMES,
+             "text is %s. Both forbid derivatives. Each block below states its own terms."
+             % LICENSE_DEFAULT, ""]
     for e in entries:
         parts += ["", "=" * 78,
                   "title:   %s" % e["title"],
                   "slug:    %s" % e["slug"],
                   "version: %s" % e["version"],
+                  "license: %s" % e["license"],
                   "sha256:  %s" % e["sha256"],
                   "=" * 78, "",
                   (corpus / (e["slug"] + ".txt")).read_text(encoding="utf-8").rstrip("\n")]
