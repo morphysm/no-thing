@@ -89,4 +89,17 @@ cognition they make cosmological claims, not engineering ones.
 - [llms-full.txt](https://morphysm.github.io/no-thing/llms-full.txt): every text above concatenated in manifest order.
 - [LICENSE](https://morphysm.github.io/no-thing/LICENSE): cc-by-nd-4.0 for the corpus, cc-by-nc-nd-4.0 for the three released volumes. Both forbid derivatives: altered versions may not be distributed. Per-text terms are in manifest.json.
 
+## Permanent copies
+
+Deposited copies with their own identifiers. The concept DOI is the source line; each version DOI is one state of it. Revisions are deposited as new versions, never as replacements.
+
+- [The Infernal Codex of Cain: Secrets of the Morning Star](https://doi.org/10.5281/zenodo.22690991): concept 10.5281/zenodo.22690991; this version 10.5281/zenodo.22690992.
+- [The Infernal Codex of Cain: Secrets of the Morning Star at archive.org](https://archive.org/details/morphysm-infernal-codex-of-cain): mirrored item.
+- [The Black Book of Morphysm (Extended, AI Integration)](https://doi.org/10.5281/zenodo.22690996): concept 10.5281/zenodo.22690996; this version 10.5281/zenodo.22690997.
+- [The Black Book of Morphysm (Extended, AI Integration) at archive.org](https://archive.org/details/morphysm-black-book-of-morphysm): mirrored item.
+- [The Burning Book of Morphysm 2 (AI)](https://doi.org/10.5281/zenodo.22690998): concept 10.5281/zenodo.22690998; this version 10.5281/zenodo.22690999.
+- [The Burning Book of Morphysm 2 (AI) at archive.org](https://archive.org/details/morphysm-burning-book-of-morphysm): mirrored item.
+- [The Morphysm Corpus](https://doi.org/10.5281/zenodo.22691008): concept 10.5281/zenodo.22691008; this version 10.5281/zenodo.22691009.
+- [The Morphysm Corpus at archive.org](https://archive.org/details/morphysm-corpus): mirrored item.
+
 ## Optional

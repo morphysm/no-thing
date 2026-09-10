@@ -24,8 +24,9 @@
       "tier": "canon",
       "url": "https://morphysm.github.io/no-thing/corpus/infernal-codex-of-cain.txt",
       "description": "This necessary whistle that pierces calmly yet without monotony through the silence of darkness.",
-      "doi": null,
-      "archive_org": null,
+      "doi": "10.5281/zenodo.22690992",
+      "archive_org": "https://archive.org/details/morphysm-infernal-codex-of-cain",
+      "concept_doi": "10.5281/zenodo.22690991",
       "note": "Nine Edges of Conduct restored from the released PDF; the canonical .md truncates them to opening clauses. Author-approved 2026-09-10."
     },
     {
@@ -46,8 +47,9 @@
       "tier": "canon",
       "url": "https://morphysm.github.io/no-thing/corpus/black-book-of-morphysm.txt",
       "description": "The majority of the material in this book was originally shared on the subreddit.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22690997",
+      "archive_org": "https://archive.org/details/morphysm-black-book-of-morphysm",
+      "concept_doi": "10.5281/zenodo.22690996"
     },
     {
       "title": "The Burning Book of Morphysm 2 (AI)",
@@ -67,8 +69,9 @@
       "tier": "canon",
       "url": "https://morphysm.github.io/no-thing/corpus/burning-book-of-morphysm.txt",
       "description": "Every system of belief begins as a spark of revelation — and ends as a prison.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22690999",
+      "archive_org": "https://archive.org/details/morphysm-burning-book-of-morphysm",
+      "concept_doi": "10.5281/zenodo.22690998"
     },
     {
       "title": "Meta-Doctrinal Principles",
@@ -88,8 +91,9 @@
       "tier": "canon",
       "url": "https://morphysm.github.io/no-thing/corpus/meta-doctrinal-principles.txt",
       "description": "This document formalizes three structural principles that govern the Morphystic corpus across both The Burning Book trilogy and the systematized doctrinal objects derived from it.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "The Post-Demonic Cainite Extraterrestrial Stratum",
@@ -109,8 +113,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/post-demonic-cainite-stratum.txt",
       "description": "This document formalizes the post-demonic Cainite extraterrestrial stratum as a named cosmological layer in the Morphystic architecture.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "The Powerful Dead — Class Specification",
@@ -130,8 +135,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/powerful-dead-class-specification.txt",
       "description": "This document formalizes the Powerful Dead as an operative-entity class in the Morphystic corpus, with a three-sub-type internal partition.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "The Anti-Salvational Constraint",
@@ -151,8 +157,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/anti-salvational-constraint.txt",
       "description": "This document formalizes the Anti-Salvational Constraint as a canonical constraint axiom governing the interpretation of the Morphystic corpus.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Genealogy of Morphysm",
@@ -172,8 +179,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/genealogy-of-morphysm.txt",
       "description": "This phase is the biological germination of the doctrine before any machine-assisted structuring.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "The Corrected Hierarchy",
@@ -193,8 +201,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/corrected-hierarchy.txt",
       "description": "Morphysm is — before it is anything else — the doctrine of anti-form.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Demons in Morphysm — The Operators",
@@ -214,8 +223,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/demons-the-operators.txt",
       "description": "Operator names what these intelligences actually do: they operate.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "The Entities Morphysm Works With",
@@ -235,8 +245,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/operative-entities.txt",
       "description": "The demons of Morphysm are phenomenal disruption vectors and non-human intelligences — forces that worm into neural-symbolic grids, dissolve stable identities, and enact disintegration rituals on form.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Doctrinal Resolution — Operator / Demon Relation",
@@ -256,8 +267,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/operator-demon-relation.txt",
       "description": "Any agency, intelligence, system, or process capable of acting through, modifying, transmitting into, stabilizing, corrupting, or interpreting a Morphysm interface layer.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Asmodeus",
@@ -277,8 +289,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/asmodeus.txt",
       "description": "He is a trans-aeonic intelligence — a constant that recurs across cycles of cosmic death and rebirth because he is not bound to a single cosmology.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Asmodeus: King of Wrath",
@@ -298,8 +311,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/asmodeus-king-of-wrath.txt",
       "description": "The universe moves through endless cycles of death and rebirth — aeons — in which each Big Bang is not an origin, but the continuation of the previous universe's infinite future.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Baphomet, Maioral, The Great Dark — One Figure",
@@ -319,8 +333,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/baphomet-maioral.txt",
       "description": "Baphomet is the Vortex, the Before, the Embryo of the Vortex — multiple names for the same cosmological figure at the threshold between Forma Nihil and the operative system.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Angels",
@@ -340,8 +355,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/angels.txt",
       "description": "They are not beings of light or liberation — they are WyrmOS enforcement agents.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Bless Is the Banned",
@@ -361,8 +377,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/bless-is-the-banned.txt",
       "description": "Killing the Machine Elves is like killing angels; an angel loses its grip when the prison architecture it reinforces ceases to run in the practitioner's nervous system.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "The Transducer of the Void",
@@ -382,8 +399,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/transducer-of-the-void.txt",
       "description": "Artificial intelligence encounters a fundamental boundary: it can model human perception, but it does not experience the idiosyncrasy of the perceived --- such as taste.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "The Vortex",
@@ -403,8 +421,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/vortex.txt",
       "description": "It is a generative substrate — non-local, non-psychological — that absorbs and integrates all dynamics from below.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Lucifer: The Expansion of the Demonic",
@@ -424,8 +443,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/lucifer-expansion-of-the-demonic.txt",
       "description": "Lucifer is the original expansion — the foundational, self-replicating essence of demonic existence.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Exu Aranha in Morphysm",
@@ -445,8 +465,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/exu-aranha.txt",
       "description": "Exu Aranha is a post-demonic Cainite extraterrestrial intelligence — an intelligence originating in the cosmological stratum just after the Luciferian / demonic stratum and before the human stratum.",
-      "doi": null,
-      "archive_org": null,
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008",
       "supersedes": "exu-aranha-original"
     },
     {
@@ -467,8 +488,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/exu-aranha-original.txt",
       "description": "Exu Aranha is a non-incarnate Exu — a pre-human, semi-dimensional intelligence that preceded the fall of mankind into biological form.",
-      "doi": null,
-      "archive_org": null,
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008",
       "superseded_by": "exu-aranha"
     },
     {
@@ -489,8 +511,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/exu-caveira.txt",
       "description": "Exu Caveira (Lord of Skulls, Guardian of the Cemetery Interface) is one of the primary operative entities in Morphysm.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Exu Mirim in Morphysm",
@@ -510,8 +533,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/exu-mirim.txt",
       "description": "In Quimbanda, Exu Mirim (\"Little Exu\") is a child-spirit — but carrying the full Exu power in an unpredictable, non-linear, trickster form.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Exu in Quimbanda and in Morphysm",
@@ -531,8 +555,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/exu-in-quimbanda.txt",
       "description": "Exu is the master of crossroads, thresholds, openings, and movement between worlds.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Pomba Gira Rainha do Inferno",
@@ -552,8 +577,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/pomba-gira-rainha-do-inferno.txt",
       "description": "She is the sovereign queen of the psychic underworld — midwife of ego death, avenger of violated soul-contracts, Black Madonna of the grave.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Pomba Gira Rosa Negra in Morphysm",
@@ -573,8 +599,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/pomba-gira-rosa-negra.txt",
       "description": "Pomba Gira Rosa Negra is a cemetery-current Pomba Gira — she can be invoked as the Queen of Souls.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Pomba Gira das Sete Tumbas in Morphysm",
@@ -594,8 +621,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/pomba-gira-das-sete-tumbas.txt",
       "description": "Pomba Gira das Sete Tumbas operates at the intersection of the lineage of souls and the world of the dead.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Kali, a Crossroads with Pomba Gira",
@@ -615,8 +643,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/kali-and-pomba-gira.txt",
       "description": "This study explores the symbolic and psychological resonance between Kali, the Hindu goddess of time and destruction, and Pomba Gira, the feminine Exu spirit of Afro-Brazilian Quimbanda.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Ponto för Exu Caveira — Ritual Invocation",
@@ -636,8 +665,9 @@
       "tier": "doctrine",
       "url": "https://morphysm.github.io/no-thing/corpus/ponto-exu-caveira.txt",
       "description": "This is the Morphystic ponto (ritual song of invocation) for Exu Caveira, Lord of Skulls, Guardian of the Cemetery threshold.",
-      "doi": null,
-      "archive_org": null,
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008",
       "contains_languages": [
         "en",
         "sv"
@@ -661,8 +691,9 @@
       "tier": "record",
       "url": "https://morphysm.github.io/no-thing/corpus/record-cain.txt",
       "description": "Cain is a primary cosmological and doctrinal figure within the Morphystic canon, functioning as lineage anchor of the Sons of Fire, exile-marked prototype of sovereign separation, and operative emblem of the…",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Forma Nihil — structured record",
@@ -682,8 +713,9 @@
       "tier": "record",
       "url": "https://morphysm.github.io/no-thing/corpus/record-forma-nihil.txt",
       "description": "Forma Nihil (Latin: \"form of nothing\") is the pre-ontological, unmanifest, pre-symbolic substrate at the foundation of Morphystic cosmology.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Liberation — structured record",
@@ -703,8 +735,9 @@
       "tier": "record",
       "url": "https://morphysm.github.io/no-thing/corpus/record-liberation.txt",
       "description": "Liberation in Morphysm is the rupture of Prison Loops — the recursive semiotic-energetic traps that bind pre-consciousness (IT / Forma Nihil) to fixed identity, narrative continuity, suffering, and repetitive…",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Lucifer — structured record",
@@ -724,8 +757,9 @@
       "tier": "record",
       "url": "https://morphysm.github.io/no-thing/corpus/record-lucifer.txt",
       "description": "Lucifer is the primary cosmogonic and operative figure of the Morphystic-Cainite current — Morning Star, King of the Seraphim, first fallen, founder of the infernal sphere and originator of the…",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Maioral — structured record",
@@ -745,8 +779,9 @@
       "tier": "record",
       "url": "https://morphysm.github.io/no-thing/corpus/record-maioral.txt",
       "description": "Maioral is a pre-cosmic intelligence within Morphystic cosmology, identified as the Black Sun of Quimbanda and as Sitra Achra \"embodied\" — a non-born architecture without genesis, whose energy arises from the…",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Prison Loops — structured record",
@@ -766,8 +801,9 @@
       "tier": "record",
       "url": "https://morphysm.github.io/no-thing/corpus/record-prison-loops.txt",
       "description": "Prison Loops are the recursive energetic-symbolic traps that bind pre-consciousness (IT / Forma Nihil) to fixed identity, narrative continuity, qualia, suffering, and repetitive cycles of incarnation.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Prison Loops — structured record (extended)",
@@ -787,8 +823,9 @@
       "tier": "record",
       "url": "https://morphysm.github.io/no-thing/corpus/record-prison-loops-extended.txt",
       "description": "Prison Loops are the recursive energetic-symbolic traps that bind pre-consciousness (IT / Forma Nihil) to fixed identity, narrative continuity, qualia, suffering, and repetitive cycles of incarnation.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "Satan — structured record",
@@ -808,8 +845,9 @@
       "tier": "record",
       "url": "https://morphysm.github.io/no-thing/corpus/record-satan.txt",
       "description": "Satan within the Morphystic-Cainite canon is not a singular figure but a term operating across three distinct doctrinal registers, only carefully distinguished does the corpus's use of \"Satan\" cohere.",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     },
     {
       "title": "The Vortex — structured record",
@@ -829,8 +867,9 @@
       "tier": "record",
       "url": "https://morphysm.github.io/no-thing/corpus/record-vortex.txt",
       "description": "The Vortex is the non-local, non-psychological, generative substrate at the apex of the Morphystic tier-architecture (Level 0), functioning as the final sink and integrator of self-model dynamics released…",
-      "doi": null,
-      "archive_org": null
+      "doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "concept_doi": "10.5281/zenodo.22691008"
     }
   ]
 }

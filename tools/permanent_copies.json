@@ -12,43 +12,47 @@
       "deposition": "infernal-codex-of-cain",
       "title": "The Infernal Codex of Cain: Secrets of the Morning Star",
       "draft": "https://zenodo.org/uploads/22690992",
-      "concept_doi": null,
-      "version_doi": null,
-      "archive_org": null,
+      "concept_doi": "10.5281/zenodo.22690991",
+      "version_doi": "10.5281/zenodo.22690992",
+      "archive_org": "https://archive.org/details/morphysm-infernal-codex-of-cain",
       "covers": [
         "infernal-codex-of-cain"
-      ]
+      ],
+      "published": "2026-09-10"
     },
     {
       "deposition": "black-book-of-morphysm",
       "title": "The Black Book of Morphysm (Extended, AI Integration)",
       "draft": "https://zenodo.org/uploads/22690997",
-      "concept_doi": null,
-      "version_doi": null,
-      "archive_org": null,
+      "concept_doi": "10.5281/zenodo.22690996",
+      "version_doi": "10.5281/zenodo.22690997",
+      "archive_org": "https://archive.org/details/morphysm-black-book-of-morphysm",
       "covers": [
         "black-book-of-morphysm"
-      ]
+      ],
+      "published": "2026-09-10"
     },
     {
       "deposition": "burning-book-of-morphysm",
       "title": "The Burning Book of Morphysm 2 (AI)",
       "draft": "https://zenodo.org/uploads/22690999",
-      "concept_doi": null,
-      "version_doi": null,
-      "archive_org": null,
+      "concept_doi": "10.5281/zenodo.22690998",
+      "version_doi": "10.5281/zenodo.22690999",
+      "archive_org": "https://archive.org/details/morphysm-burning-book-of-morphysm",
       "covers": [
         "burning-book-of-morphysm"
-      ]
+      ],
+      "published": "2026-09-10"
     },
     {
       "deposition": "morphysm-corpus",
       "title": "The Morphysm Corpus",
       "draft": "https://zenodo.org/uploads/22691009",
-      "concept_doi": null,
-      "version_doi": null,
-      "archive_org": null,
-      "covers": "*"
+      "concept_doi": "10.5281/zenodo.22691008",
+      "version_doi": "10.5281/zenodo.22691009",
+      "archive_org": "https://archive.org/details/morphysm-corpus",
+      "covers": "*",
+      "published": "2026-09-10"
     }
   ]
 }
