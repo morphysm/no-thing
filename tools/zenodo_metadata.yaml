@@ -62,8 +62,8 @@ depositions:
         # in place (65 bytes -> spaces, offsets unchanged) and a new Info object is
         # appended declaring the author below. Page content is untouched: extracted
         # text is byte-identical to the released edition, all 120 pages.
-        set_author: "Alexander Cripple"
-        result_sha256: 5077ec1baf19e526c5ef17a74fc51ce81106db542ad94428bdb2deb679b385f9
+        set_author: "J.K. — XXVI"
+        result_sha256: 7bfc10c5c65feb91dc8c51d63a75acc30b9b4b6e946b9f94b2963c8cc5075423
 
   - slug: black-book-of-morphysm
     title: "The Black Book of Morphysm (Extended, AI Integration)"
