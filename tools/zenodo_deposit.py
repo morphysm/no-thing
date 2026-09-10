@@ -75,6 +75,42 @@ def build_metadata(defaults, dep):
     return md
 
 
+def clean_token(raw):
+    """Validate ZENODO_TOKEN before it reaches an HTTP header.
+
+    A token pasted from the web UI's *shortened* display carries a Unicode ellipsis,
+    and requests then dies with a bare "'latin-1' codec can't encode character
+    '\u2026'" pointing at position 7 — which is simply the first character after
+    "Bearer ". Catch it here and say what actually went wrong."""
+    tok = raw.strip().strip("'\"")
+    if tok.lower().startswith("bearer "):
+        tok = tok[7:].strip()
+    if "\u2026" in tok or "..." in tok:
+        raise SystemExit(
+            "ZENODO_TOKEN contains an ellipsis, so it is a shortened display of the\n"
+            "token rather than the token itself. Zenodo shows a token in full only once,\n"
+            "at the moment you create it; afterwards the page renders it elided.\n"
+            "Create a new token and copy it immediately, before leaving the page.")
+    if not tok.isascii():
+        bad = [c for c in tok if not c.isascii()]
+        raise SystemExit(
+            "ZENODO_TOKEN contains non-ASCII characters (%s), which cannot go in an\n"
+            "HTTP header. Zenodo tokens are plain letters and digits — this looks like\n"
+            "a copy-paste artefact such as a smart quote or an ellipsis."
+            % ", ".join(repr(c) for c in dict.fromkeys(bad)))
+    if not tok:
+        raise SystemExit("ZENODO_TOKEN is empty after stripping quotes and whitespace.")
+    if not tok.replace("_", "").replace("-", "").isalnum():
+        raise SystemExit(
+            "ZENODO_TOKEN does not look like a Zenodo token: expected only letters,\n"
+            "digits, - and _. Check for stray characters from the paste.")
+    if len(tok) < 40:
+        raise SystemExit(
+            "ZENODO_TOKEN is only %d characters. Zenodo personal access tokens are\n"
+            "considerably longer, so this is probably truncated." % len(tok))
+    return tok
+
+
 def api(session, base, method, path, **kw):
     r = session.request(method, base + path, timeout=120, **kw)
     if r.status_code >= 400:
@@ -239,7 +275,7 @@ def main():
                 "  export ZENODO_TOKEN=...   (sandbox and production tokens differ)\n"
                 "Scopes needed: deposit:write. Do NOT grant deposit:actions — this\n"
                 "script never publishes and does not need it.")
-        session.headers["Authorization"] = "Bearer %s" % token
+        session.headers["Authorization"] = "Bearer %s" % clean_token(token)
 
     print("target: %s   mode: DRAFTS ONLY (this script cannot publish)" % base)
     results = [r for r in (deposit(session, base, cfg, defaults, d, a.dry_run) for d in deps) if r]
