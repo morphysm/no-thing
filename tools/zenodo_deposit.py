@@ -353,6 +353,20 @@ def verify(session, base, production):
         md = d.get("metadata", {}) or {}
         print("\n=== %s  (%s) ===" % (row["slug"], row["draft_url"]))
         print("  title    : %s" % md.get("title"))
+        print("  publisher: %r" % md.get("publisher"))
+        print("  state    : %s" % (d.get("state") or
+                                   ("published" if d.get("is_published") else "draft")))
+        errs = d.get("errors") or []
+        if errs:
+            print("  VALIDATION ERRORS Zenodo reports on this draft:")
+            for e in errs:
+                if isinstance(e, dict):
+                    print("    %-28s %s" % (e.get("field"), e.get("message") or e.get("messages")))
+                else:
+                    print("    %s" % e)
+            problems.append((row["slug"], "%d validation error(s) block publishing" % len(errs)))
+        if not md.get("publisher"):
+            problems.append((row["slug"], "publisher missing — Zenodo blocks DOI registration"))
 
         # Zenodo accepts the InvenioRDM shape on write but may hand back either that or
         # the legacy deposit shape on read. Handle both rather than guess.
