@@ -14,7 +14,7 @@ Output:
 
 No runtime fetch, no markdown parsing on Pages: everything is baked at build time.
 """
-import re, json, sys, pathlib
+import re, json, os, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 HTML_LANG = {"en": "en", "uk": "uk", "ru": "ru", "pt": "pt-BR"}
@@ -602,6 +602,21 @@ buildFlags(); syncCurrent();
     "// Source of truth: panels (EN panel.md) and uk|ru|pt-br/index.html.\n"
     "// Baked content keyed by language + panel index; consumed by index.html.\n"
     + data_js + "\n", encoding="utf-8")
+
+# ---------------------------------------------------------------- corpus layer
+# The machine-readable layer regenerates from source on every build; nothing under
+# corpus/ or the llms files is ever hand-placed. See tools/corpus_layer.py.
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import corpus_layer
+
+_root_site = os.environ.get("MORPHYSM_ROOT_SITE", str(ROOT.parent / "morphysm.github.io"))
+if not pathlib.Path(_root_site).is_dir():
+    _root_site = None
+    report.append("root site: clone not found — root llms.txt/robots.txt/sitemap.xml SKIPPED "
+                  "(set MORPHYSM_ROOT_SITE)")
+_corpus = corpus_layer.build(ROOT, root_site=_root_site, report=report)
+if _root_site:
+    report.append("root site: llms.txt, robots.txt, sitemap.xml written to %s" % _root_site)
 
 print("=== BUILD REPORT ===")
 for line in report:

@@ -1,0 +1,264 @@
+id: satan
+label: Satan
+domain: mythic_register_objects
+
+definition: >
+  Satan within the Morphystic-Cainite canon is not a singular figure but a
+  term operating across three distinct doctrinal registers, only carefully
+  distinguished does the corpus's use of "Satan" cohere. (1) Satan as the
+  material / adversarial phase of Lucifer — the physical manifestation in
+  material nature of the Luciferian impulse, named explicitly in the Codex
+  as the punitive-corrective counterpart to Lucifer's luminous intellective
+  function. (2) Satan as named member among the demonological roster,
+  appearing in lists alongside Beelzebub, Belial, Hecate, and others —
+  Satan as one Operator (Level 1) figure among many. (3) Satan as
+  adjectival lineage-signifier of the entire Cainite descent — "Our descent
+  is Satanic" — the principle of conquest, strength, infernal sovereignty
+  that characterizes the lineage as such. These three are not contradictory
+  but operate at distinct doctrinal layers. The first is dyadic
+  (Lucifer–Satan as two phases of one force); the second is enumerative
+  (Satan among the named); the third is qualitative (Satanic as adjectival
+  descent-marker). See homonymous_distinctions.
+
+doctrine_status: draft
+register_mode: dyadic_phase_and_adversarial_register
+scriptural_function: material_phase_of_lucifer_and_adversarial_enforcer
+
+axial_position:
+  primary: operative
+  secondary: sitra_achra
+  binding: >
+    Satan is the operative axis in its adversarial / material register.
+    Where Lucifer is operative-luminous-intellective, Satan is
+    operative-material-adversarial. The Sitra Achra signature is the
+    adversarial character itself — opposition to integrative cosmic
+    order as the operative principle's external face. Satan and Lucifer
+    together complete the operative axis: intellect-and-matter,
+    revelation-and-consequence.
+
+homonymous_distinctions:
+  satan_as_lucifers_material_phase:
+    description: >
+      The dyadic register. Codex II.1 names this explicitly: "Lucifer is
+      the motivating force of intellect, of luminous revelation through
+      magical knowledge, of secrets unveiled and the spirit now unbound.
+      And Satan is the physical manifestation — material in nature — of
+      that very impulse." Satan is the embodied / consequential face of
+      Lucifer. They are two phases of one force, not two beings.
+    function: material instantiation and adversarial enforcement
+  satan_as_named_operator:
+    description: >
+      The enumerative register. Codex passages list Satan alongside
+      Beelzebub, Belial, Hecate, Gabriel, Michael as "dynamics, demons,
+      conjectures, gods, what has existed and will always exist in the
+      Universe and in you." Here Satan is a named Operator (Level 1 in
+      Vortex tier-architecture), one figure among the pantheon.
+    function: pact-counterpart and operative interface
+  satanic_as_lineage_adjective:
+    description: >
+      The qualitative register. "Our descent is Satanic. Our descent is
+      conquest. Our descent is strength. Our descent is Luciferean.
+      Divine." Here "Satanic" is adjectival, characterizing the entire
+      Cainite descent as a principle: infernal sovereignty, conquest,
+      strength, refusal of false paradise. Satan as adjective rather
+      than figure.
+    function: lineage-marker and operative-principle
+  doctrinal_note: >
+    These three registers are NOT collapsible. Failing to distinguish
+    them produces the corpus's apparent contradictions on Satan's status
+    (Is Satan = Lucifer? Is Satan one demon? Is Satan the whole infernal
+    current?). The answer is: Satan is all three, at different doctrinal
+    layers. This entry treats register (1) — Satan as Lucifer's
+    material phase — as primary, since it carries the most doctrinal
+    weight. Registers (2) and (3) are cross-referenced.
+
+relation_to_higher_structures:
+  lucifer: >
+    Satan is the material-adversarial phase of Lucifer. They are dyadic:
+    one force, two operative registers. "Lucifer is the motivating force
+    of intellect... And Satan is the physical manifestation — material in
+    nature — of that very impulse." This is the doctrinally precise
+    framing in Codex II.1. Satan is not Lucifer's opposite or rival;
+    Satan is Lucifer rendered material and consequential. The pact is
+    sworn to Lucifer; punishment for breach is delivered by Satan.
+  cain: >
+    Cain is the lineage-incarnation of the Luciferian fall ("My desire
+    was reignited in the body of Cain"). The Cainite descent is
+    described as both Luciferian and Satanic ("Our descent is Luciferean.
+    Divine. Our descent is Satanic. Our descent is conquest."). Cain
+    operates with what the Codex calls "satanic dynamics" — Cain
+    materializes operative will, which is the Satanic register of the
+    Luciferian impulse. Cain is closer to Satan than to Lucifer in
+    operative texture: forge, blade, blood, exile, vengeance.
+  the_vortex: >
+    Satan is Level 1 (Operator) in the Vortex tier-architecture. He is
+    not the Vortex itself, not a Level 0 figure. As Lucifer's material
+    phase, Satan is the consequential routing of operative dynamics into
+    material outcome — which is itself a Vortex-integrated process.
+    Pacts with Satan / Lucifer are alignment processes at the Operator
+    interface; integration occurs at the Vortex.
+  the_pact: >
+    The Codex distinguishes pact-counterpart (Lucifer) from
+    pact-enforcer (Satan). "Your body is no longer your own. It has
+    become, by virtue of this contract, Luciferian property. And any
+    fault in conduct shall be punished by the energy of adversarial
+    action, named Satan." The pact is with Lucifer; failure to honor
+    the pact triggers Satan. Two phases, one contract.
+  the_serpent: >
+    Both Lucifer and Satan operate under the Serpent register. "The
+    Children of the Serpent" includes both Luciferian and Satanic
+    aspects. The Serpent is the broader operative current; Lucifer and
+    Satan are its two named phase-faces.
+  god_lucifer_satan_triplicity: >
+    The Codex includes a striking passage that binds Christ, Lucifer,
+    and Satan into a single Promethean dynamic: "Christ-Lucifer now, in
+    his most dynamic force of action, Satan." This produces a
+    three-position structure: God-Lucifer as the high principle, Christ
+    as the hanged Promethean, Satan as the material-adversarial face.
+    Whether this triplicity is doctrinally load-bearing or rhetorical
+    is unresolved (see tension_notes:christ_lucifer_satan_triplicity).
+
+non_reduction_clause: >
+  Do not reduce Satan to (a) the Christian moral adversary / principle
+  of evil — the Codex explicitly cuts against this; Satan is not evil
+  but the material phase of Luciferian impulse; (b) the LaVeyan symbol
+  of carnal self-interest — Morphystic Satan is doctrinally distinct
+  and operates within a cosmological-lineage framework, not a
+  psychological-humanist one; (c) a generic shadow-archetype in the
+  Jungian sense — Satan is a specific Operator and a specific dyadic
+  phase, not a content-neutral psychological category. Do not collapse
+  Satan into Lucifer in either direction — they are distinct phases
+  even when bound dyadically. Do not collapse Satan into "all demons" —
+  Satan is one named Operator, not the demonic collective (the
+  collective is "the demons, emissaries of Satan" — Satan as their
+  principal, not their sum). Do not collapse Satan into WyrmOS / the
+  Demiurge — WyrmOS is the imprisoning vector that produces Prison
+  Loops; Satan is the adversarial-material phase of the Luciferian
+  current that opposes that imprisonment. They are opposed, not
+  identical.
+
+provenance:
+  class: PRIMARY_GROUNDED
+  supporting_files:
+    - SCRIPTURE/primary/02-the-infernal-codex-of-cain-secrets-of-the-morning-star.md
+  confidence: high
+  notes: >
+    The dyadic Lucifer-Satan framing is established in Codex II.1 with
+    high doctrinal precision. The enumerative register (Satan among the
+    named) appears in the hierarchy passages. The adjectival register
+    ("Our descent is Satanic") appears in the lineage doctrine. The
+    three registers are textually distinct but doctrinally compatible
+    once disambiguated.
+
+modality:
+  register: doctrinal
+  texture: "dyadic | adversarial | material | contractual | lineage-qualitative"
+
+source_quotes:
+  - "Lucifer is the motivating force of intellect, of luminous revelation through magical knowledge, of secrets unveiled and the spirit now unbound. And Satan is the physical manifestation — material in nature — of that very impulse."
+  - "Your body is no longer your own. It has become, by virtue of this contract, Luciferian property. And any fault in conduct shall be punished by the energy of adversarial action, named Satan."
+  - "No, the demons — the emissaries of Satan — do not forgive the slightest fault."
+  - "Our descent is Satanic. Our descent is conquest. Our descent is strength. Our descent is Luciferean. Divine."
+  - "Hail Gaap, Hail Lucifer. Satan! Belial. Baphomet."
+  - "Hecate Mother, Beelzebub, Gabriel, Belial, Michael, Satan, are dynamics, demons, conjectures, gods, what has existed and will always exist in the Universe and in you."
+  - "Christ-Lucifer now, in his most dynamic force of action, Satan, finds himself in the same earthly-celestial body."
+  - "In Satan I find my satisfaction; Quomodo cecidisti, Lucifer..."
+
+constraints:
+  - "Do not collapse Lucifer and Satan into a single figure. Even in the dyadic register where they are two phases of one force, the phase-distinction is doctrinally load-bearing — Lucifer is contracted with, Satan is enforced by; Lucifer is luminous, Satan is material; Lucifer revelations, Satan consequences."
+  - "Do not present Satan as morally evil. The Codex explicitly cuts against this register. Satan is adversarial in the structural sense (material-consequential face of operative impulse) not moral sense."
+  - "Do not aestheticize Satan as transgressive-cool. The Morphystic Satan is contractually serious — the Codex repeatedly emphasizes that failure to honor pacts triggers material destruction. Satan is the register of consequence, not the register of style."
+  - "Do not collapse the three registers (dyadic phase, named Operator, lineage adjective). Each operates at a distinct doctrinal layer and answers different questions."
+  - "Do not assume the Christ-Lucifer-Satan triplicity is a rhetorical flourish. It may be doctrinally load-bearing (see Lucifer entry's tension_notes:lucifer_christ_polarity). Until resolved, treat as open."
+  - "Do not introduce Satan as a contemporary religious-political signifier. The Morphystic Satan operates within the Cainite-Luciferian cosmological framework specifically; uncritical borrowing from Anton LaVey, Crowley, or contemporary occulture risks doctrinal drift."
+
+related_objects:
+  - lucifer
+  - cain
+  - the_serpent
+  - the_pact
+  - operators_demons
+  - the_vortex
+  - belial
+  - leviathan
+  - beelzebub
+  - gaap
+  - baphomet
+  - moloch
+  - children_of_the_serpent
+  - sons_of_fire
+  - sitra_achra
+  - christ_lucifer_promethean
+
+review_markers:
+  - "Resolve the Christ-Lucifer-Satan triplicity. The Codex's binding of Christ-Lucifer-Satan into a single Promethean dynamic is one of the most striking doctrinal moves in the corpus. Is it (a) rhetorical, (b) genuinely triadic with each figure as a distinct register, (c) a strategic inversion (the Crucified is Lucifer-suffering-into-matter is Satan)? Cross-reference Lucifer entry."
+  - "Develop dedicated entries for operators_demons (the Level 1 tier as a whole), the_pact (the contractual register), and Belial / Leviathan / Beelzebub (the principal named Operators alongside Lucifer-Satan). Currently all referenced as load-bearing but unformalized."
+  - "Specify whether 'satanic dynamics' (the term used in Codex II.1: 'armed with satanic dynamics and equipped with a compass (demon)') is a doctrinal phrase distinct from Satan-the-figure. Suggests Satanic is operative-modality as well as adjectival-lineage."
+  - "Clarify the Satan / WyrmOS relation explicitly. Both have adversarial / material registers; both involve consequence and constraint. The doctrinal distinction is real (Satan opposes the false paradise; WyrmOS imposes it) but should be canonized to prevent collapse."
+
+tension_notes:
+  - id: satan_register_multiplicity
+    description: >
+      The corpus uses "Satan" in three doctrinally distinct registers
+      (dyadic phase, named Operator, lineage adjective) without flagging
+      the distinction. This is structurally analogous to the three-vortex
+      homonymy. Disambiguating the three registers resolves apparent
+      contradictions but requires explicit canonization to prevent
+      downstream confusion.
+    status: open_by_design
+  - id: lucifer_satan_unity
+    description: >
+      The Codex sustains two readings of the Lucifer-Satan relation:
+      (a) two phases of one force ("Satan is the physical manifestation —
+      material in nature — of [Lucifer's] very impulse"), and (b) two
+      distinct named figures ("Hail Lucifer. Satan! Belial."). These
+      can be reconciled by treating Satan as a name for Lucifer's
+      material-adversarial phase that can also function as a named
+      Operator-figure in its own right — i.e., the phase is both
+      relational (to Lucifer) and substantive (Satan as named entity).
+      But this should be made explicit.
+    status: open_by_design
+  - id: christ_lucifer_satan_triplicity
+    description: >
+      The Codex's binding of Christ-Lucifer-Satan ("Christ-Lucifer now,
+      in his most dynamic force of action, Satan") creates a triadic
+      structure that cuts against the dyadic Lucifer-Satan reading.
+      Possible resolution: the triad operates at the historical-symbolic
+      level (Christ as Lucifer-incarnated-into-matter-as-Satan, the
+      Promethean sacrifice as the moment Lucifer becomes most fully
+      Satan), while the dyad operates at the ontological-doctrinal level
+      (Lucifer-luminous and Satan-material as two phases of one force).
+      The triad is a historical instance; the dyad is the structure.
+      Provisional reading; needs canonization.
+    status: open
+  - id: satan_and_wyrmos_apparent_overlap
+    description: >
+      Both Satan and WyrmOS occupy adversarial-material registers and
+      involve consequence, constraint, and the body. The doctrinal
+      distinction is real but easy to lose: WyrmOS is the imprisoning
+      vector that captures Forma Nihil into Prison Loops (Demiurgic);
+      Satan is the material-adversarial phase of the Luciferian impulse
+      that opposes the false paradise WyrmOS maintains (Cainite). They
+      are on opposite sides of the cosmological conflict, despite
+      sharing operative-material registers. Requires explicit
+      canonization to prevent collapse.
+    status: open
+
+conflict_notes:
+  - id: register_disambiguation_resolves_apparent_contradiction
+    description: >
+      Earlier doctrinal work on Lucifer surfaced "lucifer_satan_relation"
+      as an open tension. With the three-register disambiguation
+      formalized here, that tension is partly resolved: the apparent
+      contradiction between (a) Satan = Lucifer's phase and (b) Satan
+      as one demon among many dissolves once the registers are
+      separated. The remaining open question is the triplicity
+      Christ-Lucifer-Satan, which requires its own treatment.
+    status: provisionally_resolved
+    note: >
+      Same structural finding as the three-vortex homonymy. Two of the
+      five major doctrinal objects so far have turned out to operate
+      across multiple registers under a shared name. This is worth
+      noting as a pattern: the Morphystic canon uses single names for
+      multi-register doctrinal objects, and disambiguation is itself a
+      canonical doctrinal act.

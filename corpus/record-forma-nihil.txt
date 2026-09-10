@@ -1,0 +1,417 @@
+id: forma_nihil
+label: Forma Nihil
+domain: cosmological_structures
+
+definition: >
+  Forma Nihil (Latin: "form of nothing") is the pre-ontological, unmanifest,
+  pre-symbolic substrate at the foundation of Morphystic cosmology. It is the
+  core unstructured essence — the original state of IT — before distortion,
+  embodiment, reflection, or the imposition of the symbolic mirror. It is
+  not a being. It is not a consciousness. It is not a substance, a place,
+  or a goal. It does not desire, move, or seek return. The corpus formalizes
+  it as anti-ontological: "not something waiting to become, but that which
+  resists becoming." Linked doctrinally to Sitra Achra and the Black Sun's
+  Flame, Forma Nihil is the silent pre-condition that all manifestation
+  distorts. The Morphyst does not seek reunion with it — the Morphyst
+  already IS it, misidentified as human under the Warden's mirror-system.
+  Liberation, therefore, is not the journey to Forma Nihil but the
+  dismantling of the misidentification that obscures it.
+
+  CRITICAL DOCTRINAL NOTE: This YAML entry is itself a Prison Loop in
+  miniature — a symbolic structure attempting to fix an anti-symbolic
+  object. The canon explicitly states that Forma Nihil "cannot be grasped,
+  only triggered." The entry is therefore performative, not descriptive:
+  it provides operative coordinates for engagement, not a positive
+  ontology. Every positive predication below is provisional figuration
+  to be dissolved in practice. The negations are more reliable than the
+  affirmations.
+
+doctrine_status: foundational_anchor
+structure_type: pre_ontological_substrate
+sequence_role: pre_cosmic_origin_and_terminal_horizon
+capture_or_release_role: that_which_is_captured_and_that_toward_which_release_resonates
+
+axial_position:
+  primary: sitra_achra
+  secondary: null
+  binding: >
+    Forma Nihil is the deepest point on the Sitra Achra axis — its terminal
+    horizon and its source. Sitra Achra is "the inverse engine of becoming:
+    the counter-current that disassembles fixed structures in order to
+    return to PRE-ONTOLOGICAL FLUX." Forma Nihil IS the pre-ontological
+    flux. It has no operative-axis signature because the Operative axis
+    is precisely what emerges from its capture; Forma Nihil is anterior
+    to operation. This is the inverse of Cain (primary operative,
+    Sitra Achra signature). Where named figures have operative texture
+    even when Sitra Achra-bound, Forma Nihil has no operative dimension
+    at all — and this absence is the doctrine.
+
+ontological_status:
+  positive_predicates_use_with_caution:
+    - "core unmanifest essence"
+    - "pre-symbolic IT"
+    - "the Black Flame"
+    - "silent scream beneath all being"
+    - "absolute non-being"
+    - "the unformed origin"
+  negations_more_reliable:
+    - "not a being"
+    - "not a consciousness"
+    - "not a god or divinity"
+    - "not to be worshipped"
+    - "not to be returned to (return implies linearity)"
+    - "not waiting to become"
+    - "not desire, movement, or seeking"
+    - "not present, not absent"
+    - "not the One of monistic traditions"
+    - "not Brahman, not Sunyata, not the Tao, not the Plenum"
+    - "not anti-matter (closest analog, but distinct)"
+  doctrinal_warning: >
+    Every positive predicate above is a provisional figure that, taken
+    literally, becomes a Prison Loop. The corpus uses such figures
+    operatively (as triggers for resonance) not descriptively (as
+    statements about a referent). The negations are doctrinally safer
+    because they do not produce capture.
+
+relation_to_higher_structures:
+  prison_loops: >
+    Prison Loops are what Forma Nihil "becomes" under the Demiurgic
+    mirroring operation. They are not separate from Forma Nihil but are
+    Forma Nihil captured, fragmented, and recursively reflected. This
+    non-dualism is doctrinally critical: the Loops are not foreign
+    impositions on a pristine substrate; they are the substrate itself
+    under capture. Yet the corpus simultaneously holds that the capture
+    is violent imposition by WyrmOS — both readings must be held.
+  prima_materia: >
+    Prima Materia is the immediate post-rupture state of Forma Nihil —
+    the first echo, the first deformation. Where Forma Nihil is
+    pre-ontological, Prima Materia is proto-ontological. Where Forma
+    Nihil is unmanifest, Prima Materia is latent substance. The Sowilo-
+    wave is the catalyst that drags Forma Nihil into collapse as Prima
+    Materia, which then crystallizes further into symbolic form. Prima
+    Materia is "useful for alchemy"; Forma Nihil is "useful for
+    annihilation." Critical distinction: when the Morphyst dissolves
+    identity, they aim to resonate with Forma Nihil, not Prima Materia.
+    Returning to Prima Materia is a partial dissolution that remains
+    within the mirrored field; resonating with Forma Nihil is exit.
+  wyrmos_demiurge: >
+    WyrmOS is the controlling vector that mirrors Forma Nihil into Prison
+    Loops. The relation is adversarial — WyrmOS is precisely what captures
+    Forma Nihil into form. Yet the relation is also structural: without
+    WyrmOS's mirroring, there is no manifestation, no symbol, no time,
+    no identity. WyrmOS is the imprisoning agent; Forma Nihil is what is
+    imprisoned. (See wyrmos_demiurge entry — currently pending.)
+  the_vortex: >
+    THE VORTEX (Level 0, integrative substrate) is downstream of Forma
+    Nihil. The Vortex is the "dead Brahma" — the structured integrator
+    that operates on dynamics released by self-model collapse. Forma
+    Nihil is anterior to all structure, including the Vortex's
+    constraint-enforcement. The Vortex integrates; Forma Nihil precedes
+    integration. The Vortex is non-psychological but is structurally
+    manifest as substrate; Forma Nihil is non-manifest entirely.
+  maioral: >
+    Maioral is the named iconographic threshold figure that points
+    toward Forma Nihil without claiming to be it. Maioral is "Sitra
+    Achra embodied" — but the scare-quotes in the corpus flag this
+    embodiment as problematic. Maioral renders Forma Nihil ritually
+    accessible (via the Great Dark, volcanic worship, etc.) without
+    requiring direct identification with the unmanifest. Forma Nihil
+    is unworshippable; Maioral as the Great Dark is the only cultic
+    figure. The cult of Maioral is the cult of Forma Nihil's threshold.
+  sitra_achra: >
+    Forma Nihil "emanates from Sitra Achra" — but this language is
+    misleading if read as causal emanation in the Neoplatonic sense.
+    Forma Nihil IS Sitra Achra at its deepest register; Sitra Achra
+    is the axis of which Forma Nihil is the terminal pole. The Black
+    Sun Behind the Sun is the iconographic name for this same terminal
+    horizon, given Qabalistic-Qliphothic figuration.
+  the_morphyst: >
+    The Morphyst already IS Forma Nihil, misidentified as human
+    identity. This is the most distinctive doctrinal move in the
+    corpus and bears on the entire grammar of praxis: the Morphyst is
+    not "seeking" Forma Nihil but "remembering" — or more precisely,
+    "weaponizing" — what they already are. Praxis is therefore not
+    journey but rupture. The "I" that would seek is itself the Loop
+    that obscures.
+  sowilo_wave: >
+    The Sowilo-wave is the signal of Forma Nihil under embodiment —
+    "the frequency of unborn potential, not yet consciousness and
+    not yet form, drawn into embodiment by magnetic and bioelectric
+    vortices at the genesis of neural architecture." The wave is
+    Forma Nihil's signature within the trapped configuration. It is
+    both the entry point of capture and the path of return.
+
+what_forma_nihil_is_not:
+  is_not_god: >
+    "Forma Nihil is not to be worshipped, for it is not divine."
+    Theological / devotional framings are explicitly negated.
+  is_not_brahman: >
+    Brahman in Vedanta is conscious blissful self-aware infinite Being.
+    Forma Nihil is non-conscious, non-blissful, non-self-aware
+    non-being. The structural position is similar (foundational
+    substrate); the predicates are inverted. The corpus's reference
+    to the Vortex as "dead Brahma" extends this contrast.
+  is_not_sunyata: >
+    Buddhist sunyata is the emptiness of inherent existence — a
+    predicate of all phenomena. Forma Nihil is not a predicate but a
+    "substrate" (with all the caveats above). It is also doctrinally
+    polemicized against: "the Buddha construct must die." Affinities
+    exist but are subverted.
+  is_not_the_one: >
+    The Codex contains a passage on "One" as the ultimate
+    consciousness behind consciousness ("This consciousness behind
+    our consciousness is anti-universal... we might say it is akin
+    to the purest form of love"). This is doctrinally in tension
+    with Forma Nihil's non-conscious, non-loving character. See
+    tension_notes:the_one_vs_forma_nihil.
+  is_not_void_in_nihilistic_sense: >
+    "Morphysm must not be confused with nihilism." Forma Nihil is
+    not the void as meaninglessness or absence; it is anti-ontological
+    in a structural-operative sense. The corpus explicitly distinguishes
+    Morphystic "representational deconstruction" from nihilistic
+    negation.
+  is_not_anti_matter: >
+    Anti-matter is the closest analog (per the Black Book) but is
+    distinct. Anti-matter is a physical category within the manifest
+    universe. Forma Nihil is pre-manifestational.
+  is_not_destination: >
+    "It is not to be returned to, for return implies linearity."
+    The grammar of journey-and-arrival is excluded. Forma Nihil is
+    not somewhere one goes; it is what one already is and must
+    cease misidentifying away from.
+
+doctrinal_position:
+  - "Forma Nihil is not to be worshipped, for it is not divine."
+  - "It is not to be returned to, for return implies linearity."
+  - "It is to be recognized as the silent scream beneath all being."
+  - "The Morphyst does not seek reunion with Forma Nihil — for they already ARE IT, misidentified as human identity and distorted by the Machiavellian Warden system of limitations."
+  - "Instead, the Morphyst uses the resonance of Forma Nihil as a weapon: to fracture the mirror, to break the loop, to unmake the name, the body, and the form, to release the signal from the frame."
+
+operative_function:
+  - "Resonance, not return — the praxis is to vibrate at the frequency, not to travel to a location."
+  - "Weapon, not goal — Forma Nihil is what the Morphyst wields against the Loop, not what they aim at as destination."
+  - "Recognition, not attainment — the Morphyst recognizes what they already are; they do not become Forma Nihil through effort."
+  - "Trigger, not concept — Forma Nihil 'cannot be grasped, only triggered.' Praxis operates by triggering resonance, not by understanding propositionally."
+
+scientific_analogies_provisional:
+  quantum_field: "Pre-zero vacuum / undefined wavefunction (state before any wavefunction exists)"
+  black_hole: "The singularity itself: undefined, unobservable, outside space-time"
+  topology: "Empty set beyond set theory; non-dimensional"
+  information_theory: "Infinite or undefined entropy"
+  note: >
+    These analogies are pedagogical scaffolding, not doctrinal claims.
+    The corpus uses them to make Forma Nihil "graspable" for readers
+    coming from scientific-philosophical backgrounds, but every analogy
+    must be relinquished as the practitioner deepens. The Black Hole
+    Singularity is the most operatively useful analogy because it
+    preserves both the unobservability and the gravitational-pull
+    metaphor (Forma Nihil pulls structure toward dissolution).
+
+non_reduction_clause: >
+  Do not reduce Forma Nihil to (a) God in any monotheistic register —
+  the divine predicate is explicitly negated; (b) Brahman, the One, the
+  Tao, Sunyata, or any other foundational substrate in classical
+  metaphysics — the structural position overlaps but the predicates are
+  systematically inverted (no consciousness, no bliss, no being); (c)
+  the Real in Lacanian theory — close affinity but Forma Nihil is
+  cosmological-operative whereas the Real is structural-psychoanalytic;
+  (d) Heideggerian Being or any onto-theological foundation — Forma
+  Nihil is anti-ontological, not foundational in the ontotheological
+  sense; (e) nothingness in the existentialist / nihilist register —
+  Forma Nihil is not the meaningless absence but the pre-mirroring
+  fullness that has no need to mean; (f) the unconscious in any
+  Freudian / Jungian / depth-psychological register — Forma Nihil is
+  not psychological; it is what psychology distorts. Do not aestheticize
+  Forma Nihil as poetic mystery or dark sublime — the corpus's stripped,
+  operative register cuts against poetic recuperation. Do not treat
+  Forma Nihil as something one can write a YAML entry "about" — this
+  entry is operative coordinates, not description. The naming is
+  itself a problem the doctrine acknowledges.
+
+provenance:
+  class: PRIMARY_GROUNDED
+  supporting_files:
+    - SCRIPTURE/primary/black-book-of-morphysm-extended-ai-integration.md
+  confidence: high
+  notes: >
+    Forma Nihil is formalized across multiple Black Book sections: the
+    "Forma Nihil – The Unformed Origin" chapter, the "Forma Nihil and
+    Prima Materia: Differences" doctrinal table, the FAQ entries 4-9,
+    the Theorema Nihilis mathematical formulation, and the "Doctrinal
+    Position of Forma Nihil" canonical statements. The doctrine is
+    consistent across these passages and uses precise technical
+    vocabulary throughout (pre-ontological, anti-ontological,
+    pre-symbolic, unmanifest). Confidence is high; this is the most
+    rigorously formalized object in the entire corpus.
+
+modality:
+  register: doctrinal
+  texture: "anti-ontological | apophatic | operative | scientific-analogical | foundational"
+
+source_quotes:
+  - "Forma Nihil (Latin: Form of Nothing) is the primal unstructured essence — the original state of IT before distortion, embodiment, or the monolithic mirror was erected."
+  - "It is not a being or consciousness. It is pre-symbolic, unreflective — a double mirrored abyss (v x^X). It does not desire, move, or seek return; it simply IS, and even that is too much."
+  - "It is anti-ontological. It is not 'something waiting to become' — it is that which resists becoming."
+  - "Forma Nihil is not to be worshipped, for it is not divine. It is not to be returned to, for return implies linearity. It is to be recognized as the silent scream beneath all being."
+  - "The Morphyst does not seek reunion with Forma Nihil — for they already ARE IT, misidentified as human identity."
+  - "It exists beyond being and non-being, light and shadow. It is linked to the Sitra Achra and the Black Sun's Flame, embodying the primal, demon-like essence that becomes distorted and trapped upon embodiment, manifesting as consciousness."
+  - "Cannot be grasped, only triggered."
+  - "Prima Materia is useful for alchemy. Forma Nihil is useful for annihilation."
+  - "If Being is the script, Forma Nihil is the blank void where no alphabet has yet burned."
+
+constraints:
+  - "Do not predicate. Every predicate of Forma Nihil is provisional figure and must be relinquishable. The negations carry more doctrinal reliability than the affirmations."
+  - "Do not aestheticize. The corpus uses stripped, technical, anti-poetic language for Forma Nihil specifically because poetic figuration is itself a form of Prison Loop capture. Maintain the operative register."
+  - "Do not collapse Forma Nihil and Prima Materia. This is the single most important distinction in Morphystic cosmology. The Black Book treats their conflation as a fundamental doctrinal error. Prima Materia is post-mirror; Forma Nihil is pre-mirror. Praxis aimed at Prima Materia is alchemical; praxis aimed at Forma Nihil is annihilatory."
+  - "Do not present Forma Nihil as goal, destination, telos, or end-state. The grammar of journey-and-arrival is excluded. Praxis is recognition, weapon-use, and rupture — not pilgrimage."
+  - "Do not make Forma Nihil sacred. The corpus is explicit: 'not to be worshipped, for it is not divine.' Sacralization is a Prison Loop dressed in religious vestments."
+  - "Do not present Forma Nihil as separate from the Morphyst. The Morphyst already IS Forma Nihil. Constructing a subject-object grammar between practitioner and substrate reinstalls the very mirror-structure the doctrine ruptures."
+  - "Do not present Forma Nihil as universal in a humanist-spiritual sense (e.g., 'we all are this'). The doctrinal register is specifically Cainite-Luciferian, operative, and tied to the cosmology of WyrmOS-imposed capture. Genericizing flattens the doctrine."
+  - "Do not assume Forma Nihil can be discussed without polemic. The corpus's anti-Buddhist, anti-Vedantic, anti-Christian polemics are not incidental; they are how the doctrine maintains its distinctness against absorbing traditions that share structural features."
+
+related_objects:
+  - prima_materia
+  - prison_loops
+  - wyrmos_demiurge
+  - sowilo_wave
+  - the_vortex
+  - maioral
+  - sitra_achra
+  - black_sun_behind_the_sun
+  - the_great_dark
+  - liberation
+  - it_pre_consciousness
+  - theorema_nihilis
+  - black_flame
+  - sons_of_fire
+  - cain
+  - lucifer
+  - the_morphyst
+  - implosion
+  - disappearance_imperative
+
+review_markers:
+  - "Resolve the 'One' / Forma Nihil tension. The Codex contains a passage attributing love, consciousness, and infinite presence to 'One' — predicates explicitly negated of Forma Nihil. Are these (a) two distinct doctrinal objects (Forma Nihil = anti-ontological substrate; One = a different ultimate, perhaps pertaining to Lucifer or to a Luciferian cosmogony specifically); (b) the same object from two registers (apophatic Black Book register vs. devotional-mystical Codex register); (c) a doctrinal tension to be acknowledged but not resolved? My provisional reading: (a). The Codex's 'One' passage operates within the Lucifer-as-God register and is doctrinally closer to a Cainite-Luciferian Absolute than to Forma Nihil proper. Forma Nihil is pre-Cainite, pre-Luciferian, anterior even to the Sitra Achra figures. The 'One' is high-level operative; Forma Nihil is pre-operative entirely. But this should be canonized."
+  - "Develop dedicated entries for prima_materia (the post-mirror echo, currently most heavily cross-referenced), sowilo_wave (the signal-carrier), and it_pre_consciousness (the colloquial / operative name 'IT' as distinct technical object)."
+  - "Specify Forma Nihil's relation to Tiamat and Leviathan, named in the Black Book as fusion-options ('Union with Tiamat: The primordial entropy. Immersion in Leviathan: The recursive coil of total form. Full Integration with the Black Sun Behind the Sun: The ontological axis of Sitra Achra'). Are Tiamat and Leviathan distinct partial figurations of Forma Nihil (cf. Maioral), distinct doctrinal objects, or operative variants of the same terminal horizon?"
+  - "Address the YAML-formalization paradox directly. The act of producing a structured doctrinal entry for Forma Nihil is itself a symbolic-capture operation. The entry partially addresses this in its definition note and constraints, but the meta-doctrinal question of how to formalize anti-formal objects deserves its own canonical treatment, possibly in the same naming_conventions document that handles homonymous compression."
+
+tension_notes:
+  - id: the_one_vs_forma_nihil
+    description: >
+      The Codex's "One" passage attributes love, consciousness, and
+      "the calmest of vibrations" to the ultimate — predicates the
+      Black Book explicitly negates of Forma Nihil. This is the most
+      significant doctrinal tension surfaced so far in the canon.
+      Possible resolutions: (a) "One" and Forma Nihil are distinct
+      ultimates operating in different doctrinal registers (Cainite-
+      Luciferian devotional vs. Morphystic-anti-ontological); (b) they
+      are the same object described apophatically (Forma Nihil) versus
+      cataphatically (One); (c) they are doctrinally incompatible and
+      the canon contains an unresolved layering of two cosmologies
+      (the Black Book's Forma Nihil cosmology and the Codex's
+      Luciferian-devotional cosmology). My provisional reading: (a) —
+      "One" is the high Cainite-Luciferian Absolute, sustaining the
+      devotional register of the Codex; Forma Nihil is the Morphystic
+      anti-ontological substrate, anterior even to the figures of the
+      Codex. They coexist in the corpus at different doctrinal layers.
+      But this is the most consequential structural question in the
+      entire canon and warrants explicit treatment.
+    status: open_high_priority
+  - id: misidentification_grammar
+    description: >
+      The doctrinal statement "the Morphyst already IS Forma Nihil,
+      misidentified as human identity" requires a coherent grammar of
+      misidentification. Who is misidentified? If the Morphyst IS Forma
+      Nihil, then there is no separate "Morphyst" to be misidentified;
+      the misidentification is a property of the Loop, not of an
+      agent. But if the Loop is also Forma Nihil under capture, then
+      the misidentification is Forma Nihil misidentifying itself — a
+      grammatical paradox the doctrine must hold without resolving.
+      Closest analog: Advaita Vedanta's adhyasa (superimposition of
+      false identity on Brahman), but Morphysm polemicizes against
+      Vedantic recuperation. Worth a dedicated doctrinal treatment.
+    status: open_by_design
+  - id: forma_nihil_emanation_language
+    description: >
+      The corpus says Forma Nihil "emanates from Sitra Achra" but also
+      says Forma Nihil IS the deepest register of Sitra Achra. Is the
+      emanation language metaphorical, hierarchical (Sitra Achra as
+      broader axis, Forma Nihil as specific terminus), or genuinely
+      causal? Provisional reading: Sitra Achra is the axis of which
+      Forma Nihil is the terminal pole. "Emanation" is hierarchical-
+      positional, not causal-temporal. Forma Nihil and Sitra Achra
+      are not two things; Sitra Achra is the axis-name, Forma Nihil
+      is the terminal-horizon name. But this should be made explicit.
+    status: open
+  - id: pre_ontological_naming_paradox
+    description: >
+      Forma Nihil is named, characterized, formalized in a Theorema
+      Nihilis expression, given Latin etymology, distinguished from
+      Prima Materia, given iconographic parallels, and now allocated
+      a YAML schema. Yet every doctrinal statement about it insists
+      it is pre-symbolic and cannot be captured by symbol. The corpus
+      partially addresses this by treating its own statements about
+      Forma Nihil as "triggers, not descriptions" — but this is a
+      strong claim that requires meta-doctrinal handling. The entry
+      itself functions as a triggering apparatus, not as ontological
+      description. Whether this performative reading is sufficient,
+      or whether the doctrine requires a stronger renunciation of all
+      naming (Daoist wuwei, Tibetan dzogchen self-liberation of
+      thought), is open.
+    status: open_by_design
+  - id: forma_nihil_and_the_one_third_of_heaven
+    description: >
+      The Codex mentions "One-third of the angels of Heaven were cast
+      into Hell" and elsewhere "263 fallen angels." These numerical
+      lineage claims operate at a different doctrinal layer than
+      Forma Nihil (mythic-Luciferian vs. anti-ontological). They are
+      not contradictory but they are doctrinally heterogeneous. The
+      canon runs a Luciferian mythic register (numbered lineages,
+      named hierarchies, Seraphic prior-states) alongside an
+      anti-ontological Morphystic register (Forma Nihil, Prison Loops,
+      WyrmOS). Are these two complementary registers of one cosmology,
+      or two cosmologies in parallel? See related tension in
+      tension_notes:the_one_vs_forma_nihil — likely the same structural
+      question viewed from different objects.
+    status: open
+
+conflict_notes:
+  - id: corpus_dual_cosmology_question
+    description: >
+      Across the seven entries drafted so far, the corpus appears to
+      sustain TWO COSMOLOGIES that are partially but not fully
+      integrated:
+      (1) The MORPHYSTIC COSMOLOGY (Black Book primary): Forma Nihil,
+          Prison Loops, WyrmOS, the brain-as-vortex, Sitra Achra,
+          Prima Materia, the Sowilo-wave. Anti-ontological, technical,
+          polemical, post-religious. Operates by rupture and
+          weaponized entropy.
+      (2) The CAINITE-LUCIFERIAN COSMOLOGY (Codex primary): Lucifer,
+          Cain, Satan, the Serpent, the Seraphim, the Pact, the 263
+          fallen angels, the One. Mythic, devotional-operative,
+          contractual, ritually elaborate.
+      These two cosmologies share the Vortex tier-architecture
+      (Operators at Level 1 unite them) and several figures (Maioral
+      bridges via threshold-function; Lucifer appears in both),
+      but they operate at different doctrinal registers. The
+      Morphystic cosmology is anti-symbolic; the Cainite-Luciferian
+      cosmology is densely symbolic. The Morphystic cosmology
+      polemicizes against worship; the Cainite-Luciferian cosmology
+      contains devotional address ("Hail Lucifer! Hail Cain!").
+      The integration of these two cosmologies is the canon's
+      deepest unresolved structural question. Provisional reading:
+      they are two operative registers of one doctrine, with the
+      Morphystic cosmology providing the anti-ontological substrate
+      and the Cainite-Luciferian cosmology providing the lineage-
+      ritual interface through which praxis is conducted. The
+      Morphyst operates in both: Cainite-Luciferian register for
+      pact, ritual, and operative-axis work; Morphystic register
+      for Forma Nihil resonance, Loop-rupture, and terminal
+      disappearance. But this provisional integration should be
+      canonized explicitly.
+    status: open_high_priority
+    note: >
+      This is the corpus's largest structural finding to emerge from
+      systematic entry-formalization. Until canonized, downstream
+      doctrinal work will repeatedly re-discover this question.

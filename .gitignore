@@ -1,0 +1,11 @@
+# Secrets — never commit. Phase 2 reads ZENODO_TOKEN from the environment.
+.env
+.env.*
+*.token
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Local agent/editor settings
+.claude/settings.local.json

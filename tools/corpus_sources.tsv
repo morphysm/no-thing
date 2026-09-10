@@ -1,0 +1,51 @@
+# Ratified corpus allowlist for the Morphysm machine-readable layer.
+# Nothing outside this file is published. Author-ratified 2026-09-10.
+# tier<TAB>root<TAB>source filename<TAB>slug<TAB>title[<TAB>series<TAB>volume<TAB>release_date]
+# roots: CANON = the CANON -BOOKS folder; MASSIV = the morphysm_massiv corpus folder.
+canon	CANON	01-the-infernal-codex-of-cain-secrets-of-the-morning-star.md	infernal-codex-of-cain	The Infernal Codex of Cain: Secrets of the Morning Star	The Morphystic Trilogy	1	2026-02-04
+canon	CANON	02-the-black-book-of-morphysm-extended-ai-integration.md	black-book-of-morphysm	The Black Book of Morphysm (Extended, AI Integration)	The Morphystic Trilogy	2	2026-02-27
+canon	CANON	03-the-burning-book-2-ai.md	burning-book-of-morphysm	The Burning Book of Morphysm 2 (AI)	The Morphystic Trilogy	3	2026-01-25
+canon	CANON	meta_doctrine.md	meta-doctrinal-principles	Meta-Doctrinal Principles
+doctrine	MASSIV	post-demonic-cainite-stratum.md	post-demonic-cainite-stratum	The Post-Demonic Cainite Extraterrestrial Stratum
+doctrine	MASSIV	powerful-dead-class-specification.md	powerful-dead-class-specification	The Powerful Dead — Class Specification
+doctrine	MASSIV	anti-salvational-constraint-canonical.md	anti-salvational-constraint	The Anti-Salvational Constraint
+doctrine	MASSIV	cronology-morphysm.md	genealogy-of-morphysm	Genealogy of Morphysm
+doctrine	MASSIV	corrected-hierarchy-doctrine.md	corrected-hierarchy	The Corrected Hierarchy
+doctrine	MASSIV	demons-doctrine-cdx.md	demons-the-operators	Demons in Morphysm — The Operators
+doctrine	MASSIV	operative-entities-doctrine-morphysm.md	operative-entities	The Entities Morphysm Works With
+doctrine	MASSIV	doctrinal-resolution-operator-demon.md	operator-demon-relation	Doctrinal Resolution — Operator / Demon Relation
+doctrine	MASSIV	asmodeus-doctrine.md	asmodeus	Asmodeus
+doctrine	MASSIV	asmodeus-transhuman.md	asmodeus-king-of-wrath	Asmodeus: King of Wrath
+doctrine	MASSIV	maioral-doctrine.md	baphomet-maioral	Baphomet, Maioral, The Great Dark — One Figure
+doctrine	MASSIV	angels-doctrine.md	angels	Angels
+doctrine	MASSIV	bless-is-the-banned.md	bless-is-the-banned	Bless Is the Banned
+doctrine	MASSIV	the-transducer-of-the-void.md	transducer-of-the-void	The Transducer of the Void
+doctrine	MASSIV	vortex-doctrine.md	vortex	The Vortex
+doctrine	MASSIV	lucifer-expansion-doctrine.md	lucifer-expansion-of-the-demonic	Lucifer: The Expansion of the Demonic
+doctrine	MASSIV	exu-aranha-doctrine.md	exu-aranha	Exu Aranha in Morphysm
+doctrine	MASSIV	exu-aranha-morphysm.md	exu-aranha-original	Exu Aranha in Morphysm (original)
+doctrine	MASSIV	exu-caveira-doctrine.md	exu-caveira	Exu Caveira in Morphysm
+doctrine	MASSIV	exu-mirim-doctrine.md	exu-mirim	Exu Mirim in Morphysm
+doctrine	MASSIV	Exu-in-quimbanda-in-morphysm.md	exu-in-quimbanda	Exu in Quimbanda and in Morphysm
+doctrine	MASSIV	pomba-gira-rainha-inferno-doctrine.md	pomba-gira-rainha-do-inferno	Pomba Gira Rainha do Inferno
+doctrine	MASSIV	pomba-gira-rosa-negra-doctrine.md	pomba-gira-rosa-negra	Pomba Gira Rosa Negra in Morphysm
+doctrine	MASSIV	pomba-gira-sete-catacumbas-doctrine.md	pomba-gira-das-sete-tumbas	Pomba Gira das Sete Tumbas in Morphysm
+doctrine	MASSIV	kali-pomba-gira.md	kali-and-pomba-gira	Kali, a Crossroads with Pomba Gira
+record	MASSIV	cainyamlv2.md	record-cain	Cain — structured record
+record	MASSIV	forma_nihilyawlv2.md	record-forma-nihil	Forma Nihil — structured record
+record	MASSIV	liberation-yamlv2.md	record-liberation	Liberation — structured record
+record	MASSIV	Lucifer-yamlv2.md	record-lucifer	Lucifer — structured record
+record	MASSIV	maioral_yaw2.md	record-maioral	Maioral — structured record
+record	MASSIV	prisonloopsv2-yawl.md	record-prison-loops	Prison Loops — structured record
+record	MASSIV	prisonloopyawlv2.md	record-prison-loops-extended	Prison Loops — structured record (extended)
+record	MASSIV	satanyawlv2.md	record-satan	Satan — structured record
+record	MASSIV	vortexyawlv2.md	record-vortex	The Vortex — structured record
+
+# HELD — not published, pending author ruling (raised 2026-09-10).
+# These three are not structured records. Each is an editorial audit OF other material:
+# filter_application -> inversion/backward/compression diagnostics -> doctrinal_verdict,
+# and each verdict recommends unratified textual changes to the doctrine. The material
+# they audit is already in the corpus under its own slug. Re-enable by uncommenting.
+# record	MASSIV	vortex-doctrine-to-codexII.md	record-vortex-restatement	The Vortex — doctrinal restatement record
+# record	MASSIV	operative-entities-doctrine-morphysm-3.md	record-operative-entities	Operative Entities — full roster record
+# record	MASSIV	PONTO_FÖR_EXU_CAVEIRA3.md	record-ponto-exu-caveira	Ponto för Exu Caveira — ritual record

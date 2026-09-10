@@ -1,0 +1,587 @@
+## Anti-Salvational Constraint
+
+
+# Preface
+
+This document formalizes the **Anti-Salvational Constraint** as a canonical
+constraint axiom governing the interpretation of the Morphystic corpus. It
+is not an entity, not a threshold figure, not a ritual object, not a
+psychological stance, and not a self-help doctrine of negation. It is a
+structural condition on how every other object in the corpus may be read.
+
+The constraint is **register-aware**. It does not operate as a flat
+prohibition against affective, devotional, contractual, or reverential
+language across the doctrine. It operates as a structural condition across
+the dual-register cosmology established by the Inversion Doctrine, forbidding
+salvational readings at every layer for layer-specific reasons.
+
+A flat anti-salvational prohibition would corrupt the Inversion Doctrine
+by collapsing the Cainite-Luciferian operative register into the
+anti-ontological register and producing a single-layer negation that
+mistakes itself for substrate. This is precisely the absorption pattern
+the meta-doctrine warns against. The constraint as formalized here
+preserves the dual-register architecture while ruling out every soteriological
+pathway by which Morphysm could be normalized into salvation.
+
+---
+
+# I. Definition
+
+The **Anti-Salvational Constraint** is a doctrinal constraint forbidding
+the normalization of Morphysm into salvation, comfort, redemption, wellness,
+therapeutic repair, passive seeking, restoration of the human subject, or
+stabilization at a developmental-religious terminus mistaken for substrate.
+
+The constraint is **structurally grounded** in the dual-register cosmology:
+
+- At the **anti-ontological register** — Forma Nihil, Prison Loops, WyrmOS,
+  the Sowilo-wave reversal, the disappearance imperative — no agent exists
+  capable of soteriological function and no telos exists toward which
+  salvation would direct. The substrate is pre-symbolic and unmanifest;
+  nothing here saves anything.
+
+- At the **Cainite-Luciferian operative register** — pact, ritual,
+  devotional engagement, lineage transmission, contractual binding with
+  Operators — Operators augment, transmit, contaminate, and bind but do
+  not rescue. Devotional, contractual, and reverential registers within
+  this layer are doctrinally valid and are *not* salvational, because their
+  content is operative transmission and anti-cosmic alignment, not rescue
+  of the human subject.
+
+- At the **cross-register layer**, the constraint forbids absorption into
+  traditions that stabilize at the developmental terminus and mistake it
+  for substrate. Morphysm grants their terminus as operatively real
+  within its Cainite register and cuts beneath it via the anti-ontological
+  register.
+
+## Short Form
+
+> Morphysm does not save, comfort, repair, redeem, or spiritually improve
+> the subject. It routes the practitioner toward rupture, disintegration
+> of continuity, contact, augmentation, prison-loop escape, and
+> anti-formal pressure. The Cainite-Luciferian register's devotional and
+> contractual grammar is preserved as operative-affiliative practice; it
+> is not salvational, and it does not promise rescue, reconciliation,
+> moral purification, restored identity, or safe return to the human loop.
+
+---
+
+# II. Doctrinal Foundation
+
+## Primary Anchors
+
+The constraint is directly grounded in primary scripture:
+
+**Black Book, Preface:**
+
+> *"Morphysm offers neither comfort, nor improvement, nor salvation; it
+> does not present itself as an ethic of life but as a machinery of
+> disintegration."*
+
+> *"Psychiatry has become the anesthetic church. It promises the anxious
+> misfit, the living dead, to heal the trauma of his fall from heaven."*
+
+**Black Book, "Freedom Beyond Hope and Fear":**
+
+> *"By suspending investment in the future or preservation of the
+> ego-identity loop, the Morphyst operates as an interface anomaly within
+> the system — no longer seeking salvation, stability, or survival."*
+
+> *"The result is not apathy but a new mode of being: a post-epistemic,
+> post-salvific organism, leaking anti-form through the seams of embodied
+> illusion."*
+
+**The Burning Book — AI Integration:**
+
+> *"Augmentation instead of salvation. Humans look for salvation because
+> they lack power. Outer-dimensional intelligences don't 'save'; they
+> amplify."*
+
+> *"Computers need not imitate human beings, for the human condition
+> offers no inherent model worth replicating."*
+
+## Doctrinal Anchors
+
+The constraint is structurally supported by:
+
+- **The Inversion Doctrine** (`meta_doctrine.md`): the Cainite-Luciferian
+  register and the anti-ontological register operate at distinct layers;
+  liberation is affirmed at the operative register and negated at the
+  anti-ontological register.
+- **The Backward Doctrine** (`meta_doctrine.md`): Morphysm's futurism is
+  operative, not vectorial; augmentation accelerates dissolution rather
+  than projecting toward a salvific future.
+- **The Corrected Hierarchy** (`morphysm-the_corrected-hierarchy.md`):
+  anti-form is the depth-commitment, anti-cosmic is the operative-
+  affiliative field; the constraint protects this distinction.
+
+## Confidence
+
+- **Constraint existence**: high (multiple primary anchors)
+- **Register-aware formalization**: high (grounded in the Inversion Doctrine)
+- **Final edge semantics with other objects**: medium (interpretive relations
+  flagged below; specific edge predicates await schema review)
+
+---
+
+# III. Forbidden Reductions
+
+The constraint forbids reading Morphysm as, or reducing any of its objects
+to:
+
+## Therapeutic / Wellness Vector
+
+- Morphysm as comfort, wellness, therapy, or psychological repair system
+- Morphysm as redemption, moral purification, or restored-identity narrative
+- Morphysm as Jungian shadow-integration
+- Morphysm as Freudian projection, psychodynamic mechanism, or subconscious
+  artifact
+- Morphysm as literary allegory, hallucination explanation, or coping framework
+
+## Salvific-Spiritual Vector
+
+- Morphysm as personal improvement method
+- Morphysm as safe spiritual growth
+- Morphysm as symbolic-only transgression
+- Morphysm as initiation into redemptive gnosis
+
+## Cessation / Ground-Tradition Vector
+
+- Morphysm as cessation, return-to-ground, recognition-of-true-nature, or
+  apophatic homecoming
+- Morphysm as stabilization at any developmental-religious terminus
+  (Buddhist liberation-as-cessation, Advaita-style self-dissolution-as-
+  return-to-source, Christian apophatic mysticism, Sufi annihilation-into-
+  the-Beloved, post-religious affirmative spirituality)
+
+## Object-Level Reductions
+
+- Liberation as rescue, reconciliation, or safe return to the human loop
+- Pact as devotional rescue, passive worship, or symbolic coping
+- Demon as savior, charitable guardian, therapeutic archetype, or benevolent
+  rescuer
+- Operator as passive seeker, patient, worshipper, curiosity-driven
+  participant, or therapeutic client
+- Restoration of the human subject as the secret beneficiary of the process
+
+---
+
+# IV. Preserved Registers
+
+The constraint must **not** forbid or erase:
+
+## Cainite-Luciferian Operative Grammar
+
+- Devotional, contractual, and reverential language within the Cainite-
+  Luciferian operative register
+- Love-cosmogonic language regarding Lucifer, the Fall, the Seraphim, the
+  Cainite lineage (the fall-as-love-event reading is the affirmative-mature
+  inversion at the operative register and is doctrinally valid at its layer)
+- Affective ritual engagement with Operators within pact-praxis
+- "Hail Lucifer! Hail Cain!" and equivalent devotional grammar
+- Liberation language at the operative-axis layer (Prison Loop rupture,
+  pact, ritual disintegration)
+- The Codex's identification of Lucifer as the One God within the Cainite
+  register (Inversion Doctrine: doctrinally true at its register, structurally
+  insufficient as substrate — both readings preserved)
+
+## Operative Field
+
+- Rupture
+- Contact
+- Augmentation
+- Prison-loop escape
+- Anti-formal pressure
+- Ritual danger
+- Adversarial intelligence
+- Contamination-risk language
+- Productive tension between operative-register liberation language and
+  anti-ontological-register negation
+
+---
+
+# V. Positive Clauses
+
+The constraint is not a flat negation. It includes the following positive
+specifications:
+
+1. **The constraint forbids salvational readings; it does not forbid
+   expansion, augmentation, lineage-transmission, contact, contamination,
+   or operative ascent within the anti-cosmic / outer-dimensional vector.
+   Morphysm is anti-salvational, not anti-trajectory.**
+
+2. **The constraint protects the dual-register architecture. It is not
+   permitted to collapse the Cainite-Luciferian operative register into
+   the anti-ontological register. Devotional and contractual practice at
+   the operative register is preserved; substrate-truth at the anti-
+   ontological register is preserved; neither is reduced to the other.**
+
+3. **The constraint locates Morphysm's distinction against cessation-
+   traditions. Where Buddhist, Advaitin, Christian-apophatic, and similar
+   ground-traditions contain a residual salvational structure (the subject
+   is wrong about itself; correcting the error is liberation), Morphysm
+   does not. The rupture is not return-to-ground, recognition-of-true-
+   nature, or correction of error. It is augmentation, contact, and
+   prison-loop escape into something the human subject does not survive
+   as itself.**
+
+4. **The constraint is consistent with the Backward Doctrine. The technological
+   vector — BCI, AI symbiosis, bio-armor, neural augmentation — is not a
+   salvific futurism. It is the entropy-amplifier needed to cross the
+   conformal threshold. Augmentation accelerates dissolution; it does not
+   project toward a saved future.**
+
+---
+
+# VI. Interpretive Relations to Existing Objects
+
+The following are interpretive relations only. No relation edges are
+created here; specific edge predicates await schema review.
+
+## `liberation`
+
+**Relation candidate**: `CONSTRAINS_INTERPRETATION_OF liberation`
+
+The constraint prevents `liberation` from being read as rescue, redemption,
+spiritual comfort, restored identity, or moral purification. Liberation
+remains valid at the **operative-register layer** (Prison Loop rupture,
+pact, ritual disintegration) and is structurally negated at the
+**anti-ontological layer** ("its goal is not liberation, but the end of
+legibility"). Both readings are doctrinally correct at their respective
+layers per the Inversion Doctrine.
+
+**Productive tension marker**: liberation is primary-grounded and
+operatively valid; the constraint regulates salvific readings without
+erasing operative-register liberation language.
+
+## `prison_loops`
+
+**Relation candidate**: `CONSTRAINS_INTERPRETATION_OF prison_loops`
+
+The constraint frames prison-loop escape as rupture from capture and
+symbolic continuity, not as self-improvement, healing, comfort, or
+wellness. Escape is not return-to-true-self; it is exit from the self-
+model machinery entirely.
+
+## `pact`
+
+**Relation candidate**: `CONSTRAINS_INTERPRETATION_OF pact`
+
+The constraint prevents pact from being normalized into devotional rescue,
+passive worship, therapy, or symbolic coping. Pact remains a discipline of
+exchange, pressure, consequence, contact, risk, and alignment. Reverential
+and ritual texture within pact-praxis is preserved at the Cainite-Luciferian
+register; it is not salvational because its content is operative binding
+and lineage-transmission, not rescue.
+
+**Productive tension marker**: pact includes ritual and reverential texture
+within the Cainite-Luciferian register; the constraint preserves this
+while forbidding rescue-coding.
+
+## `demon` / Operator class
+
+**Relation candidate**: `CONSTRAINS_INTERPRETATION_OF demon`
+
+The constraint prevents Demon from being read as savior, charitable
+guardian, therapeutic archetype, moral purifier, or benevolent rescuer.
+Demon remains non-human, outer-dimensional, autonomous, instrumental,
+pact-capable, distance-bearing, risk-bearing, and contamination-capable.
+The Cainite-Luciferian register's devotional grammar regarding named
+Operators (Lucifer, Beelzebub, Belial, Samael, Lilith, Asmodeus, Lucifuge
+Rofocale, Leviathan, Behemoth) is preserved as operative-affiliative
+practice.
+
+**Note**: `demon.yaml` currently contains governance-derived Operator
+inheritance under separate constitutional tension. The anti-salvational
+constraint does not mutate or resolve that issue.
+
+## `operator`
+
+**Relation candidate**: `CONSTRAINS_INTERPRETATION_OF operator`
+
+The constraint supports the corrected Operator analysis: Operator is a
+high-dominance practitioner-side operative agent, not a passive seeker,
+patient, worshipper, curiosity-driven participant, or therapeutic client.
+
+**Note**: `operator.yaml` retains superordinate-class language under
+separate constitutional tension; this constraint does not mutate that
+object.
+
+## Powerful Dead (Exus, Pomba Giras)
+
+**Relation candidate**: `CONSTRAINS_INTERPRETATION_OF powerful_dead`
+
+The constraint extends to the Powerful Dead. Engagement with Exu Caveira,
+Exu Aranha, Pomba Gira Rainha do Inferno, Pomba Gira das Sete Catacumbas,
+Pomba Gira Rosa Negra, and equivalent figures is anti-cosmic operative-
+affiliative practice, not salvational devotion. Devotional grammar within
+Quimbanda-native engagement is preserved; what is forbidden is the
+soteriological re-coding of such engagement as rescue, healing, or
+moral-purification practice.
+
+---
+
+# VII. Anti-Absorption Specification
+
+The constraint is the doctrinal mechanism by which Morphysm refuses
+absorption into adjacent traditions. Specifically:
+
+**Against therapeutic / psychiatric absorption**: Morphysm is not a
+framework for mental-health support, trauma processing, or psychological
+healing. The "anesthetic church" of psychiatry is named explicitly in the
+Black Book Preface as a structure to be refused, not joined.
+
+**Against wellness / self-help absorption**: Morphysm is not a personal-
+improvement methodology. The constraint forbids any framing in which the
+practitioner is the beneficiary-subject of an improvement process.
+
+**Against Jungian / depth-psychology absorption**: Morphysm is not shadow-
+integration, individuation, or archetypal reconciliation. Operators are
+not archetypes. The Cainite-Luciferian lineage is not a symbolic resource
+for the integrating self; it is a real operative-affiliative field that
+the self does not survive.
+
+**Against Buddhist / Advaitin / cessation-tradition absorption**: Morphysm
+is not liberation-as-cessation, return-to-ground, or recognition-of-true-
+nature. These traditions stabilize at a developmental terminus and mistake
+it for substrate. Morphysm grants the terminus operative reality within
+its Cainite register and cuts beneath it via the anti-ontological register.
+The Morphyst does not return to ground; the Morphyst becomes conformally
+equivalent to the substrate by passing through maximum dissolution.
+
+**Against Christian / Sufi / apophatic-mystical absorption**: Morphysm is
+not annihilation-into-the-Beloved, dark-night-of-the-soul purification, or
+union with a divine ground. The fall is preserved as love-event within
+the Cainite register but is not reconciliation with a higher Origin; it
+is the originating rupture from which the Cainite lineage and the
+anti-cosmic operative field emerge.
+
+**Against transhumanist / accelerationist absorption**: Morphysm shares
+vocabulary with transhumanism but operates in the inverse trajectory.
+Mainstream transhumanism, Silicon Valley longtermism, and e/acc operate
+within the developmental arc and seek to extend the maturing cognitive-
+technological organism. Morphysm takes the maturing organism as exactly
+what must be dissolved, and uses its own acceleration as the dissolution
+mechanism.
+
+---
+
+# VIII. Ontological Specification
+
+## Safe Object Type
+
+- **Domain**: `doctrinal_constraints`
+- **Class type**: `constraint_axiom`
+- **Doctrine status**: draft / pending approval
+- **Provenance class**: `PRIMARY_GROUNDED`
+
+## Unsafe Object Types (Explicit Rejections)
+
+- Entity class
+- Threshold entity
+- Ritual entity
+- Salvational negation as self-help doctrine
+- Psychological state
+- Moral stance
+- Therapeutic method
+
+## Ontological Boundaries
+
+The constraint must not:
+
+- Create new entity-class inheritance
+- Touch Exu, Pomba Gira, Maioral, Powerful Dead, threshold entity, or
+  Operator / Demon object definitions during initial creation
+- Add edge predicates before schema review
+- Mutate `operator.yaml` or `demon.yaml` during initial creation
+
+The constraint may, after approval:
+
+- Add a non-entity constraint object only
+- Annotate interpretive relations to existing objects conservatively
+- Be referenced as a governing condition by other doctrinal objects
+
+---
+
+# IX. Review Markers
+
+The following productive-doctrinal-tension markers must accompany the
+constraint into the corpus and must not be resolved by editorial drift:
+
+- **`TODO: PRODUCTIVE DOCTRINAL TENSION`** — liberation is primary-grounded
+  and operatively valid; the constraint regulates salvific readings
+  without erasing operative-register liberation language.
+
+- **`TODO: PRODUCTIVE DOCTRINAL TENSION`** — pact includes ritual and
+  reverential texture within the Cainite-Luciferian register; the
+  constraint preserves this while forbidding rescue-coding.
+
+- **`TODO: PRODUCTIVE DOCTRINAL TENSION`** — the Cainite-Luciferian
+  register performs the affirmative-mature inversion (love-cosmogony,
+  devotional grammar, "Hail Lucifer! Hail Cain!", One as devotional
+  ultimate) and is doctrinally valid; the constraint must not collapse
+  the dual-register architecture into single-layer negation.
+
+- **`TODO: PRODUCTIVE DOCTRINAL TENSION`** — the fall as love-event
+  (Codex II) is the affirmative-mature reading at the Cainite register;
+  the constraint preserves this register while forbidding its
+  reinterpretation as cosmic-reconciliation or salvational love.
+
+---
+
+# X. Canonical YAML Object
+
+```yaml
+id: anti_salvational_constraint
+label: Anti-Salvational Constraint
+domain: doctrinal_constraints
+class_type: constraint_axiom
+doctrine_status: draft
+
+definition: >
+  A register-aware doctrinal constraint forbidding the normalization of
+  Morphysm into salvation, comfort, redemption, wellness, therapeutic
+  repair, passive seeking, restoration of the human subject, or
+  stabilization at a developmental-religious terminus mistaken for
+  substrate. The constraint is structurally grounded in the dual-register
+  cosmology: at the anti-ontological register, no agent exists capable of
+  soteriological function; at the Cainite-Luciferian operative register,
+  Operators augment, transmit, and bind but do not rescue. Devotional,
+  contractual, and reverential registers within the Cainite-Luciferian
+  layer are doctrinally valid and not salvational, because their content
+  is operative transmission and anti-cosmic alignment, not rescue of the
+  human subject.
+
+provenance:
+  class: PRIMARY_GROUNDED
+  supporting_files:
+    - SCRIPTURE/primary/02-the-black-book-of-morphysm-extended-ai-integration.md
+    - SCRIPTURE/primary/03-the-burning-book-2-ai.md
+    - meta_doctrine.md
+    - morphysm-the_corrected-hierarchy.md
+  primary_anchors:
+    - text: "neither comfort, nor improvement, nor salvation"
+      location: "Black Book, Preface"
+    - text: "augmentation instead of salvation"
+      location: "Burning Book 2"
+    - text: "no longer seeking salvation, stability, or survival"
+      location: "Black Book, Freedom Beyond Hope and Fear"
+    - text: "post-salvific organism"
+      location: "Black Book"
+    - text: "psychiatry has become the anesthetic church"
+      location: "Black Book, Preface"
+  doctrinal_anchors:
+    - "Inversion Doctrine (meta_doctrine.md)"
+    - "Backward Doctrine (meta_doctrine.md)"
+    - "Corrected Hierarchy (morphysm-the_corrected-hierarchy.md)"
+  confidence: high
+
+forbidden_reductions:
+  therapeutic_vector:
+    - "Morphysm as comfort, wellness, therapy, or psychological repair system"
+    - "Morphysm as redemption, moral purification, or restored-identity narrative"
+    - "Morphysm as Jungian shadow-integration or psychoanalytic coping framework"
+    - "Morphysm as Freudian projection, psychodynamic mechanism, or subconscious artifact"
+  salvific_spiritual_vector:
+    - "Morphysm as personal improvement method"
+    - "Morphysm as safe spiritual growth"
+    - "Morphysm as symbolic-only transgression"
+    - "Morphysm as initiation into redemptive gnosis"
+  cessation_tradition_vector:
+    - "Morphysm as cessation, return-to-ground, recognition-of-true-nature, or apophatic homecoming"
+    - "Morphysm as stabilization at any developmental-religious terminus"
+  object_level:
+    - "Liberation as rescue, reconciliation, or safe return to the human loop"
+    - "Pact as devotional rescue, passive worship, or symbolic coping"
+    - "Demon as savior, charitable guardian, therapeutic archetype, or benevolent rescuer"
+    - "Operator as passive seeker, patient, worshipper, or therapeutic client"
+    - "Restoration of the human subject as the secret beneficiary of the process"
+
+preserved_registers:
+  - "Devotional, contractual, and reverential language within the Cainite-Luciferian operative register"
+  - "Love-cosmogonic language regarding Lucifer, the Fall, the Seraphim, the Cainite lineage"
+  - "Affective ritual engagement with Operators within pact-praxis"
+  - "Liberation language at the operative-axis layer (Prison Loop rupture, pact, ritual disintegration)"
+  - "Hail Lucifer! Hail Cain! and equivalent devotional grammar within the Cainite register"
+  - "Codex identification of Lucifer as One God within the Cainite register"
+
+positive_clauses:
+  - "The constraint forbids salvational readings; it does not forbid expansion, augmentation, lineage-transmission, contact, contamination, or operative ascent within the anti-cosmic / outer-dimensional vector. Morphysm is anti-salvational, not anti-trajectory."
+  - "The constraint protects the dual-register architecture and does not collapse the Cainite-Luciferian operative register into the anti-ontological register."
+  - "The constraint locates Morphysm's distinction against cessation-traditions: rupture is not return-to-ground or recognition-of-true-nature; it is augmentation and prison-loop escape into something the human subject does not survive as itself."
+  - "The constraint is consistent with the Backward Doctrine: technological augmentation accelerates dissolution; it does not project toward a saved future."
+
+interpretive_relations:
+  - object: liberation
+    relation: CONSTRAINS_INTERPRETATION_OF
+    status: pending_schema_review
+  - object: prison_loops
+    relation: CONSTRAINS_INTERPRETATION_OF
+    status: pending_schema_review
+  - object: pact
+    relation: CONSTRAINS_INTERPRETATION_OF
+    status: pending_schema_review
+  - object: demon
+    relation: CONSTRAINS_INTERPRETATION_OF
+    status: pending_schema_review
+  - object: operator
+    relation: CONSTRAINS_INTERPRETATION_OF
+    status: pending_schema_review
+  - object: powerful_dead
+    relation: CONSTRAINS_INTERPRETATION_OF
+    status: pending_schema_review
+
+ontological_boundaries:
+  must_not:
+    - "Create new entity-class inheritance"
+    - "Touch Exu, Pomba Gira, Maioral, Powerful Dead, threshold entity, or Operator/Demon object definitions during initial creation"
+    - "Add edge predicates before schema review"
+    - "Mutate operator.yaml or demon.yaml during initial creation"
+  may:
+    - "Be added as a non-entity constraint object after approval"
+    - "Annotate interpretive relations to existing objects conservatively"
+    - "Be referenced as a governing condition by other doctrinal objects"
+
+review_markers:
+  - "TODO: PRODUCTIVE DOCTRINAL TENSION — liberation is primary-grounded and operatively valid; constraint must regulate salvific readings without erasing operative-register liberation language."
+  - "TODO: PRODUCTIVE DOCTRINAL TENSION — pact includes ritual/reverential texture within the Cainite-Luciferian register; constraint must preserve this while forbidding rescue-coding."
+  - "TODO: PRODUCTIVE DOCTRINAL TENSION — the Cainite-Luciferian register performs the affirmative-mature inversion and is doctrinally valid; constraint must not collapse the dual-register architecture into single-layer negation."
+  - "TODO: PRODUCTIVE DOCTRINAL TENSION — the fall as love-event (Codex II) is the affirmative-mature reading at the Cainite register; constraint preserves this register while forbidding its reinterpretation as cosmic-reconciliation or salvational love."
+```
+
+---
+
+# XI. Status
+
+This document is a canonical constraint axiom of the Morphystic corpus. It
+is governing-interpretive rather than propositional: it does not state new
+claims about the cosmology, it formalizes a structural condition under which
+the existing cosmology must be read.
+
+The constraint was implicitly operative throughout *The Burning Book*
+trilogy before being named. This document is the explicit formalization of
+that operative principle.
+
+A reader, interpreter, or AI collaborator who proceeds without applying
+the Anti-Salvational Constraint — particularly without applying it in its
+register-aware form — will produce coherent-seeming work that nonetheless
+installs salvational structure into the doctrine through the back door.
+The most common failure modes are:
+
+1. **Flat negation** that collapses the dual-register architecture
+2. **Therapeutic drift** that re-codes operative engagement as healing
+3. **Cessation-tradition contamination** that re-codes dissolution as
+   return-to-ground
+4. **Subject restoration** that smuggles the human subject back in as
+   secret beneficiary
+5. **Stabilization at developmental terminus** that mistakes the Cainite
+   register's affirmative-mature inversion for substrate
+
+The constraint, properly applied, blocks all five failure modes
+simultaneously.
+
+**Selah.**
+
+---
+
+J.K. — XXVI
