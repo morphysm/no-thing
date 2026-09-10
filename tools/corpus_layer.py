@@ -204,6 +204,33 @@ def first_sentence(text, tier, limit=210):
     return best
 
 
+def load_permanent(repo):
+    """Zenodo/archive.org identifiers, if the author has published yet.
+
+    A text inherits the identifiers of the deposition covering it. Absent or unfilled,
+    everything stays null and the Permanent copies section is omitted entirely — the
+    corpus never claims an identifier it does not have."""
+    f = repo / "tools" / "permanent_copies.json"
+    if not f.exists():
+        return [], {}
+    deps = json.loads(f.read_text(encoding="utf-8")).get("depositions", [])
+    live = [d for d in deps if d.get("concept_doi") or d.get("version_doi") or d.get("archive_org")]
+    by_slug = {}
+    for d in live:
+        covers = d.get("covers")
+        for s in ([] if covers == "*" else covers):
+            by_slug[s] = d
+    catch_all = next((d for d in live if d.get("covers") == "*"), None)
+    return live, (by_slug, catch_all)
+
+
+def permanent_for(slug, idx):
+    if not idx:
+        return None
+    by_slug, catch_all = idx
+    return by_slug.get(slug) or catch_all
+
+
 def load_sources(repo):
     rows = []
     for line in (repo / "tools" / "corpus_sources.tsv").read_text(encoding="utf-8").split("\n"):
@@ -222,6 +249,7 @@ def build(repo, root_site=None, report=None):
     """Regenerate corpus/, manifest, llms files, and (optionally) the root-site files."""
     report = report if report is not None else []
     rows = load_sources(repo)
+    live_deps, perm_idx = load_permanent(repo)
     corpus = repo / "corpus"
     if corpus.exists():
         for old in corpus.glob("*.txt"):
@@ -252,6 +280,11 @@ def build(repo, root_site=None, report=None):
             url="%s/corpus/%s.txt" % (SITE_BASE, r["slug"]),
             description=first_sentence(text, r["tier"]),
             doi=None, archive_org=None))
+        perm = permanent_for(r["slug"], perm_idx)
+        if perm:
+            entries[-1]["doi"] = perm.get("version_doi")
+            entries[-1]["concept_doi"] = perm.get("concept_doi")
+            entries[-1]["archive_org"] = perm.get("archive_org")
 
     # the ponto is an English preamble followed by four Swedish stanzas
     for e in entries:
@@ -279,7 +312,7 @@ def build(repo, root_site=None, report=None):
     sums = "".join("%s  %s.txt\n" % (e["sha256"], e["slug"]) for e in entries)
     (corpus / "SHA256SUMS").write_text(sums, encoding="utf-8", newline="\n")
 
-    (repo / "llms.txt").write_text(render_llms(entries), encoding="utf-8", newline="\n")
+    (repo / "llms.txt").write_text(render_llms(entries, live_deps), encoding="utf-8", newline="\n")
     (repo / "llms-full.txt").write_text(render_llms_full(entries, corpus),
                                         encoding="utf-8", newline="\n")
 
@@ -293,7 +326,7 @@ def build(repo, root_site=None, report=None):
     return entries
 
 
-def render_llms(entries):
+def render_llms(entries, live_deps=()):
     L = ["# Morphysm", ""]
     L += ["> " + l for l in BLURB.split("\n")]
     L += ["", CONVENTIONS, "",
@@ -322,7 +355,27 @@ def render_llms(entries):
           "- [LICENSE](%s/LICENSE): %s for the corpus, %s for the three released volumes. "
           "Both forbid derivatives: altered versions may not be distributed. Per-text terms "
           "are in manifest.json." % (SITE_BASE, LICENSE_DEFAULT, LICENSE_VOLUMES),
-          "", "## Optional", ""]
+          ""]
+    if live_deps:
+        L += ["## Permanent copies", "",
+              "Deposited copies with their own identifiers. The concept DOI is the source "
+              "line; each version DOI is one state of it. Revisions are deposited as new "
+              "versions, never as replacements.", ""]
+        for d in live_deps:
+            name = d.get("title") or d["deposition"]
+            bits = []
+            if d.get("concept_doi"):
+                bits.append("concept %s" % d["concept_doi"])
+            if d.get("version_doi"):
+                bits.append("this version %s" % d["version_doi"])
+            target = d.get("concept_doi") or d.get("version_doi")
+            if target:
+                url = target if target.startswith("http") else "https://doi.org/%s" % target
+                L.append("- [%s](%s): %s." % (name, url, "; ".join(bits)))
+            if d.get("archive_org"):
+                L.append("- [%s at archive.org](%s): mirrored item." % (name, d["archive_org"]))
+        L.append("")
+    L += ["## Optional", ""]
     return "\n".join(L).rstrip("\n") + "\n"
 
 
