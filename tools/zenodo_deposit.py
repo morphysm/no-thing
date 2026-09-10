@@ -470,10 +470,13 @@ def main():
     if not a.dry_run:
         if not token:
             raise SystemExit(
-                "ZENODO_TOKEN is not set.\n"
-                "  export ZENODO_TOKEN=...   (sandbox and production tokens differ)\n"
-                "Scopes needed: deposit:write. Do NOT grant deposit:actions — this\n"
-                "script never publishes and does not need it.")
+                "ZENODO_TOKEN is not set in this shell. It does not survive a new\n"
+                "terminal, so export it again here:\n"
+                "  export ZENODO_TOKEN=...\n"
+                "Sandbox and production tokens are not interchangeable. Grant BOTH\n"
+                "deposit:write and deposit:actions — Zenodo refuses record creation\n"
+                "with deposit:write alone. This script still never publishes: there is\n"
+                "no call to the publish action anywhere in it.")
         session.headers["Authorization"] = "Bearer %s" % clean_token(token)
 
     if a.check:
