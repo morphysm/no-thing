@@ -20,9 +20,10 @@ defaults:
     type: organizational
     name: "J.K. — XXVI"
   access_right: open
-  # null until the author decides. No deposition may be created with license unset
-  # unless allow_unset_license is true.
-  license: null
+  # Author-ruled 2026-09-10. The three released volumes are Ko-fi products, so they
+  # carry NonCommercial as well as NoDerivatives. The rest of the corpus is
+  # cc-by-nd-4.0 (see tools/corpus_layer.py); both forbid altered redistribution.
+  license: cc-by-nc-nd-4.0
   keywords:
     - Morphysm
     - anti-ontology

@@ -1,18 +1,47 @@
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+Morphysm — licensing
 
 From the Morphysm corpus.
 
+Two licences apply, depending on the material. Both forbid derivatives: no altered
+version of any Morphysm text may be distributed. They differ only on commercial use.
+
+
+THE THREE RELEASED VOLUMES — CC BY-NC-ND 4.0
+  The Infernal Codex of Cain: Secrets of the Morning Star
+  The Black Book of Morphysm (Extended, AI Integration)
+  The Burning Book of Morphysm 2 (AI)
+  and the released PDF editions of each.
+
+  https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+
+EVERYTHING ELSE — CC BY-ND 4.0
+  The pamphlet in all four languages, and every text under corpus/.
+
+  https://creativecommons.org/licenses/by-nd/4.0/
+
+
 You are free to:
-  Share — copy and redistribute the material in any medium or format
-  Adapt — remix, transform, and build upon the material
+  Share — copy and redistribute the material in any medium or format, unchanged.
+          For the three volumes, for non-commercial purposes only.
 
 Under the following terms:
-  Attribution — You must give appropriate credit, provide a link to the license,
-                and indicate if changes were made. You may do so in any reasonable
-                manner, but not in any way that suggests the licensor endorses you
-                or your use.
-  NonCommercial — You may not use the material for commercial purposes.
-  ShareAlike — If you remix, transform, or build upon the material, you must
-               distribute your contributions under the same license as the original.
+  Attribution   — You must give appropriate credit and provide a link to the licence.
+  NoDerivatives — If you remix, transform, or build upon the material, you may not
+                  distribute the modified material.
+  NonCommercial — Applies to the three released volumes only: you may not use them
+                  for commercial purposes.
 
-Full license text: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+The doctrine may be quoted, discussed, criticised and taught. It may not be edited
+and re-issued as Morphysm. Ideas are not owned; this text is.
+
+Per-text terms are recorded in corpus/manifest.json under "license", together with
+the sha256 of every file as served. An altered copy is provably not the original:
+verify against corpus/SHA256SUMS.
+
+Published under the pen name J.K. — XXVI. The doctrine recognizes no personal
+authorship.
+
+Note on earlier copies: the pamphlet was published under CC BY-NC-SA 4.0 before this
+change. A Creative Commons licence, once granted, cannot be revoked. Copies obtained
+under those terms keep the rights granted then.

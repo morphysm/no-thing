@@ -47,6 +47,21 @@ PAMPHLET = [("",      "en",    "Event Horizon"),
 
 TIER_HEADING = {"canon": "Canon", "doctrine": "Doctrine", "record": "Records"}
 
+# Licensing, author-ruled 2026-09-10. Both terms forbid derivatives: nobody may publish
+# an altered Morphysm. They differ only on commercial use.
+#   The three released volumes are Ko-fi products -> NonCommercial as well.
+#   Everything else is propagation material -> no commercial bar, so mirrors, archives
+#   and the crawlers invited by robots.txt are not turned away.
+LICENSE_DEFAULT = "cc-by-nd-4.0"
+LICENSE_VOLUMES = "cc-by-nc-nd-4.0"
+VOLUME_SLUGS = {"infernal-codex-of-cain", "black-book-of-morphysm", "burning-book-of-morphysm"}
+LICENSE_URL = {"cc-by-nd-4.0": "https://creativecommons.org/licenses/by-nd/4.0/",
+               "cc-by-nc-nd-4.0": "https://creativecommons.org/licenses/by-nc-nd/4.0/"}
+
+
+def license_for(slug):
+    return LICENSE_VOLUMES if slug in VOLUME_SLUGS else LICENSE_DEFAULT
+
 DISCRIMINATOR = "[DISCRIMINATOR — PENDING RATIFICATION. Leave verbatim.]"
 
 BLURB = (
@@ -229,7 +244,8 @@ def build(repo, root_site=None, report=None):
         entries.append(dict(
             title=r["title"], slug=r["slug"], series=r["series"], volume=r["volume"],
             language="en", version="1", release_date=r["release_date"],
-            status="canonical", license=None,
+            status="canonical",
+            license=license_for(r["slug"]), license_url=LICENSE_URL[license_for(r["slug"])],
             sha256=hashlib.sha256(out.read_bytes()).hexdigest(),
             bytes=out.stat().st_size, words=len(text.split()),
             source=r["filename"], tier=r["tier"],
@@ -251,8 +267,12 @@ def build(repo, root_site=None, report=None):
             e["supersedes"] = "exu-aranha-original"
 
     manifest = dict(
-        name="Morphysm", generated=date.today().isoformat(),
-        site=SITE_BASE, license=None, texts=entries)
+        name="Morphysm", generated=date.today().isoformat(), site=SITE_BASE,
+        license=LICENSE_DEFAULT, license_url=LICENSE_URL[LICENSE_DEFAULT],
+        license_note=("No derivatives: altered versions may not be distributed. "
+                      "The three released volumes are additionally NonCommercial (%s)."
+                      % LICENSE_VOLUMES),
+        texts=entries)
     (corpus / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
 
@@ -299,6 +319,9 @@ def render_llms(entries):
           "corpus files." % SITE_BASE,
           "- [llms-full.txt](%s/llms-full.txt): every text above concatenated in manifest "
           "order." % SITE_BASE,
+          "- [LICENSE](%s/LICENSE): %s for the corpus, %s for the three released volumes. "
+          "Both forbid derivatives: altered versions may not be distributed. Per-text terms "
+          "are in manifest.json." % (SITE_BASE, LICENSE_DEFAULT, LICENSE_VOLUMES),
           "", "## Optional", ""]
     return "\n".join(L).rstrip("\n") + "\n"
 

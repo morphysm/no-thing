@@ -76,5 +76,6 @@ doctrine recognizes no personal authorship.
 - [manifest.json](https://morphysm.github.io/no-thing/corpus/manifest.json): title, slug, series, version, sha256, source and licence for every text listed above.
 - [SHA256SUMS](https://morphysm.github.io/no-thing/corpus/SHA256SUMS): sha256sum-format checksums of the served corpus files.
 - [llms-full.txt](https://morphysm.github.io/no-thing/llms-full.txt): every text above concatenated in manifest order.
+- [LICENSE](https://morphysm.github.io/no-thing/LICENSE): cc-by-nd-4.0 for the corpus, cc-by-nc-nd-4.0 for the three released volumes. Both forbid derivatives: altered versions may not be distributed. Per-text terms are in manifest.json.
 
 ## Optional
