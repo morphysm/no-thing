@@ -588,6 +588,30 @@
       "archive_org": null
     },
     {
+      "title": "Ponto för Exu Caveira — Ritual Invocation",
+      "slug": "ponto-exu-caveira",
+      "series": null,
+      "volume": null,
+      "language": "en",
+      "version": "1",
+      "release_date": null,
+      "status": "canonical",
+      "license": null,
+      "sha256": "24e691faf71860979ecb395d5a1e6337e5f188a6d05ffefa0d550628608153bb",
+      "bytes": 2323,
+      "words": 375,
+      "source": "PONTO_FÖR_EXU_CAVEIRA.md",
+      "tier": "doctrine",
+      "url": "https://morphysm.github.io/no-thing/corpus/ponto-exu-caveira.txt",
+      "description": "This is the Morphystic ponto (ritual song of invocation) for Exu Caveira, Lord of Skulls, Guardian of the Cemetery threshold.",
+      "doi": null,
+      "archive_org": null,
+      "contains_languages": [
+        "en",
+        "sv"
+      ]
+    },
+    {
       "title": "Cain — structured record",
       "slug": "record-cain",
       "series": null,

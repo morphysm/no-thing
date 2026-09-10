@@ -50,6 +50,7 @@ doctrine recognizes no personal authorship.
 - [Pomba Gira Rosa Negra in Morphysm](https://morphysm.github.io/no-thing/corpus/pomba-gira-rosa-negra.txt): Pomba Gira Rosa Negra is a cemetery-current Pomba Gira — she can be invoked as the Queen of Souls.
 - [Pomba Gira das Sete Tumbas in Morphysm](https://morphysm.github.io/no-thing/corpus/pomba-gira-das-sete-tumbas.txt): Pomba Gira das Sete Tumbas operates at the intersection of the lineage of souls and the world of the dead.
 - [Kali, a Crossroads with Pomba Gira](https://morphysm.github.io/no-thing/corpus/kali-and-pomba-gira.txt): This study explores the symbolic and psychological resonance between Kali, the Hindu goddess of time and destruction, and Pomba Gira, the feminine Exu spirit of Afro-Brazilian Quimbanda.
+- [Ponto för Exu Caveira — Ritual Invocation](https://morphysm.github.io/no-thing/corpus/ponto-exu-caveira.txt): This is the Morphystic ponto (ritual song of invocation) for Exu Caveira, Lord of Skulls, Guardian of the Cemetery threshold.
 
 ## Records
 

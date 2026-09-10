@@ -237,9 +237,9 @@ def build(repo, root_site=None, report=None):
             description=first_sentence(text, r["tier"]),
             doi=None, archive_org=None))
 
-    # the ponto carries Swedish stanzas inside an English frame
+    # the ponto is an English preamble followed by four Swedish stanzas
     for e in entries:
-        if e["slug"] == "record-ponto-exu-caveira":
+        if e["slug"] == "ponto-exu-caveira":
             e["contains_languages"] = ["en", "sv"]
         if e["slug"] == "infernal-codex-of-cain":
             e["source"] = "The Infernal Codex of Cain - Secrets of the Morning Star.pdf"
