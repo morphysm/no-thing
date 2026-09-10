@@ -19,7 +19,7 @@ Usage:
 Doctrine note: the concept DOI is the source line and each version DOI is one state
 of it. Revisions are deposited as new versions, never as replacements.
 """
-import argparse, hashlib, json, os, pathlib, subprocess, sys
+import argparse, hashlib, json, os, pathlib, subprocess, sys, time
 from datetime import date
 import requests
 import yaml
@@ -112,8 +112,28 @@ def clean_token(raw):
     return tok
 
 
-def api(session, base, method, path, **kw):
-    r = session.request(method, base + path, timeout=300, **kw)
+RETRY_STATUS = {500, 502, 503, 504}
+
+
+def api(session, base, method, path, _tries=5, **kw):
+    """Zenodo returns transient 5xx and gateway timeouts under load, especially on
+    large uploads. Retry those with backoff rather than losing a run part-way."""
+    delay = 3
+    for attempt in range(1, _tries + 1):
+        try:
+            r = session.request(method, base + path, timeout=300, **kw)
+        except requests.RequestException as e:
+            if attempt == _tries:
+                raise SystemExit("Zenodo %s %s failed after %d attempts: %s"
+                                 % (method, path, _tries, e))
+            print("    %s %s — %s; retrying in %ds (%d/%d)"
+                  % (method, path, type(e).__name__, delay, attempt, _tries))
+            time.sleep(delay); delay = min(delay * 2, 60); continue
+        if r.status_code in RETRY_STATUS and attempt < _tries:
+            print("    %s %s — HTTP %d; retrying in %ds (%d/%d)"
+                  % (method, path, r.status_code, delay, attempt, _tries))
+            time.sleep(delay); delay = min(delay * 2, 60); continue
+        break
     if r.status_code >= 400:
         hint = ""
         if r.status_code == 403:
@@ -322,7 +342,10 @@ def verify(session, base, production):
         raise SystemExit("no draft summary at %s — run a deposit first" % f)
     problems = []
     for row in json.loads(f.read_text(encoding="utf-8")):
-        r = session.get(base + "/api/records/%s/draft" % row["record_id"], timeout=120)
+        try:
+            r = api(session, base, "GET", "/api/records/%s/draft" % row["record_id"])
+        except SystemExit as e:
+            problems.append((row["slug"], str(e))); continue
         if not r.ok:
             problems.append((row["slug"], "cannot read draft: HTTP %d" % r.status_code)); continue
         d = r.json(); md = d.get("metadata", {})
