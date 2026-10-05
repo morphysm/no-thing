@@ -243,32 +243,6 @@
       line-break: strict;              /* no full-width punctuation at line start */
     }
 
-    /* === EPIGRAPH (rendered only for languages that carry one) === */
-
-    .epigraph {
-      margin: 0;
-      padding: 5.5rem 1.25rem 3rem;    /* clears the fixed flag bar */
-      background-color: var(--bg-dark);
-      color: var(--fg-dark);
-      text-align: center;
-    }
-    .epigraph p {
-      max-width: var(--body-max);
-      margin: 0 auto;
-      font-size: 1.125rem;
-      line-height: 1.9;
-      letter-spacing: 0.08em;
-    }
-    .epigraph .epigraph-source {
-      margin-top: 0.5rem;
-      font-size: 0.8125rem;
-      letter-spacing: 0.14em;
-      opacity: 0.6;
-    }
-    .epigraph .epigraph-refusal {
-      margin-top: 2rem;
-    }
-
     /* === LANGUAGE FLAG BAR (from morphysm-lang-switch.html) === */
 
     .flags {
@@ -558,12 +532,8 @@ function renderAll(lang) {
   if (L.title) document.title = L.title;
   const md = document.querySelector('meta[name="description"]');
   if (md && L.desc) md.setAttribute("content", L.desc);
-  const epigraph = L.epigraph ? `  <blockquote class="epigraph">${L.epigraph}</blockquote>\n\n` : "";
-  const top0 = document.getElementById("panel-00").getBoundingClientRect().top;
-  pamphletEl.innerHTML = epigraph + DATA.meta
+  pamphletEl.innerHTML = DATA.meta
     .map((m, i) => panelMarkup(m, L.panels[i], L.summary)).join("\n\n");
-  // an epigraph appearing/vanishing above panel 00 must not move a reader who is mid-page
-  if (scrollY > 0) scrollBy(0, document.getElementById("panel-00").getBoundingClientRect().top - top0);
   const fc = document.getElementById("footer-credit");
   if (fc && L.footer) fc.textContent = L.footer;
   const sg = document.getElementById("sigil-img");

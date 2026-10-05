@@ -30,9 +30,6 @@ def parse_html(path):
     foot  = re.search(r"<footer>.*?<img[^>]*alt=\"([^\"]*)\".*?<p[^>]*>(.*?)</p>", txt, re.S)
     sigil_alt = foot.group(1) if foot else "Morphysm sigil"
     footer    = foot.group(2).strip() if foot else ""
-    # optional epigraph before the first panel (zh-Hant only so far)
-    epi = re.search(r'<blockquote class="epigraph">(.*?)</blockquote>', txt, re.S)
-    epigraph = re.sub(r">\s+<", "><", epi.group(1).strip()) if epi else ""
     panels = []
     for pid, block in SEC_RE.findall(txt):
         src = (re.search(r'<img src="([^"]+)"', block) or [None, ""])[1]
@@ -44,8 +41,7 @@ def parse_html(path):
         body = [p.strip() for p in re.findall(r"<p>(.*?)</p>", content, re.S)]
         panels.append(dict(id=pid, src=src, alt=alt, eager=eager,
                            caption=cap, summary=summ, body=body))
-    return dict(title=title, desc=desc, footer=footer, sigil_alt=sigil_alt,
-                epigraph=epigraph, panels=panels)
+    return dict(title=title, desc=desc, footer=footer, sigil_alt=sigil_alt, panels=panels)
 
 def parse_panel_md(md_dir):
     """Return (caption, [body paragraphs]) from a panel.md."""
@@ -115,8 +111,6 @@ for lang in ["uk", "ru", "pt", "zh"]:
     langs[lang] = dict(htmlLang=HTML_LANG[lang], title=p["title"], desc=p["desc"],
                        footer=p["footer"], sigilAlt=p["sigil_alt"],
                        summary=p["panels"][0]["summary"], panels=panels)
-    if p["epigraph"]:  # key omitted when absent, so other languages' data is unchanged
-        langs[lang]["epigraph"] = p["epigraph"]
     status[lang] = "live" + (f" (panels {fellback} fell back to EN — TODO)" if fellback else "")
 
 DATA = dict(meta=meta, langs=langs)
@@ -400,32 +394,6 @@ HTML = f'''<!DOCTYPE html>
       line-break: strict;              /* no full-width punctuation at line start */
     }}
 
-    /* === EPIGRAPH (rendered only for languages that carry one) === */
-
-    .epigraph {{
-      margin: 0;
-      padding: 5.5rem 1.25rem 3rem;    /* clears the fixed flag bar */
-      background-color: var(--bg-dark);
-      color: var(--fg-dark);
-      text-align: center;
-    }}
-    .epigraph p {{
-      max-width: var(--body-max);
-      margin: 0 auto;
-      font-size: 1.125rem;
-      line-height: 1.9;
-      letter-spacing: 0.08em;
-    }}
-    .epigraph .epigraph-source {{
-      margin-top: 0.5rem;
-      font-size: 0.8125rem;
-      letter-spacing: 0.14em;
-      opacity: 0.6;
-    }}
-    .epigraph .epigraph-refusal {{
-      margin-top: 2rem;
-    }}
-
     /* === LANGUAGE FLAG BAR (from morphysm-lang-switch.html) === */
 
     .flags {{
@@ -539,12 +507,8 @@ function renderAll(lang) {{
   if (L.title) document.title = L.title;
   const md = document.querySelector('meta[name="description"]');
   if (md && L.desc) md.setAttribute("content", L.desc);
-  const epigraph = L.epigraph ? `  <blockquote class="epigraph">${{L.epigraph}}</blockquote>\\n\\n` : "";
-  const top0 = document.getElementById("panel-00").getBoundingClientRect().top;
-  pamphletEl.innerHTML = epigraph + DATA.meta
+  pamphletEl.innerHTML = DATA.meta
     .map((m, i) => panelMarkup(m, L.panels[i], L.summary)).join("\\n\\n");
-  // an epigraph appearing/vanishing above panel 00 must not move a reader who is mid-page
-  if (scrollY > 0) scrollBy(0, document.getElementById("panel-00").getBoundingClientRect().top - top0);
   const fc = document.getElementById("footer-credit");
   if (fc && L.footer) fc.textContent = L.footer;
   const sg = document.getElementById("sigil-img");
