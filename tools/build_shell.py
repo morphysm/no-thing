@@ -5,11 +5,11 @@ build_shell.py — bake the multilingual Morphysm pamphlet shell.
 Source of truth (editable):
   - English caption/body : panels/panel-XX-*/panel.md   (verified against index.html)
   - English structure    : index.html  (panel order, image src, alt, summary verb, dark panels via id)
-  - uk / ru / pt content : uk/index.html, ru/index.html, pt/index.html
+  - uk / ru / pt / zh content : uk/index.html, ru/index.html, pt-br/index.html, zh-hant/index.html
 
 Output:
   - index.html  (single static shell — English baked in DOM for no-JS/crawlers,
-                 uk/ru/pt baked into a JS DATA object, swapped in place by the
+                 uk/ru/pt/zh baked into a JS DATA object, swapped in place by the
                  verbatim burn transition from morphysm-lang-switch.html)
 
 No runtime fetch, no markdown parsing on Pages: everything is baked at build time.
@@ -17,8 +17,8 @@ No runtime fetch, no markdown parsing on Pages: everything is baked at build tim
 import re, json, os, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-HTML_LANG = {"en": "en", "uk": "uk", "ru": "ru", "pt": "pt-BR"}
-LANGS = ["en", "uk", "ru", "pt"]
+HTML_LANG = {"en": "en", "uk": "uk", "ru": "ru", "pt": "pt-BR", "zh": "zh-Hant"}
+LANGS = ["en", "uk", "ru", "pt", "zh"]
 
 # ---------------------------------------------------------------- parsers
 SEC_RE = re.compile(r'<section class="panel" id="(panel-\d+)">(.*?)</section>', re.S)
@@ -85,8 +85,8 @@ langs["en"] = dict(htmlLang=HTML_LANG["en"], title=en["title"], desc=en["desc"],
                    panels=[dict(caption=p["caption"], alt=p["alt"], body=p["body"]) for p in en["panels"]])
 status["en"] = "live (default)"
 
-FOLDER = {"uk": "uk", "ru": "ru", "pt": "pt-br"}  # lowercase scheme; pt content lives in pt-br/
-for lang in ["uk", "ru", "pt"]:
+FOLDER = {"uk": "uk", "ru": "ru", "pt": "pt-br", "zh": "zh-hant"}  # lowercase scheme; pt content lives in pt-br/
+for lang in ["uk", "ru", "pt", "zh"]:
     path = ROOT / FOLDER[lang] / "index.html"
     if not path.exists():
         langs[lang] = json.loads(json.dumps(langs["en"]))
@@ -140,8 +140,10 @@ FLAGS_JS = r'''const FLAGS = {
   en:{code:"EN", name:"English", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></svg>`},
   uk:{code:"UK", name:"Українська", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="20" fill="#0057B7"/><rect y="20" width="60" height="20" fill="#FFD700"/></svg>`},
   ru:{code:"RU", name:"Русский", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect y="13.3" width="60" height="13.4" fill="#0039A6"/><rect y="26.7" width="60" height="13.3" fill="#D52B1E"/></svg>`},
-  pt:{code:"PT", name:"Português (BR)", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#009C3B"/><path d="M30 4 56 20 30 36 4 20Z" fill="#FFDF00"/><circle cx="30" cy="20" r="8" fill="#002776"/></svg>`}
+  pt:{code:"PT", name:"Português (BR)", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#009C3B"/><path d="M30 4 56 20 30 36 4 20Z" fill="#FFDF00"/><circle cx="30" cy="20" r="8" fill="#002776"/></svg>`},
+  zh:{code:"ZH", name:"繁體中文", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#DE2910"/><path d="M10.00 4.00 11.35 8.15 15.71 8.15 12.18 10.71 13.53 14.85 10.00 12.29 6.47 14.85 7.82 10.71 4.29 8.15 8.65 8.15ZM18.29 5.03 19.24 3.93 18.49 2.69 19.83 3.26 20.78 2.16 20.66 3.61 21.99 4.18 20.58 4.50 20.45 5.95 19.70 4.70ZM22.02 8.28 23.32 7.64 23.12 6.20 24.13 7.25 25.44 6.61 24.76 7.89 25.77 8.93 24.34 8.69 23.66 9.97 23.45 8.53ZM22.08 13.45 23.53 13.40 23.93 12.00 24.43 13.37 25.88 13.31 24.73 14.21 25.23 15.57 24.03 14.76 22.88 15.66 23.28 14.26ZM18.44 16.75 19.80 17.26 20.71 16.13 20.64 17.58 22.00 18.09 20.60 18.48 20.53 19.93 19.73 18.71 18.33 19.10 19.24 17.96Z" fill="#FFDE00"/></svg>`}
 };'''
+# zh: PRC flag, author-ruled 2026-10-06.
 
 data_js = "const DATA = " + json.dumps(DATA, ensure_ascii=False, indent=0).replace("\n", "") + ";"
 
@@ -369,6 +371,25 @@ HTML = f'''<!DOCTYPE html>
     }}
     @media (prefers-reduced-motion: reduce) {{
       .sigil-mark {{ animation: none; opacity: 0.7; }}
+    }}
+
+    /* === TRADITIONAL CHINESE (zh-Hant) — system CJK stack, no embedded fonts ===
+       Keyed on <html lang>, which renderAll() sets on every switch. */
+
+    :root:lang(zh-Hant) {{
+      --serif: "PingFang TC", "Noto Serif TC", "Source Han Serif TC", serif;
+    }}
+    :lang(zh-Hant) .panel-caption {{
+      font-style: normal;              /* CJK has no italic; browsers would synthesize an oblique */
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }}
+    :lang(zh-Hant) .panel-body > summary {{
+      letter-spacing: 0.3em;
+    }}
+    :lang(zh-Hant) .panel-body-content p {{
+      line-height: 1.9;
+      line-break: strict;              /* no full-width punctuation at line start */
     }}
 
     /* === LANGUAGE FLAG BAR (from morphysm-lang-switch.html) === */
@@ -599,7 +620,7 @@ buildFlags(); syncCurrent();
 (ROOT / "index.html").write_text(HTML, encoding="utf-8")
 (ROOT / "lang-data.js").write_text(
     "// AUTO-GENERATED by tools/build_shell.py — do not hand-edit.\n"
-    "// Source of truth: panels (EN panel.md) and uk|ru|pt-br/index.html.\n"
+    "// Source of truth: panels (EN panel.md) and uk|ru|pt-br|zh-hant/index.html.\n"
     "// Baked content keyed by language + panel index; consumed by index.html.\n"
     + data_js + "\n", encoding="utf-8")
 

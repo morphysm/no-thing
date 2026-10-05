@@ -81,6 +81,7 @@ cognition they make cosmological claims, not engineering ones.
 - [Горизонт подій](https://morphysm.github.io/no-thing/uk/): the pamphlet in eleven panels, uk.
 - [Горизонт событий](https://morphysm.github.io/no-thing/ru/): the pamphlet in eleven panels, ru.
 - [Horizonte de Eventos](https://morphysm.github.io/no-thing/pt-br/): the pamphlet in eleven panels, pt-BR.
+- [無物](https://morphysm.github.io/no-thing/zh-hant/): the pamphlet in eleven panels, zh-Hant.
 
 ## Integrity
 
