@@ -43,7 +43,8 @@ CAIN_EDGES_SHA256 = "0fe0fe97e9b20c091159060cc3605257dcf1785ff6c8208234146ec3bdf
 PAMPHLET = [("",      "en",    "Event Horizon"),
             ("uk/",   "uk",    "Горизонт подій"),
             ("ru/",   "ru",    "Горизонт событий"),
-            ("pt-br/", "pt-BR", "Horizonte de Eventos")]
+            ("pt-br/", "pt-BR", "Horizonte de Eventos"),
+            ("zh-hant/", "zh-Hant", "無物")]
 
 TIER_HEADING = {"canon": "Canon", "doctrine": "Doctrine", "record": "Records"}
 

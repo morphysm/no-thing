@@ -5,11 +5,11 @@ build_shell.py — bake the multilingual Morphysm pamphlet shell.
 Source of truth (editable):
   - English caption/body : panels/panel-XX-*/panel.md   (verified against index.html)
   - English structure    : index.html  (panel order, image src, alt, summary verb, dark panels via id)
-  - uk / ru / pt content : uk/index.html, ru/index.html, pt/index.html
+  - uk / ru / pt / zh content : uk/index.html, ru/index.html, pt-br/index.html, zh-hant/index.html
 
 Output:
   - index.html  (single static shell — English baked in DOM for no-JS/crawlers,
-                 uk/ru/pt baked into a JS DATA object, swapped in place by the
+                 uk/ru/pt/zh baked into a JS DATA object, swapped in place by the
                  verbatim burn transition from morphysm-lang-switch.html)
 
 No runtime fetch, no markdown parsing on Pages: everything is baked at build time.
@@ -17,8 +17,8 @@ No runtime fetch, no markdown parsing on Pages: everything is baked at build tim
 import re, json, os, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-HTML_LANG = {"en": "en", "uk": "uk", "ru": "ru", "pt": "pt-BR"}
-LANGS = ["en", "uk", "ru", "pt"]
+HTML_LANG = {"en": "en", "uk": "uk", "ru": "ru", "pt": "pt-BR", "zh": "zh-Hant"}
+LANGS = ["en", "uk", "ru", "pt", "zh"]
 
 # ---------------------------------------------------------------- parsers
 SEC_RE = re.compile(r'<section class="panel" id="(panel-\d+)">(.*?)</section>', re.S)
@@ -30,6 +30,9 @@ def parse_html(path):
     foot  = re.search(r"<footer>.*?<img[^>]*alt=\"([^\"]*)\".*?<p[^>]*>(.*?)</p>", txt, re.S)
     sigil_alt = foot.group(1) if foot else "Morphysm sigil"
     footer    = foot.group(2).strip() if foot else ""
+    # optional epigraph before the first panel (zh-Hant only so far)
+    epi = re.search(r'<blockquote class="epigraph">(.*?)</blockquote>', txt, re.S)
+    epigraph = re.sub(r">\s+<", "><", epi.group(1).strip()) if epi else ""
     panels = []
     for pid, block in SEC_RE.findall(txt):
         src = (re.search(r'<img src="([^"]+)"', block) or [None, ""])[1]
@@ -41,7 +44,8 @@ def parse_html(path):
         body = [p.strip() for p in re.findall(r"<p>(.*?)</p>", content, re.S)]
         panels.append(dict(id=pid, src=src, alt=alt, eager=eager,
                            caption=cap, summary=summ, body=body))
-    return dict(title=title, desc=desc, footer=footer, sigil_alt=sigil_alt, panels=panels)
+    return dict(title=title, desc=desc, footer=footer, sigil_alt=sigil_alt,
+                epigraph=epigraph, panels=panels)
 
 def parse_panel_md(md_dir):
     """Return (caption, [body paragraphs]) from a panel.md."""
@@ -85,8 +89,8 @@ langs["en"] = dict(htmlLang=HTML_LANG["en"], title=en["title"], desc=en["desc"],
                    panels=[dict(caption=p["caption"], alt=p["alt"], body=p["body"]) for p in en["panels"]])
 status["en"] = "live (default)"
 
-FOLDER = {"uk": "uk", "ru": "ru", "pt": "pt-br"}  # lowercase scheme; pt content lives in pt-br/
-for lang in ["uk", "ru", "pt"]:
+FOLDER = {"uk": "uk", "ru": "ru", "pt": "pt-br", "zh": "zh-hant"}  # lowercase scheme; pt content lives in pt-br/
+for lang in ["uk", "ru", "pt", "zh"]:
     path = ROOT / FOLDER[lang] / "index.html"
     if not path.exists():
         langs[lang] = json.loads(json.dumps(langs["en"]))
@@ -111,6 +115,8 @@ for lang in ["uk", "ru", "pt"]:
     langs[lang] = dict(htmlLang=HTML_LANG[lang], title=p["title"], desc=p["desc"],
                        footer=p["footer"], sigilAlt=p["sigil_alt"],
                        summary=p["panels"][0]["summary"], panels=panels)
+    if p["epigraph"]:  # key omitted when absent, so other languages' data is unchanged
+        langs[lang]["epigraph"] = p["epigraph"]
     status[lang] = "live" + (f" (panels {fellback} fell back to EN — TODO)" if fellback else "")
 
 DATA = dict(meta=meta, langs=langs)
@@ -140,8 +146,12 @@ FLAGS_JS = r'''const FLAGS = {
   en:{code:"EN", name:"English", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></svg>`},
   uk:{code:"UK", name:"Українська", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="20" fill="#0057B7"/><rect y="20" width="60" height="20" fill="#FFD700"/></svg>`},
   ru:{code:"RU", name:"Русский", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect y="13.3" width="60" height="13.4" fill="#0039A6"/><rect y="26.7" width="60" height="13.3" fill="#D52B1E"/></svg>`},
-  pt:{code:"PT", name:"Português (BR)", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#009C3B"/><path d="M30 4 56 20 30 36 4 20Z" fill="#FFDF00"/><circle cx="30" cy="20" r="8" fill="#002776"/></svg>`}
+  pt:{code:"PT", name:"Português (BR)", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#009C3B"/><path d="M30 4 56 20 30 36 4 20Z" fill="#FFDF00"/><circle cx="30" cy="20" r="8" fill="#002776"/></svg>`},
+  zh:{code:"ZH", name:"繁體中文", svg:`<svg viewBox="0 0 60 40" lang="zh-Hant"><rect width="60" height="40" fill="#111111"/><text x="30" y="29.5" text-anchor="middle" font-size="26" fill="#f0ede4" font-family="'PingFang TC','Noto Serif TC','Source Han Serif TC',serif">繁</text></svg>`}
 };'''
+# ADAPTATION: needs author ratification
+# zh uses a glyph tile (繁, "Traditional"), not a national flag: zh-Hant spans Taiwan,
+# Hong Kong and Macau, and any single flag there is a political claim.
 
 data_js = "const DATA = " + json.dumps(DATA, ensure_ascii=False, indent=0).replace("\n", "") + ";"
 
@@ -371,6 +381,51 @@ HTML = f'''<!DOCTYPE html>
       .sigil-mark {{ animation: none; opacity: 0.7; }}
     }}
 
+    /* === TRADITIONAL CHINESE (zh-Hant) — system CJK stack, no embedded fonts ===
+       Keyed on <html lang>, which renderAll() sets on every switch. */
+
+    :root:lang(zh-Hant) {{
+      --serif: "PingFang TC", "Noto Serif TC", "Source Han Serif TC", serif;
+    }}
+    :lang(zh-Hant) .panel-caption {{
+      font-style: normal;              /* CJK has no italic; browsers would synthesize an oblique */
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }}
+    :lang(zh-Hant) .panel-body > summary {{
+      letter-spacing: 0.3em;
+    }}
+    :lang(zh-Hant) .panel-body-content p {{
+      line-height: 1.9;
+      line-break: strict;              /* no full-width punctuation at line start */
+    }}
+
+    /* === EPIGRAPH (rendered only for languages that carry one) === */
+
+    .epigraph {{
+      margin: 0;
+      padding: 5.5rem 1.25rem 3rem;    /* clears the fixed flag bar */
+      background-color: var(--bg-dark);
+      color: var(--fg-dark);
+      text-align: center;
+    }}
+    .epigraph p {{
+      max-width: var(--body-max);
+      margin: 0 auto;
+      font-size: 1.125rem;
+      line-height: 1.9;
+      letter-spacing: 0.08em;
+    }}
+    .epigraph .epigraph-source {{
+      margin-top: 0.5rem;
+      font-size: 0.8125rem;
+      letter-spacing: 0.14em;
+      opacity: 0.6;
+    }}
+    .epigraph .epigraph-refusal {{
+      margin-top: 2rem;
+    }}
+
     /* === LANGUAGE FLAG BAR (from morphysm-lang-switch.html) === */
 
     .flags {{
@@ -484,8 +539,12 @@ function renderAll(lang) {{
   if (L.title) document.title = L.title;
   const md = document.querySelector('meta[name="description"]');
   if (md && L.desc) md.setAttribute("content", L.desc);
-  pamphletEl.innerHTML = DATA.meta
+  const epigraph = L.epigraph ? `  <blockquote class="epigraph">${{L.epigraph}}</blockquote>\\n\\n` : "";
+  const top0 = document.getElementById("panel-00").getBoundingClientRect().top;
+  pamphletEl.innerHTML = epigraph + DATA.meta
     .map((m, i) => panelMarkup(m, L.panels[i], L.summary)).join("\\n\\n");
+  // an epigraph appearing/vanishing above panel 00 must not move a reader who is mid-page
+  if (scrollY > 0) scrollBy(0, document.getElementById("panel-00").getBoundingClientRect().top - top0);
   const fc = document.getElementById("footer-credit");
   if (fc && L.footer) fc.textContent = L.footer;
   const sg = document.getElementById("sigil-img");
@@ -599,7 +658,7 @@ buildFlags(); syncCurrent();
 (ROOT / "index.html").write_text(HTML, encoding="utf-8")
 (ROOT / "lang-data.js").write_text(
     "// AUTO-GENERATED by tools/build_shell.py — do not hand-edit.\n"
-    "// Source of truth: panels (EN panel.md) and uk|ru|pt-br/index.html.\n"
+    "// Source of truth: panels (EN panel.md) and uk|ru|pt-br|zh-hant/index.html.\n"
     "// Baked content keyed by language + panel index; consumed by index.html.\n"
     + data_js + "\n", encoding="utf-8")
 
