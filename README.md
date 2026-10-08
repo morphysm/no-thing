@@ -7,7 +7,7 @@ A doctrinal tract in eleven panels, in the Jehovanic-futurist aesthetic register
 ```
 morphysm-pamphlet/
 ├── README.md                       # this file
-├── index.html                      # BUILT — multilingual shell (EN default; UK/RU/PT/ZH switch in place)
+├── index.html                      # BUILT — multilingual shell (EN default; UK/RU/PT/ZH/JA switch in place)
 ├── lang-data.js                    # BUILT — baked translations, consumed by index.html
 ├── morphysm-lang-switch.html       # transition reference prototype (#fx canvas, spawn/step/switchTo)
 ├── pamphlet.md                     # consolidated full pamphlet, all 11 panels in one document
@@ -32,6 +32,7 @@ morphysm-pamphlet/
 ├── ru/index.html                   # Russian source of truth
 ├── pt-br/index.html                # Brazilian Portuguese source of truth
 ├── zh-hant/index.html              # Traditional Chinese source of truth
+├── ja/index.html                   # Japanese source of truth
 │
 ├── tools/
 │   └── build_shell.py              # regenerates index.html + lang-data.js from the sources above
@@ -46,7 +47,7 @@ morphysm-pamphlet/
 
 `index.html` and `lang-data.js` are **generated outputs**, not hand-edited. The editable
 sources of truth are the per-language panel files: `panels/*/panel.md` (English) and
-`uk|ru|pt-br|zh-hant/index.html` (translations). After editing any of those, regenerate with:
+`uk|ru|pt-br|zh-hant|ja/index.html` (translations). After editing any of those, regenerate with:
 
 ```
 python3 tools/build_shell.py
@@ -94,7 +95,7 @@ Pages on push to `main`. The generated files are committed, so no build runs in 
 | Drafting (doctrinal content) | Complete |
 | Image generation (11 panels) | Not started |
 | HTML build | Complete |
-| Multilingual versions | Built — EN / UK / RU / PT-BR / ZH-Hant (in-place language switcher) |
+| Multilingual versions | Built — EN / UK / RU / PT-BR / ZH-Hant / JA (in-place language switcher) |
 | Deployment | Not started |
 
 ## License recommendation
