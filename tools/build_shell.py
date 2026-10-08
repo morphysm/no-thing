@@ -31,9 +31,6 @@ def parse_html(path):
     foot  = re.search(r"<footer>.*?<img[^>]*alt=\"([^\"]*)\".*?<p[^>]*>(.*?)</p>", txt, re.S)
     sigil_alt = foot.group(1) if foot else "Morphysm sigil"
     footer    = foot.group(2).strip() if foot else ""
-    # optional front block before the first panel (ja only so far): visible title, epigraph
-    fr = re.search(r'<header class="front">(.*?)</header>', txt, re.S)
-    front = re.sub(r">\s+<", "><", re.sub(r"<!--.*?-->", "", fr.group(1), flags=re.S).strip()) if fr else ""
     panels = []
     for pid, block in SEC_RE.findall(txt):
         src = (re.search(r'<img src="([^"]+)"', block) or [None, ""])[1]
@@ -45,8 +42,7 @@ def parse_html(path):
         body = [p.strip() for p in re.findall(r"<p>(.*?)</p>", content, re.S)]
         panels.append(dict(id=pid, src=src, alt=alt, eager=eager,
                            caption=cap, summary=summ, body=body))
-    return dict(title=title, desc=desc, footer=footer, sigil_alt=sigil_alt,
-                front=front, panels=panels)
+    return dict(title=title, desc=desc, footer=footer, sigil_alt=sigil_alt, panels=panels)
 
 def parse_panel_md(md_dir):
     """Return (caption, [body paragraphs]) from a panel.md."""
@@ -116,8 +112,6 @@ for lang in ["uk", "ru", "pt", "zh", "ja"]:
     langs[lang] = dict(htmlLang=HTML_LANG[lang], title=p["title"], desc=p["desc"],
                        footer=p["footer"], sigilAlt=p["sigil_alt"],
                        summary=p["panels"][0]["summary"], panels=panels)
-    if p["front"]:  # key omitted when absent, so other languages' data is unchanged
-        langs[lang]["front"] = p["front"]
     status[lang] = "live" + (f" (panels {fellback} fell back to EN — TODO)" if fellback else "")
 
 DATA = dict(meta=meta, langs=langs)
@@ -419,44 +413,6 @@ HTML = f'''<!DOCTYPE html>
       line-height: 1.9;
     }}
 
-    /* === FRONT — visible title + epigraph (rendered only for languages that carry one) === */
-
-    .front {{
-      margin: 0;
-      padding: 5.5rem 1.25rem 3rem;    /* clears the fixed flag bar */
-      background-color: var(--bg-dark);
-      color: var(--fg-dark);
-      text-align: center;
-    }}
-    .front-title {{
-      margin: 0 0 2.5rem;
-      font-size: 2.25rem;
-      font-weight: normal;
-      line-height: 1.6;
-    }}
-    .epigraph {{
-      margin: 0;
-    }}
-    .front p {{
-      max-width: var(--body-max);
-      margin: 0 auto;
-      font-size: 1.125rem;
-      line-height: 1.9;
-      letter-spacing: 0.08em;
-    }}
-    .front .epigraph-source {{
-      margin-top: 0.5rem;
-      font-size: 0.8125rem;
-      letter-spacing: 0.14em;
-      opacity: 0.6;
-    }}
-    .front .epigraph-refusal {{
-      margin-top: 2rem;
-    }}
-    .front .ph {{
-      display: inline-block;           /* centred short lines break between phrases, never inside one */
-    }}
-
     /* === LANGUAGE FLAG BAR (from morphysm-lang-switch.html) === */
 
     .flags {{
@@ -570,12 +526,8 @@ function renderAll(lang) {{
   if (L.title) document.title = L.title;
   const md = document.querySelector('meta[name="description"]');
   if (md && L.desc) md.setAttribute("content", L.desc);
-  const front = L.front ? `  <header class="front">${{L.front}}</header>\\n\\n` : "";
-  const top0 = document.getElementById("panel-00").getBoundingClientRect().top;
-  pamphletEl.innerHTML = front + DATA.meta
+  pamphletEl.innerHTML = DATA.meta
     .map((m, i) => panelMarkup(m, L.panels[i], L.summary)).join("\\n\\n");
-  // a front block appearing/vanishing above panel 00 must not move a reader who is mid-page
-  if (scrollY > 0) scrollBy(0, document.getElementById("panel-00").getBoundingClientRect().top - top0);
   const fc = document.getElementById("footer-credit");
   if (fc && L.footer) fc.textContent = L.footer;
   const sg = document.getElementById("sigil-img");
