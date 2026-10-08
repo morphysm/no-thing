@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Title is 無物 (No-thing), as for zh-Hant; reading むぶつ, shown as ruby in the front block. -->
+  <!-- Title is 無物 (No-thing), not 事象の地平面 ("Event Horizon"), as for zh-Hant. -->
   <title>無物</title>
   <meta name="description" content="そして竜は無物となった。">
 
@@ -124,50 +124,6 @@
 
     .panel-body-content p:last-child {
       margin-bottom: 0;
-    }
-
-    /* === FRONT — visible title, epigraph, refusal === */
-
-    .front {
-      margin: 0;
-      padding: 3.5rem 1.25rem 3rem;
-      background-color: var(--bg-dark);
-      color: var(--fg-dark);
-      text-align: center;
-    }
-
-    .front-title {
-      margin: 0 0 2.5rem;
-      font-size: 2.25rem;
-      font-weight: normal;
-      line-height: 1.6;
-    }
-
-    .epigraph {
-      margin: 0;
-    }
-
-    .front p {
-      max-width: var(--body-max);
-      margin: 0 auto;
-      font-size: 1.125rem;
-      line-height: 1.9;
-      letter-spacing: 0.08em;
-    }
-
-    .front .epigraph-source {
-      margin-top: 0.5rem;
-      font-size: 0.8125rem;
-      letter-spacing: 0.14em;
-      opacity: 0.6;
-    }
-
-    .front .epigraph-refusal {
-      margin-top: 2rem;
-    }
-
-    .front .ph {
-      display: inline-block;       /* centred short lines break between phrases, never inside one */
     }
 
     /* === DARK PANELS (9 and 10) === */
@@ -300,17 +256,6 @@
 <body>
 
 <main>
-
-  <header class="front">
-    <h1 class="front-title"><ruby>無物<rt>むぶつ</rt></ruby></h1>
-    <!-- Epigraph: Mumonkan case 1 (趙州狗子), standard yomikudashi, shinjitai. No counterpart in the English source: author-ruled 2026-10-08. -->
-    <blockquote class="epigraph">
-      <p><span class="ph">趙州和尚、</span><span class="ph">因みに僧問う、</span><span class="ph">「狗子に還って</span><span class="ph">仏性有りや</span><span class="ph">也た無しや」。</span><span class="ph">州云く、「無」。</span></p>
-      <p class="epigraph-source">——『無門関』第一則</p>
-    </blockquote>
-    <!-- Refusal line, new text. Grounded in corpus/anti-salvational-constraint.txt §VII (not liberation-as-cessation, not recognition-of-true-nature): author-ruled 2026-10-08. -->
-    <p class="epigraph-refusal"><span class="ph">この無は悟りではない。</span><span class="ph">目覚めでもない。</span></p>
-  </header>
 
   <!-- PANEL 00 — FORMA NIHIL -->
   <section class="panel" id="panel-00">

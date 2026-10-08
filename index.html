@@ -262,44 +262,6 @@
       line-height: 1.9;
     }
 
-    /* === FRONT — visible title + epigraph (rendered only for languages that carry one) === */
-
-    .front {
-      margin: 0;
-      padding: 5.5rem 1.25rem 3rem;    /* clears the fixed flag bar */
-      background-color: var(--bg-dark);
-      color: var(--fg-dark);
-      text-align: center;
-    }
-    .front-title {
-      margin: 0 0 2.5rem;
-      font-size: 2.25rem;
-      font-weight: normal;
-      line-height: 1.6;
-    }
-    .epigraph {
-      margin: 0;
-    }
-    .front p {
-      max-width: var(--body-max);
-      margin: 0 auto;
-      font-size: 1.125rem;
-      line-height: 1.9;
-      letter-spacing: 0.08em;
-    }
-    .front .epigraph-source {
-      margin-top: 0.5rem;
-      font-size: 0.8125rem;
-      letter-spacing: 0.14em;
-      opacity: 0.6;
-    }
-    .front .epigraph-refusal {
-      margin-top: 2rem;
-    }
-    .front .ph {
-      display: inline-block;           /* centred short lines break between phrases, never inside one */
-    }
-
     /* === LANGUAGE FLAG BAR (from morphysm-lang-switch.html) === */
 
     .flags {
@@ -590,12 +552,8 @@ function renderAll(lang) {
   if (L.title) document.title = L.title;
   const md = document.querySelector('meta[name="description"]');
   if (md && L.desc) md.setAttribute("content", L.desc);
-  const front = L.front ? `  <header class="front">${L.front}</header>\n\n` : "";
-  const top0 = document.getElementById("panel-00").getBoundingClientRect().top;
-  pamphletEl.innerHTML = front + DATA.meta
+  pamphletEl.innerHTML = DATA.meta
     .map((m, i) => panelMarkup(m, L.panels[i], L.summary)).join("\n\n");
-  // a front block appearing/vanishing above panel 00 must not move a reader who is mid-page
-  if (scrollY > 0) scrollBy(0, document.getElementById("panel-00").getBoundingClientRect().top - top0);
   const fc = document.getElementById("footer-credit");
   if (fc && L.footer) fc.textContent = L.footer;
   const sg = document.getElementById("sigil-img");
