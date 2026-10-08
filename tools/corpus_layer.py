@@ -44,7 +44,8 @@ PAMPHLET = [("",      "en",    "Event Horizon"),
             ("uk/",   "uk",    "Горизонт подій"),
             ("ru/",   "ru",    "Горизонт событий"),
             ("pt-br/", "pt-BR", "Horizonte de Eventos"),
-            ("zh-hant/", "zh-Hant", "無物")]
+            ("zh-hant/", "zh-Hant", "無物"),
+            ("ja/",   "ja",    "無物")]
 
 TIER_HEADING = {"canon": "Canon", "doctrine": "Doctrine", "record": "Records"}
 

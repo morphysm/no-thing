@@ -5,11 +5,12 @@ build_shell.py — bake the multilingual Morphysm pamphlet shell.
 Source of truth (editable):
   - English caption/body : panels/panel-XX-*/panel.md   (verified against index.html)
   - English structure    : index.html  (panel order, image src, alt, summary verb, dark panels via id)
-  - uk / ru / pt / zh content : uk/index.html, ru/index.html, pt-br/index.html, zh-hant/index.html
+  - uk / ru / pt / zh / ja content : uk/index.html, ru/index.html, pt-br/index.html, zh-hant/index.html,
+                                ja/index.html
 
 Output:
   - index.html  (single static shell — English baked in DOM for no-JS/crawlers,
-                 uk/ru/pt/zh baked into a JS DATA object, swapped in place by the
+                 uk/ru/pt/zh/ja baked into a JS DATA object, swapped in place by the
                  verbatim burn transition from morphysm-lang-switch.html)
 
 No runtime fetch, no markdown parsing on Pages: everything is baked at build time.
@@ -17,8 +18,8 @@ No runtime fetch, no markdown parsing on Pages: everything is baked at build tim
 import re, json, os, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-HTML_LANG = {"en": "en", "uk": "uk", "ru": "ru", "pt": "pt-BR", "zh": "zh-Hant"}
-LANGS = ["en", "uk", "ru", "pt", "zh"]
+HTML_LANG = {"en": "en", "uk": "uk", "ru": "ru", "pt": "pt-BR", "zh": "zh-Hant", "ja": "ja"}
+LANGS = ["en", "uk", "ru", "pt", "zh", "ja"]
 
 # ---------------------------------------------------------------- parsers
 SEC_RE = re.compile(r'<section class="panel" id="(panel-\d+)">(.*?)</section>', re.S)
@@ -30,6 +31,9 @@ def parse_html(path):
     foot  = re.search(r"<footer>.*?<img[^>]*alt=\"([^\"]*)\".*?<p[^>]*>(.*?)</p>", txt, re.S)
     sigil_alt = foot.group(1) if foot else "Morphysm sigil"
     footer    = foot.group(2).strip() if foot else ""
+    # optional front block before the first panel (ja only so far): visible title, epigraph
+    fr = re.search(r'<header class="front">(.*?)</header>', txt, re.S)
+    front = re.sub(r">\s+<", "><", re.sub(r"<!--.*?-->", "", fr.group(1), flags=re.S).strip()) if fr else ""
     panels = []
     for pid, block in SEC_RE.findall(txt):
         src = (re.search(r'<img src="([^"]+)"', block) or [None, ""])[1]
@@ -41,7 +45,8 @@ def parse_html(path):
         body = [p.strip() for p in re.findall(r"<p>(.*?)</p>", content, re.S)]
         panels.append(dict(id=pid, src=src, alt=alt, eager=eager,
                            caption=cap, summary=summ, body=body))
-    return dict(title=title, desc=desc, footer=footer, sigil_alt=sigil_alt, panels=panels)
+    return dict(title=title, desc=desc, footer=footer, sigil_alt=sigil_alt,
+                front=front, panels=panels)
 
 def parse_panel_md(md_dir):
     """Return (caption, [body paragraphs]) from a panel.md."""
@@ -85,8 +90,8 @@ langs["en"] = dict(htmlLang=HTML_LANG["en"], title=en["title"], desc=en["desc"],
                    panels=[dict(caption=p["caption"], alt=p["alt"], body=p["body"]) for p in en["panels"]])
 status["en"] = "live (default)"
 
-FOLDER = {"uk": "uk", "ru": "ru", "pt": "pt-br", "zh": "zh-hant"}  # lowercase scheme; pt content lives in pt-br/
-for lang in ["uk", "ru", "pt", "zh"]:
+FOLDER = {"uk": "uk", "ru": "ru", "pt": "pt-br", "zh": "zh-hant", "ja": "ja"}  # lowercase scheme; pt content lives in pt-br/
+for lang in ["uk", "ru", "pt", "zh", "ja"]:
     path = ROOT / FOLDER[lang] / "index.html"
     if not path.exists():
         langs[lang] = json.loads(json.dumps(langs["en"]))
@@ -111,6 +116,8 @@ for lang in ["uk", "ru", "pt", "zh"]:
     langs[lang] = dict(htmlLang=HTML_LANG[lang], title=p["title"], desc=p["desc"],
                        footer=p["footer"], sigilAlt=p["sigil_alt"],
                        summary=p["panels"][0]["summary"], panels=panels)
+    if p["front"]:  # key omitted when absent, so other languages' data is unchanged
+        langs[lang]["front"] = p["front"]
     status[lang] = "live" + (f" (panels {fellback} fell back to EN — TODO)" if fellback else "")
 
 DATA = dict(meta=meta, langs=langs)
@@ -141,7 +148,8 @@ FLAGS_JS = r'''const FLAGS = {
   uk:{code:"UK", name:"Українська", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="20" fill="#0057B7"/><rect y="20" width="60" height="20" fill="#FFD700"/></svg>`},
   ru:{code:"RU", name:"Русский", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect y="13.3" width="60" height="13.4" fill="#0039A6"/><rect y="26.7" width="60" height="13.3" fill="#D52B1E"/></svg>`},
   pt:{code:"PT", name:"Português (BR)", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#009C3B"/><path d="M30 4 56 20 30 36 4 20Z" fill="#FFDF00"/><circle cx="30" cy="20" r="8" fill="#002776"/></svg>`},
-  zh:{code:"ZH", name:"繁體中文", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#DE2910"/><path d="M10.00 4.00 11.35 8.15 15.71 8.15 12.18 10.71 13.53 14.85 10.00 12.29 6.47 14.85 7.82 10.71 4.29 8.15 8.65 8.15ZM18.29 5.03 19.24 3.93 18.49 2.69 19.83 3.26 20.78 2.16 20.66 3.61 21.99 4.18 20.58 4.50 20.45 5.95 19.70 4.70ZM22.02 8.28 23.32 7.64 23.12 6.20 24.13 7.25 25.44 6.61 24.76 7.89 25.77 8.93 24.34 8.69 23.66 9.97 23.45 8.53ZM22.08 13.45 23.53 13.40 23.93 12.00 24.43 13.37 25.88 13.31 24.73 14.21 25.23 15.57 24.03 14.76 22.88 15.66 23.28 14.26ZM18.44 16.75 19.80 17.26 20.71 16.13 20.64 17.58 22.00 18.09 20.60 18.48 20.53 19.93 19.73 18.71 18.33 19.10 19.24 17.96Z" fill="#FFDE00"/></svg>`}
+  zh:{code:"ZH", name:"繁體中文", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#DE2910"/><path d="M10.00 4.00 11.35 8.15 15.71 8.15 12.18 10.71 13.53 14.85 10.00 12.29 6.47 14.85 7.82 10.71 4.29 8.15 8.65 8.15ZM18.29 5.03 19.24 3.93 18.49 2.69 19.83 3.26 20.78 2.16 20.66 3.61 21.99 4.18 20.58 4.50 20.45 5.95 19.70 4.70ZM22.02 8.28 23.32 7.64 23.12 6.20 24.13 7.25 25.44 6.61 24.76 7.89 25.77 8.93 24.34 8.69 23.66 9.97 23.45 8.53ZM22.08 13.45 23.53 13.40 23.93 12.00 24.43 13.37 25.88 13.31 24.73 14.21 25.23 15.57 24.03 14.76 22.88 15.66 23.28 14.26ZM18.44 16.75 19.80 17.26 20.71 16.13 20.64 17.58 22.00 18.09 20.60 18.48 20.53 19.93 19.73 18.71 18.33 19.10 19.24 17.96Z" fill="#FFDE00"/></svg>`},
+  ja:{code:"JA", name:"日本語", svg:`<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><circle cx="30" cy="20" r="12" fill="#BC002D"/></svg>`}
 };'''
 # zh: PRC flag, author-ruled 2026-10-06.
 
@@ -392,6 +400,63 @@ HTML = f'''<!DOCTYPE html>
       line-break: strict;              /* no full-width punctuation at line start */
     }}
 
+    /* === JAPANESE (ja) — system mincho stack, no embedded fonts === */
+
+    :root:lang(ja) {{
+      --serif: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+      line-break: strict;              /* inherited: no 。、」 at line start, no 「 at line end */
+      word-break: normal;
+    }}
+    :lang(ja) .panel-caption {{
+      font-style: normal;              /* CJK has no italic; browsers would synthesize an oblique */
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }}
+    :lang(ja) .panel-body > summary {{
+      letter-spacing: 0.3em;
+    }}
+    :lang(ja) .panel-body-content p {{
+      line-height: 1.9;
+    }}
+
+    /* === FRONT — visible title + epigraph (rendered only for languages that carry one) === */
+
+    .front {{
+      margin: 0;
+      padding: 5.5rem 1.25rem 3rem;    /* clears the fixed flag bar */
+      background-color: var(--bg-dark);
+      color: var(--fg-dark);
+      text-align: center;
+    }}
+    .front-title {{
+      margin: 0 0 2.5rem;
+      font-size: 2.25rem;
+      font-weight: normal;
+      line-height: 1.6;
+    }}
+    .epigraph {{
+      margin: 0;
+    }}
+    .front p {{
+      max-width: var(--body-max);
+      margin: 0 auto;
+      font-size: 1.125rem;
+      line-height: 1.9;
+      letter-spacing: 0.08em;
+    }}
+    .front .epigraph-source {{
+      margin-top: 0.5rem;
+      font-size: 0.8125rem;
+      letter-spacing: 0.14em;
+      opacity: 0.6;
+    }}
+    .front .epigraph-refusal {{
+      margin-top: 2rem;
+    }}
+    .front .ph {{
+      display: inline-block;           /* centred short lines break between phrases, never inside one */
+    }}
+
     /* === LANGUAGE FLAG BAR (from morphysm-lang-switch.html) === */
 
     .flags {{
@@ -505,8 +570,12 @@ function renderAll(lang) {{
   if (L.title) document.title = L.title;
   const md = document.querySelector('meta[name="description"]');
   if (md && L.desc) md.setAttribute("content", L.desc);
-  pamphletEl.innerHTML = DATA.meta
+  const front = L.front ? `  <header class="front">${{L.front}}</header>\\n\\n` : "";
+  const top0 = document.getElementById("panel-00").getBoundingClientRect().top;
+  pamphletEl.innerHTML = front + DATA.meta
     .map((m, i) => panelMarkup(m, L.panels[i], L.summary)).join("\\n\\n");
+  // a front block appearing/vanishing above panel 00 must not move a reader who is mid-page
+  if (scrollY > 0) scrollBy(0, document.getElementById("panel-00").getBoundingClientRect().top - top0);
   const fc = document.getElementById("footer-credit");
   if (fc && L.footer) fc.textContent = L.footer;
   const sg = document.getElementById("sigil-img");
@@ -620,7 +689,7 @@ buildFlags(); syncCurrent();
 (ROOT / "index.html").write_text(HTML, encoding="utf-8")
 (ROOT / "lang-data.js").write_text(
     "// AUTO-GENERATED by tools/build_shell.py — do not hand-edit.\n"
-    "// Source of truth: panels (EN panel.md) and uk|ru|pt-br|zh-hant/index.html.\n"
+    "// Source of truth: panels (EN panel.md) and uk|ru|pt-br|zh-hant|ja/index.html.\n"
     "// Baked content keyed by language + panel index; consumed by index.html.\n"
     + data_js + "\n", encoding="utf-8")
 
