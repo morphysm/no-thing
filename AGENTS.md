@@ -193,6 +193,21 @@ The collaborator drafted an "asymptotic" Panel 10 — a deliberately failed pain
 
 ---
 
+## Translated pages (author rulings)
+
+Six languages are live: en, uk, ru, pt-BR, zh-Hant, ja. Every language page is structurally identical to the others.
+
+- **No intro of any kind.** Every language opens directly on Panel 0. No visible title, epigraph, refusal line or other block before the panels. Ruled for zh-Hant (2026-10-06, Daodejing epigraph removed) and again for ja (2026-10-08, Mumonkan epigraph and ruby title removed after first being kept). Do not draft one for a new language without first pointing to this ruling.
+- **CJK keeps its own typography.** zh-Hant and ja use a system CJK stack (no embedded fonts), upright captions, wider letter-spacing, line-height 1.9 and `line-break: strict`. CJK has no italic, so it is not forced into the Georgia italic the other languages use (ruled 2026-10-08). Typography is the only permitted difference between language pages.
+- **Titles and flags.** The zh-Hant and ja page title is 無物, not a translation of *Event Horizon*. The zh-Hant switcher flag is the PRC flag.
+- **New language checklist.** Copy an existing translated page's structure exactly, register the language in `tools/build_shell.py` and the `PAMPHLET` list in `tools/corpus_layer.py`, run `python3 tools/build_shell.py`, and after merge regenerate the root-site sitemap in `morphysm.github.io`.
+
+### Browser cache after deploy
+
+GitHub Pages serves every file with `cache-control: max-age=600`. For up to 10 minutes after a deploy, a browser that already loaded the page keeps showing the old version. Before treating a change as not live, compare the deploy's finish time with when the page was loaded, and hard-reload (Ctrl+Shift+R).
+
+---
+
 ## The relationship between drafting and corpus
 
 The pamphlet is a *propagating artifact* that compresses the corpus into 11 panels for fast spread. It is not the doctrine itself. The corpus remains primary.
