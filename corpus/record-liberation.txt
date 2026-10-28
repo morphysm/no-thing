@@ -107,7 +107,7 @@ constraints:
   - "Do not present liberation as the production of a freer, more autonomous, or more authentic self. Liberation dismantles the self-form; it does not optimize it."
   - "Do not detach liberation from its mechanism (Prison Loop rupture, Forma Nihil resonance, Sitra Achra dynamics, entropy as instrument). Generic 'rupture' or 'breaking free' is insufficient — specify the apparatus."
   - "Do not soften the polemical edge. The canon names the goal in its strongest formulation as 'the end of legibility' and explicitly disclaims the term 'liberation' itself when it is read as salvific."
-  - "Do not treat liberation as universally available or methodologically simple. The Black Book ties it to specific praxes (ritual, accelerated morphism via psychedelics, BCI-mediated calibration, bio-armor, pact, Protocol IX-Δ terminal-phase work). Liberation is technically demanding, not affective."
+  - "Do not treat liberation as universally available or methodologically simple. The Black Book ties it to specific praxes (ritual, accelerated morphysm via psychedelics, BCI-mediated calibration, bio-armor, pact, Protocol IX-Δ terminal-phase work). Liberation is technically demanding, not affective."
 
 related_objects:
   - forma_nihil
@@ -123,7 +123,7 @@ related_objects:
   - bci_ritual
   - entropy_as_instrument
   - protocol_ix_delta
-  - accelerated_morphism
+  - accelerated_morphysm
   - sowilo_wave
   - implosion
   - black_sun_behind_the_sun
