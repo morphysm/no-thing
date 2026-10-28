@@ -301,6 +301,8 @@ def build(repo, root_site=None, report=None):
             entries[-1]["doi"] = perm.get("version_doi")
             entries[-1]["concept_doi"] = perm.get("concept_doi")
             entries[-1]["archive_org"] = perm.get("archive_org")
+            if perm.get("covers") != "*" and perm.get("version"):
+                entries[-1]["version"] = perm["version"]   # tracks the volume's own deposit
 
     # the ponto is an English preamble followed by four Swedish stanzas
     for e in entries:
